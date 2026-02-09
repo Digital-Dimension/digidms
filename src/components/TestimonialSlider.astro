@@ -1,0 +1,186 @@
+---
+/**
+ * TestimonialSlider.astro - Kundenstimmen-Karussell
+ *
+ * Auto-Play mit Pfeilen und Dots zum Durchblättern.
+ *
+ * @usage
+ * <TestimonialSlider testimonials={[
+ *   { author: 'Max Müller', role: 'Geschäftsführer', company: 'Müller GmbH', quote: '...' }
+ * ]} />
+ */
+
+export interface Testimonial {
+  author: string;
+  role?: string;
+  company: string;
+  quote: string;
+  image?: string;
+}
+
+interface Props {
+  testimonials: Testimonial[];
+}
+
+const { testimonials } = Astro.props;
+
+const items = testimonials.map(t => ({
+  ...t,
+  initials: t.author.split(' ').map(n => n[0]).join(''),
+}));
+---
+
+{items.length > 0 ? (
+  <div class="relative max-w-3xl mx-auto" id="testimonial-slider">
+    <div class="overflow-hidden">
+      <div class="relative">
+        {items.map((testimonial, index) => (
+          <div
+            class={`testimonial-slide transition-all duration-500 ease-in-out ${index === 0 ? 'relative opacity-100' : 'absolute inset-0 opacity-0 pointer-events-none'}`}
+            data-index={index}
+          >
+            <div class="bg-white rounded-2xl p-8 md:p-10 shadow-lg border border-gray-100">
+              <svg class="w-10 h-10 text-primary-100 mb-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+              </svg>
+
+              <blockquote class="text-lg md:text-xl text-gray-700 leading-relaxed mb-8">
+                &bdquo;{testimonial.quote}&ldquo;
+              </blockquote>
+
+              <footer class="flex items-center gap-4 pt-6 border-t border-gray-100">
+                {testimonial.image ? (
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.author}
+                    class="w-14 h-14 rounded-full object-cover"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div class="w-14 h-14 rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+                    {testimonial.initials}
+                  </div>
+                )}
+                <div>
+                  <div class="font-semibold text-gray-900 text-lg">{testimonial.author}</div>
+                  <div class="text-gray-500">
+                    {testimonial.role && <span>{testimonial.role}, </span>}
+                    <span class="text-primary-600">{testimonial.company}</span>
+                  </div>
+                </div>
+              </footer>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {items.length > 1 && (
+      <div class="flex items-center justify-center gap-4 mt-8">
+        <button
+          type="button"
+          id="slider-prev"
+          class="w-12 h-12 rounded-full bg-white border-2 border-gray-200 hover:border-primary-500 hover:bg-primary-50 flex items-center justify-center text-gray-600 hover:text-primary-600 transition-all shadow-sm"
+          aria-label="Vorheriges Testimonial"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <div class="flex items-center gap-2" id="slider-dots">
+          {items.map((_, index) => (
+            <button
+              type="button"
+              class={`slider-dot w-2.5 h-2.5 rounded-full transition-all ${index === 0 ? 'bg-primary-500 w-8' : 'bg-gray-300 hover:bg-gray-400'}`}
+              data-index={index}
+              aria-label={`Testimonial ${index + 1}`}
+            />
+          ))}
+        </div>
+
+        <button
+          type="button"
+          id="slider-next"
+          class="w-12 h-12 rounded-full bg-white border-2 border-gray-200 hover:border-primary-500 hover:bg-primary-50 flex items-center justify-center text-gray-600 hover:text-primary-600 transition-all shadow-sm"
+          aria-label="Nächstes Testimonial"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    )}
+  </div>
+
+  <script is:inline>
+    (function() {
+      var slider = document.getElementById('testimonial-slider');
+      if (!slider) return;
+
+      var slides = slider.querySelectorAll('.testimonial-slide');
+      var dots = slider.querySelectorAll('.slider-dot');
+      var prevBtn = document.getElementById('slider-prev');
+      var nextBtn = document.getElementById('slider-next');
+
+      if (slides.length <= 1) return;
+
+      var currentIndex = 0;
+      var isAnimating = false;
+      var autoPlayTimer = null;
+
+      function resetAutoPlay() {
+        if (autoPlayTimer) clearInterval(autoPlayTimer);
+        autoPlayTimer = setInterval(nextSlide, 10000);
+      }
+
+      function goToSlide(newIndex) {
+        if (isAnimating || newIndex === currentIndex) return;
+        isAnimating = true;
+
+        var cur = slides[currentIndex];
+        var nxt = slides[newIndex];
+
+        cur.classList.remove('relative', 'opacity-100');
+        cur.classList.add('absolute', 'inset-0', 'opacity-0', 'pointer-events-none');
+
+        nxt.classList.remove('absolute', 'inset-0', 'opacity-0', 'pointer-events-none');
+        nxt.classList.add('relative', 'opacity-100');
+
+        dots[currentIndex].classList.remove('bg-primary-500', 'w-8');
+        dots[currentIndex].classList.add('bg-gray-300');
+        dots[newIndex].classList.remove('bg-gray-300');
+        dots[newIndex].classList.add('bg-primary-500', 'w-8');
+
+        currentIndex = newIndex;
+        setTimeout(function() { isAnimating = false; }, 500);
+      }
+
+      function nextSlide() {
+        goToSlide((currentIndex + 1) % slides.length);
+      }
+
+      if (prevBtn) prevBtn.addEventListener('click', function() {
+        goToSlide((currentIndex - 1 + slides.length) % slides.length);
+        resetAutoPlay();
+      });
+      if (nextBtn) nextBtn.addEventListener('click', function() {
+        nextSlide();
+        resetAutoPlay();
+      });
+
+      dots.forEach(function(dot, i) {
+        dot.addEventListener('click', function() {
+          goToSlide(i);
+          resetAutoPlay();
+        });
+      });
+
+      resetAutoPlay();
+    })();
+  </script>
+) : (
+  <p class="text-center text-gray-500 py-8">
+    Noch keine Kundenstimmen vorhanden.
+  </p>
+)}

@@ -1,7 +1,9 @@
 ---
 import { siteConfig } from '../config/site';
+import SEO from '../components/SEO.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ScrollToTop from '../components/ScrollToTop.astro';
 
 interface Props {
   title?: string;
@@ -9,53 +11,17 @@ interface Props {
   canonical?: string;
   ogImage?: string;
   noindex?: boolean;
+  schema?: object;
 }
 
-const { 
-  title = siteConfig.title, 
+const {
+  title = siteConfig.title,
   description = siteConfig.description,
-  canonical = Astro.url.href,
-  ogImage = '/images/og-digidms.png',
-  noindex = false
+  canonical,
+  ogImage,
+  noindex = false,
+  schema,
 } = Astro.props;
-
-// Schema.org Organization
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "DigiDMS",
-  "legalName": siteConfig.company.name,
-  "url": siteConfig.url,
-  "logo": `${siteConfig.url}/images/logo_full.png`,
-  "description": "Managed Dokumentenmanagement für den deutschen Mittelstand",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": siteConfig.company.street,
-    "addressLocality": "Wuppertal",
-    "postalCode": "42117",
-    "addressCountry": "DE"
-  },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": siteConfig.company.phone,
-    "contactType": "sales",
-    "availableLanguage": "German"
-  },
-  "sameAs": []
-};
-
-// Schema.org WebSite
-const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "DigiDMS",
-  "url": siteConfig.url,
-  "description": siteConfig.description,
-  "publisher": {
-    "@type": "Organization",
-    "name": "DigiDMS"
-  }
-};
 ---
 
 <!DOCTYPE html>
@@ -63,41 +29,20 @@ const websiteSchema = {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content={description} />
-  <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
-  <meta name="author" content="Digital Dimension IT GmbH" />
-  <meta name="geo.region" content="DE-NW" />
-  <meta name="geo.placename" content="Essen" />
-  
-  <!-- Canonical URL -->
-  <link rel="canonical" href={canonical} />
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content={canonical} />
-  <meta property="og:locale" content="de_DE" />
-  <meta property="og:site_name" content="DigiDMS" />
-  <meta property="og:image" content={`${siteConfig.url}${ogImage}`} />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="DigiDMS - Dokumentenmanagement für den Mittelstand" />
-  
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={title} />
-  <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={`${siteConfig.url}${ogImage}`} />
-  
-  <!-- Schema.org JSON-LD -->
-  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
-  
+
+  <SEO
+    title={title}
+    description={description}
+    canonical={canonical}
+    image={ogImage}
+    noindex={noindex}
+    schema={schema}
+  />
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/images/logo-icon.svg" />
   <link rel="apple-touch-icon" href="/images/DD_Logo_Icon-single1.png" />
-  
+
   <!-- Lokale Inter Font -->
   <link rel="preload" href="/fonts/Inter-VariableFont_opsz,wght.woff2" as="font" type="font/woff2" crossorigin />
 
@@ -115,17 +60,36 @@ const websiteSchema = {
       g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
     })();
   </script>
-
-  <title>{title}</title>
 </head>
 <body class="min-h-screen flex flex-col bg-white text-gray-900 antialiased">
+  <a href="#main-content" class="skip-link">Zum Inhalt springen</a>
+
   <Header />
-  
-  <main class="flex-grow">
+
+  <main id="main-content" class="flex-grow">
     <slot />
   </main>
-  
+
   <Footer />
+  <ScrollToTop />
+
+  <script is:inline>
+    (function() {
+      var els = document.querySelectorAll('.animate-on-scroll');
+      if (els.length === 0 || !('IntersectionObserver' in window)) return;
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      els.forEach(function(el) { observer.observe(el); });
+    })();
+  </script>
 </body>
 </html>
 
@@ -140,39 +104,73 @@ const websiteSchema = {
     font-weight: 100 900;
     font-style: normal;
     font-display: swap;
+    font-optical-sizing: auto;
   }
 
   @layer base {
     html {
       font-family: 'Inter', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-    
+
     body {
-      @apply text-gray-900 bg-white;
+      @apply text-gray-900 bg-white text-base leading-relaxed;
+    }
+
+    :focus-visible {
+      @apply outline-2 outline-offset-2 outline-primary-500;
+    }
+
+    ::selection {
+      @apply bg-primary-100 text-primary-900;
     }
   }
 
   @layer components {
+    /* Skip-to-Content */
+    .skip-link {
+      @apply absolute -top-full left-4 z-[100] px-4 py-2 bg-primary-600 text-white rounded-b-lg transition-all;
+    }
+    .skip-link:focus {
+      @apply top-0;
+    }
+
+    /* Buttons */
     .btn {
       @apply inline-flex items-center justify-center px-6 py-3 font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
     }
-    
+
     .btn-primary {
       @apply btn bg-gradient-to-r from-secondary-600 to-primary-500 text-white hover:from-secondary-700 hover:to-primary-600 focus:ring-primary-500 shadow-lg hover:shadow-xl;
     }
-    
+
     .btn-secondary {
       @apply btn bg-white text-navy border-2 border-gray-200 hover:border-primary-300 hover:bg-gray-50 focus:ring-primary-500;
     }
-    
+
     .btn-outline {
       @apply btn border-2 border-white text-white hover:bg-white hover:text-navy focus:ring-white;
     }
 
+    .btn-ghost {
+      @apply btn text-primary-700 bg-transparent hover:bg-primary-50 focus:ring-primary-500;
+    }
+
+    /* Sections */
     .section {
       @apply py-16 md:py-24;
     }
 
+    .section-sm {
+      @apply py-12 md:py-16;
+    }
+
+    .section-lg {
+      @apply py-20 md:py-32;
+    }
+
+    /* Container */
     .container-narrow {
       @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
     }
@@ -181,12 +179,100 @@ const websiteSchema = {
       @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
     }
 
+    /* Text */
     .gradient-text {
       @apply bg-clip-text text-transparent bg-gradient-to-r from-secondary-600 to-primary-500;
     }
 
+    .lead {
+      @apply text-lg md:text-xl text-gray-600 leading-relaxed;
+    }
+
+    /* Cards */
     .card {
-      @apply bg-white rounded-2xl shadow-lg border border-gray-100 p-6 transition-all duration-200 hover:shadow-xl hover:border-primary-200;
+      @apply bg-white rounded-2xl shadow-lg border border-gray-100 p-6 transition-all duration-300 ease-out hover:shadow-xl hover:border-primary-200 hover:-translate-y-1;
+    }
+
+    /* Badges */
+    .badge {
+      @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+    }
+
+    .badge-primary {
+      @apply badge bg-primary-100 text-primary-700;
+    }
+
+    .badge-accent {
+      @apply badge bg-green-100 text-green-700;
+    }
+
+    /* Icon Container */
+    .icon-container {
+      @apply flex items-center justify-center w-12 h-12 rounded-lg bg-primary-50 text-primary-600;
+    }
+
+    .icon-container-lg {
+      @apply w-16 h-16 rounded-xl;
+    }
+
+    /* Animations */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @layer utilities {
+    /* Gradient Backgrounds */
+    .bg-gradient-primary {
+      @apply bg-gradient-to-br from-primary-800 to-primary-900;
+    }
+
+    .bg-gradient-subtle {
+      @apply bg-gradient-to-b from-gray-50 to-white;
+    }
+
+    /* Overlay */
+    .overlay {
+      @apply absolute inset-0 bg-primary-900/60;
+    }
+
+    /* Grid */
+    .grid-auto-fit {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    /* No Scrollbar */
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  /* Print Styles */
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+
+    body {
+      color: black;
+      background: white;
+    }
+
+    a {
+      color: black;
+      text-decoration: underline;
     }
   }
 </style>

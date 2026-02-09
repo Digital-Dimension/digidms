@@ -1,0 +1,126 @@
+---
+import { siteConfig } from '../config/site';
+
+export interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  canonical?: string;
+  noindex?: boolean;
+  schema?: object;
+}
+
+const {
+  title,
+  description = siteConfig.description,
+  image = '/images/logo_full.png',
+  type = 'website',
+  canonical,
+  noindex = false,
+  schema,
+} = Astro.props;
+
+const siteUrl = siteConfig.url;
+const currentUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
+const ogImage = new URL(image, siteUrl).href;
+const fullTitle = title.includes('DigiDMS') ? title : `${title} | DigiDMS`;
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['LocalBusiness', 'Organization'],
+  name: siteConfig.company.name,
+  alternateName: 'DigiDMS',
+  url: siteUrl,
+  logo: `${siteUrl}/images/logo_full.png`,
+  description: siteConfig.description,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: siteConfig.company.street,
+    addressLocality: 'Wuppertal',
+    postalCode: '42117',
+    addressRegion: 'Nordrhein-Westfalen',
+    addressCountry: 'DE',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 51.2469,
+    longitude: 7.1508,
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: siteConfig.company.phone,
+    email: siteConfig.company.email,
+    contactType: 'customer service',
+    availableLanguage: 'German',
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '09:00',
+    closes: '17:00',
+  },
+  areaServed: {
+    '@type': 'GeoCircle',
+    geoMidpoint: { '@type': 'GeoCoordinates', latitude: 51.2469, longitude: 7.1508 },
+    geoRadius: '100000',
+  },
+  priceRange: '€€',
+};
+
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description: description,
+  url: currentUrl,
+  isPartOf: {
+    '@type': 'WebSite',
+    name: 'DigiDMS',
+    url: siteUrl,
+  },
+};
+---
+
+<title>{fullTitle}</title>
+<meta name="title" content={fullTitle} />
+<meta name="description" content={description} />
+
+<link rel="canonical" href={currentUrl} />
+
+{noindex ? (
+  <meta name="robots" content="noindex, nofollow" />
+) : (
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+)}
+
+<!-- Open Graph -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={currentUrl} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="de_DE" />
+<meta property="og:site_name" content="DigiDMS" />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={currentUrl} />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<!-- Zusätzliche SEO Meta-Tags -->
+<meta name="author" content={siteConfig.company.name} />
+<meta name="publisher" content="DigiDMS" />
+<meta name="copyright" content={siteConfig.company.name} />
+<meta name="language" content="de" />
+<meta name="geo.region" content="DE-NW" />
+<meta name="geo.placename" content="Wuppertal" />
+
+<!-- Schema.org -->
+<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+{schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}

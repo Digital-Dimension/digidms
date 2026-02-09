@@ -5,6 +5,7 @@ import FAQAccordion from '../components/FAQAccordion.astro';
 import CTASection from '../components/CTASection.astro';
 import { Image } from 'astro:assets';
 import illustrationImg from '../assets/images/illustration-documents.png';
+import { generateFAQSchema } from '../utils/faq-schema';
 
 const faqSections = [
   {
@@ -113,9 +114,12 @@ const faqSections = [
     ]
   },
 ];
+
+const allFaqs = faqSections.flatMap(s => s.items);
+const faqSchema = generateFAQSchema(allFaqs);
 ---
 
-<Layout title="DMS FAQ: Häufige Fragen zu Dokumentenmanagement | DigiDMS" description="Antworten auf die wichtigsten Fragen zu DigiDMS: Funktionen, Sicherheit, GoBD-Konformität, Preise und mehr.">
+<Layout title="DMS FAQ: Häufige Fragen zu Dokumentenmanagement | DigiDMS" description="Antworten auf die wichtigsten Fragen zu DigiDMS: Funktionen, Sicherheit, GoBD-Konformität, Preise und mehr." schema={faqSchema}>
   
   <PageHeader
     title="Häufig gestellte Fragen"
