@@ -115,7 +115,7 @@ import heroImg from '../assets/images/hero-banner.png';
 
 **Terminbuchung:**
 ```
-https://outlook.office365.com/book/DigiDMSBeratung@intragen.de/
+https://outlook.office.com/bookwithme/user/6e3efffc591345bc97f2c607e19622c0@digidim.de/meetingtype/SVRwCe7HMUGxuT6WGxi68g2?anonymous&ismsaljsauthenabled&ep=mlink
 ```
 
 **Demo-Instanz:**
