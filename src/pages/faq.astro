@@ -1,0 +1,183 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import CTASection from '../components/CTASection.astro';
+
+const faqSections = [
+  {
+    title: 'Allgemeines',
+    items: [
+      {
+        question: 'Was ist DigiDMS?',
+        answer: 'DigiDMS ist eine professionelle Managed-Hosting-Lösung für digitale Dokumentenarchivierung, speziell für kleine und mittelständische Unternehmen in Deutschland. Basierend auf der bewährten Open-Source-Software Paperless-NGX, bietet DigiDMS automatisierte Dokumentenverarbeitung mit OCR-Texterkennung, intelligente Suche über alle Inhalte und flexible Klassifizierung mit Tags und Metadaten – komplett gehostet in deutschen Rechenzentren mit professionellem Support.'
+      },
+      {
+        question: 'Für welche Unternehmen ist DigiDMS geeignet?',
+        answer: 'DigiDMS eignet sich für Unternehmen jeder Größe – vom Einzelunternehmer bis zum mittelständischen Betrieb. Besonders profitieren Steuerberater, Rechtsanwälte, Kanzleien, Handwerksbetriebe und Organisationen, die große Mengen an Dokumenten strukturiert, sicher und effizient archivieren möchten. Durch die flexible Skalierung passt sich das System Ihrem Wachstum an.'
+      },
+      {
+        question: 'Was unterscheidet DigiDMS von anderen DMS-Lösungen?',
+        answer: 'Im Gegensatz zu proprietären Lösungen wie DocuWare oder M-Files basiert DigiDMS auf Open-Source-Technologie ohne versteckte Lizenzkosten oder Vendor Lock-in. Sie profitieren von vollständiger Datenhoheit, transparenter Preisgestaltung und der Flexibilität, jederzeit zu einem anderen Anbieter zu wechseln oder selbst zu hosten. Gleichzeitig erhalten Sie professionelles Managed Hosting mit deutschem Support.'
+      },
+      {
+        question: 'Ist DigiDMS GoBD-fähig?',
+        answer: 'DigiDMS kann GoBD-konform betrieben werden durch vollständiges Audit-Logging, rollenbasiertes Berechtigungsmanagement, PDF/A-Archivierung und ein 4-Augen-Prinzip beim Löschen von Dokumenten. Die endgültige GoBD-Konformität hängt von der korrekten Implementierung und Nutzung ab – wir empfehlen, dies mit Ihrem Steuerberater zu validieren. Detaillierte Informationen finden Sie auf unserer <a href="/gobd" class="text-primary-600 hover:underline">GoBD-Seite</a>.'
+      },
+      {
+        question: 'Was versteht man unter "Managed Hosting"?',
+        answer: 'Wir übernehmen den vollständigen technischen Betrieb für Sie: Infrastruktur-Management, regelmäßige Updates, Sicherheits-Patches, Backups und kontinuierliches Monitoring. Sie konzentrieren sich auf Ihre Geschäftsprozesse und müssen sich nicht um IT-Administration kümmern. Wir garantieren Verfügbarkeit, Sicherheit und Performance.'
+      },
+    ]
+  },
+  {
+    title: 'Einstieg & Betrieb',
+    items: [
+      {
+        question: 'Kann ich DigiDMS vor der Entscheidung testen?',
+        answer: 'Ja, wir bieten einen unverbindlichen <a href="/demo" class="text-primary-600 hover:underline">Demo-Zugang</a> an. Sie können das System in Ruhe ausprobieren und eigene Testdokumente hochladen. Alternativ vereinbaren wir gerne einen persönlichen Demo-Termin, bei dem wir Ihnen alle Funktionen zeigen und auf Ihre spezifischen Anforderungen eingehen.'
+      },
+      {
+        question: 'Wie lange dauert der Einstieg?',
+        answer: 'Nach Beauftragung ist Ihre Instanz innerhalb eines Arbeitstages vollständig eingerichtet und produktiv einsatzbereit. Wir konfigurieren dabei alle wichtigen Funktionen nach Ihren Wünschen: Scanner-Anbindung, E-Mail-Import, Benutzer-Accounts und erste Workflows. Bei komplexeren Anforderungen wie ERP-Integration oder großen Datenmigrationen planen wir entsprechend mehr Zeit ein (typischerweise 6-16 Wochen).'
+      },
+      {
+        question: 'Benötige ich spezielle Software oder Hardware?',
+        answer: 'Nein. DigiDMS läuft vollständig im Browser und benötigt keine lokale Installation. Sie benötigen nur einen Standard-Webbrowser (Chrome, Firefox, Safari, Edge) und eine Internet-Verbindung. Auch mobile Apps für iOS und Android sind verfügbar. Ihre bestehenden Scanner können in der Regel direkt angebunden werden.'
+      },
+      {
+        question: 'Können Scanner direkt angebunden werden?',
+        answer: 'Ja, die meisten modernen Scanner können direkt angebunden werden. Wir stellen Ihnen Zugriffspunkte bereit (WebDAV, SFTP oder SMB-Shares), die Sie in Ihrem Scanner konfigurieren. Gescannte Dokumente landen dann automatisch in DigiDMS und werden sofort verarbeitet. Wir unterstützen Sie gerne bei der Einrichtung und empfehlen passende Scanner-Modelle.'
+      },
+      {
+        question: 'Welche Dokumentenformate werden unterstützt?',
+        answer: 'DigiDMS verarbeitet alle gängigen Formate: PDF, Microsoft Office-Dokumente (Word, Excel, PowerPoint), Bilder (JPG, PNG, TIFF), E-Mails (EML, MSG) und viele weitere. Alle Dokumente werden automatisch mit OCR-Texterkennung durchsucht und im langzeitarchivierungsfähigen PDF/A-Format gespeichert. Auch handschriftliche Notizen auf gescannten Dokumenten werden erkannt.'
+      },
+      {
+        question: 'Wie funktioniert die automatische Dokumentenerkennung?',
+        answer: 'DigiDMS nutzt moderne OCR-Technologie (Optical Character Recognition) zur Texterkennung in gescannten Dokumenten. Das System kann anhand von Schlüsselwörtern und Mustern automatisch Tags, Kategorien und Metadaten zuweisen. Mit der Zeit lernt das System durch Ihre Korrekturen dazu und wird immer präziser bei der automatischen Klassifizierung.'
+      },
+    ]
+  },
+  {
+    title: 'Sicherheit & Compliance',
+    items: [
+      {
+        question: 'Wo befinden sich die Server?',
+        answer: 'Alle Server befinden sich ausschließlich in zertifizierten deutschen Rechenzentren (ISO 27001, PCI DSS). Es findet keine Weitergabe von Daten ins Ausland statt. Die physische Sicherheit der Rechenzentren umfasst Zugangskontrollen, Videoüberwachung, Brandschutz und redundante Stromversorgung. Ihre Daten unterliegen deutschem Datenschutzrecht.'
+      },
+      {
+        question: 'Ist die Archivierung revisionssicher?',
+        answer: 'Ja. Dokumente werden im PDF/A-Format gespeichert, welches für die langfristige Archivierung standardisiert ist. Ein vollständiges Audit-Log protokolliert alle Zugriffe und Änderungen mit Zeitstempel und Benutzerkennung. Die Archivierung kann die Anforderungen der GoBD (Grundsätze zur ordnungsmäßigen Führung und Aufbewahrung von Büchern) erfüllen. Auf Wunsch erstellen wir Ihnen eine Verfahrensdokumentation.'
+      },
+      {
+        question: 'Können Mitarbeiter Dokumente löschen?',
+        answer: 'Aus Compliance-Gründen können Standard-Nutzer keine Dokumente direkt löschen. Sie können Dokumente nur zur Löschung markieren (z.B. mit dem Tag "LÖSCHEN!" oder "PRÜFUNG"). Ein Administrator überprüft diese Markierungen regelmäßig und gibt sie nach Prüfung frei – das schützt vor versehentlichen Löschungen und erfüllt die GoBD-Anforderungen. Gelöschte Dokumente landen zunächst für 30 Tage im Papierkorb.'
+      },
+      {
+        question: 'Ist ein Auftragsverarbeitungsvertrag enthalten?',
+        answer: 'Ja, ein formal korrekter Auftragsverarbeitungsvertrag (AVV) gemäß Art. 28 DSGVO ist in allen Paketen enthalten und wird bei Vertragsabschluss automatisch mit unterzeichnet. Der AVV regelt alle datenschutzrechtlichen Aspekte der Zusammenarbeit und erfüllt die Anforderungen der Datenschutzaufsichtsbehörden.'
+      },
+    ]
+  },
+  {
+    title: 'Migration & Datenübernahme',
+    items: [
+      {
+        question: 'Können bestehende Archive übernommen werden?',
+        answer: 'Ja. Wir unterstützen die Migration von Papier-Archiven, bestehenden DMS-Systemen, Netzwerk-Shares und anderen Datenquellen. Alle Dokumente werden mit OCR-Texterkennung durchsucht und können automatisch mit Tags versehen werden. Die Migration erfolgt strukturiert und nachvollziehbar – Sie behalten jederzeit die Kontrolle über den Prozess.'
+      },
+      {
+        question: 'Können Daten exportiert werden?',
+        answer: 'Ja, alle Daten können jederzeit vollständig in standardisierten Formaten exportiert werden: Dokumente als PDF, Metadaten als JSON oder CSV, und die komplette Datenbank-Struktur. Wir unterstützen Sie auch bei einer Migration zu anderen Systemen oder bei der Übernahme des Hostings in Eigenregie. Ihre Daten gehören Ihnen – kein Vendor Lock-in.'
+      },
+    ]
+  },
+  {
+    title: 'Support & Vertrag',
+    items: [
+      {
+        question: 'Welcher Support wird geboten?',
+        answer: 'Wir bieten persönlichen Support per E-Mail mit Reaktionszeiten von 4 Stunden während der Geschäftszeiten (Mo-Fr 9-17 Uhr). Zusätzlich steht Ihnen ein direkter Telefon-Kontakt zu festen Ansprechpartnern zur Verfügung, die Ihr System und Ihre Anforderungen kennen. Typische Support-Anfragen umfassen Scanner-Konfiguration, Workflow-Optimierung und Mitarbeiter-Schulungen. Für Enterprise-Kunden bieten wir auch 24/7-Support mit priorisierten Reaktionszeiten an.'
+      },
+      {
+        question: 'Was kostet DigiDMS?',
+        answer: 'Die Kosten hängen von Ihrem spezifischen Dokumentenvolumen, Anzahl der Benutzer und Support-Level ab. Für mittelständische Unternehmen (50-250 Mitarbeiter) liegen die Kosten typischerweise zwischen 500-2000€ pro Monat. Kleinere Unternehmen starten bereits ab 150€/Monat. Wir erstellen Ihnen gerne ein individuelles Angebot nach einer unverbindlichen Bedarfsanalyse.'
+      },
+      {
+        question: 'Bin ich langfristig gebunden?',
+        answer: 'Nein, Sie haben keine langfristige Bindung. Die Mindestvertragslaufzeit beträgt 12 Monate, danach können Sie monatlich kündigen. Es gibt keine versteckten Kosten oder Ausstiegsgebühren. Wir sind überzeugt, dass Sie bei uns bleiben, weil Sie mit unserem Service zufrieden sind – nicht weil Sie müssen.'
+      },
+    ]
+  },
+];
+---
+
+<Layout title="Häufig gestellte Fragen - DigiDMS" description="Antworten auf die wichtigsten Fragen zu DigiDMS: Funktionen, Sicherheit, GoBD-Konformität, Preise und mehr.">
+  
+  <PageHeader
+    title="Häufig gestellte Fragen"
+    description="Hier finden Sie Antworten auf die wichtigsten Fragen rund um DigiDMS, Dokumentenmanagement und unseren Service."
+    breadcrumb={{ label: "FAQ", href: "/faq" }}
+  />
+
+  <!-- Illustration Banner -->
+  <section class="bg-white pt-8 pb-4">
+    <div class="container-narrow">
+      <div class="max-w-md mx-auto">
+        <img 
+          src="/images/illustration-documents.png" 
+          alt="Dokumentenmanagement leicht gemacht"
+          class="w-full h-auto"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white pt-8">
+    <div class="container-narrow">
+      
+      {faqSections.map((section, sectionIndex) => (
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold text-navy mb-6">{section.title}</h2>
+          <FAQAccordion items={section.items} id={`faq-section-${sectionIndex}`} />
+        </div>
+      ))}
+
+      <!-- Weitere Fragen CTA -->
+      <div class="mt-16 bg-gradient-to-br from-primary-50 to-secondary-50 rounded-3xl p-8 md:p-10 text-center">
+        <h3 class="text-2xl font-bold text-navy mb-3">Ihre Frage ist nicht dabei?</h3>
+        <p class="text-gray-600 mb-6">
+          Wir beantworten gerne alle Ihre Fragen – ganz unverbindlich und ohne Verpflichtung. 
+          Rufen Sie uns einfach an oder schreiben Sie uns eine E-Mail.
+        </p>
+        <a href="/contact" class="btn-primary">
+          Jetzt Kontakt aufnehmen
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- GoBD-Hinweis -->
+      <div class="mt-8 p-6 bg-blue-50 border border-blue-100 rounded-2xl">
+        <div class="flex gap-4">
+          <div class="flex-shrink-0">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div>
+            <h4 class="font-semibold text-blue-800 mb-1">Vertiefende Information zur GoBD-Konformität</h4>
+            <p class="text-blue-700 text-sm">
+              Detaillierte Informationen zu rechtssicherer Archivierung, Aufbewahrungsfristen und unserem Sicherheitskonzept finden Sie auf unserer speziellen 
+              <a href="/gobd" class="font-semibold hover:underline">GoBD-Seite</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</Layout>

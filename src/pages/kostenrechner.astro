@@ -1,0 +1,352 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../config/site';
+---
+
+<Layout 
+  title="Kostenrechner: Was kostet chaotische Dokumentenablage? | DigiDMS" 
+  description="Berechnen Sie, wie viel Zeit und Geld Ihr Unternehmen durch ineffiziente Dokumentenablage verliert. Interaktiver Kostenrechner für Handwerk, Kanzleien und KMU."
+>
+  
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-red-50 via-orange-50/50 to-amber-50/30 py-16">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-sm border border-red-200 mb-6">
+          <span class="text-2xl">🧮</span>
+          <span class="text-sm font-medium text-gray-700">Interaktiver Kostenrechner</span>
+        </span>
+        
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-navy leading-tight mb-6">
+          Was kostet <span class="text-red-600">chaotische Ablage</span><br class="hidden sm:block" />
+          Ihr Unternehmen wirklich?
+        </h1>
+        
+        <p class="text-lg text-gray-600 leading-relaxed">
+          Studien zeigen: Mitarbeiter verbringen durchschnittlich <strong>2,5 Stunden pro Woche</strong> 
+          mit der Suche nach Dokumenten. Berechnen Sie, was das für Ihr Unternehmen bedeutet.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <div class="max-w-4xl mx-auto">
+        
+        <div class="bg-gray-50 rounded-3xl p-8 md:p-12 shadow-lg border border-gray-200">
+          <h2 class="text-2xl font-bold text-navy mb-8 text-center">Ihr persönlicher Kostenrechner</h2>
+          
+          <div id="calculator" class="space-y-8">
+            
+            <!-- Input: Mitarbeiter -->
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <label class="block text-sm font-semibold text-navy mb-2">
+                Wie viele Mitarbeiter arbeiten mit Dokumenten?
+              </label>
+              <div class="flex items-center gap-4">
+                <input 
+                  type="range" 
+                  id="employees" 
+                  min="1" 
+                  max="50" 
+                  value="5"
+                  class="flex-grow h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary-500"
+                />
+                <span id="employees-value" class="text-2xl font-bold text-primary-600 w-16 text-right">5</span>
+              </div>
+            </div>
+
+            <!-- Input: Suchzeit pro Woche -->
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <label class="block text-sm font-semibold text-navy mb-2">
+                Geschätzte Suchzeit pro Mitarbeiter pro Woche (Stunden)
+              </label>
+              <div class="flex items-center gap-4">
+                <input 
+                  type="range" 
+                  id="searchtime" 
+                  min="0.5" 
+                  max="8" 
+                  step="0.5"
+                  value="2.5"
+                  class="flex-grow h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary-500"
+                />
+                <span id="searchtime-value" class="text-2xl font-bold text-primary-600 w-16 text-right">2,5h</span>
+              </div>
+              <p class="text-xs text-gray-500 mt-2">Durchschnitt laut IDC-Studie: 2,5 Stunden/Woche</p>
+            </div>
+
+            <!-- Input: Stundensatz -->
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <label class="block text-sm font-semibold text-navy mb-2">
+                Durchschnittlicher Stundensatz (inkl. Lohnnebenkosten)
+              </label>
+              <div class="flex items-center gap-4">
+                <input 
+                  type="range" 
+                  id="hourlyrate" 
+                  min="20" 
+                  max="100" 
+                  step="5"
+                  value="45"
+                  class="flex-grow h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary-500"
+                />
+                <span id="hourlyrate-value" class="text-2xl font-bold text-primary-600 w-20 text-right">45 €</span>
+              </div>
+              <p class="text-xs text-gray-500 mt-2">Tipp: Bruttogehalt × 1,3 ÷ 160 = ca. Stundensatz</p>
+            </div>
+
+            <!-- Ergebnis -->
+            <div class="bg-gradient-to-br from-red-500 to-orange-500 rounded-xl p-8 text-white">
+              <h3 class="text-lg font-semibold mb-6 text-center opacity-90">Ihre versteckten Kosten durch Dokumentensuche:</h3>
+              
+              <div class="grid md:grid-cols-3 gap-6 text-center">
+                <div>
+                  <p class="text-4xl md:text-5xl font-extrabold" id="cost-week">563 €</p>
+                  <p class="text-sm opacity-80 mt-1">pro Woche</p>
+                </div>
+                <div>
+                  <p class="text-4xl md:text-5xl font-extrabold" id="cost-month">2.250 €</p>
+                  <p class="text-sm opacity-80 mt-1">pro Monat</p>
+                </div>
+                <div>
+                  <p class="text-4xl md:text-5xl font-extrabold" id="cost-year">27.000 €</p>
+                  <p class="text-sm opacity-80 mt-1">pro Jahr</p>
+                </div>
+              </div>
+
+              <div class="mt-6 pt-6 border-t border-white/20 text-center">
+                <p class="text-sm opacity-90">
+                  Das entspricht <strong id="hours-year">600</strong> Arbeitsstunden pro Jahr – 
+                  oder <strong id="days-year">75</strong> volle Arbeitstage!
+                </p>
+              </div>
+            </div>
+
+            <!-- Einsparung mit DigiDMS -->
+            <div class="bg-green-50 border-2 border-green-200 rounded-xl p-8">
+              <h3 class="text-lg font-semibold text-green-800 mb-4 text-center">
+                ✅ Mit DigiDMS sparen Sie bis zu 80% dieser Zeit
+              </h3>
+              
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="text-center">
+                  <p class="text-3xl font-bold text-green-600" id="saving-year">21.600 €</p>
+                  <p class="text-sm text-green-700">jährliche Ersparnis</p>
+                </div>
+                <div class="text-center">
+                  <p class="text-3xl font-bold text-green-600" id="roi-months">1 Monat</p>
+                  <p class="text-sm text-green-700">bis zur Amortisation</p>
+                </div>
+              </div>
+
+              <p class="text-sm text-green-700 text-center mt-4">
+                DigiDMS ab 150 €/Monat – Ihre Investition zahlt sich in wenigen Wochen aus.
+              </p>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="mt-8 text-center">
+            <p class="text-gray-600 mb-4">
+              Möchten Sie wissen, wie DigiDMS konkret in Ihrem Unternehmen funktioniert?
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="https://outlook.office365.com/book/DigiDMSBeratung@intragen.de/" target="_blank" rel="noopener" class="btn-primary text-base px-8 py-4 inline-flex items-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                30-Min-Analyse buchen
+              </a>
+              <a href="/demo" class="btn-secondary text-base px-8 py-4">
+                Demo testen
+              </a>
+            </div>
+            <p class="text-sm text-gray-500 mt-3">
+              Persönliche Analyse mit Henning Scholand · Kostenlos · Unverbindlich
+            </p>
+          </div>
+        </div>
+
+        <!-- Methodik -->
+        <div class="mt-12 bg-gray-50 rounded-xl p-6">
+          <h3 class="font-semibold text-navy mb-3">📊 Zur Methodik</h3>
+          <p class="text-sm text-gray-600">
+            Die Berechnung basiert auf Erkenntnissen der IDC-Studie "The High Cost of Not Finding Information", 
+            die zeigt, dass Wissensarbeiter durchschnittlich 2,5 Stunden pro Woche mit der Suche nach 
+            Dokumenten verbringen. Die 80% Zeitersparnis durch ein DMS entspricht konservativen 
+            Erfahrungswerten unserer Kunden. Ihre tatsächliche Ersparnis kann höher oder niedriger ausfallen.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Typische Zeitfresser -->
+  <section class="section bg-gray-50">
+    <div class="container-wide">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-navy text-center mb-8">
+          Wo geht die Zeit verloren?
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-red-400">
+            <div class="flex items-start gap-4">
+              <span class="text-3xl">📁</span>
+              <div>
+                <h3 class="font-bold text-navy mb-2">Suche im Dateisystem</h3>
+                <p class="text-sm text-gray-600">
+                  "Wo war nochmal die Rechnung von Müller?" – Ordnerstrukturen, die niemand versteht. 
+                  Dateien mit kryptischen Namen. 5 Minuten pro Dokument.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-red-400">
+            <div class="flex items-start gap-4">
+              <span class="text-3xl">📧</span>
+              <div>
+                <h3 class="font-bold text-navy mb-2">E-Mail-Archäologie</h3>
+                <p class="text-sm text-gray-600">
+                  "Der Vertrag müsste im Anhang einer Mail von März sein..." – 
+                  Scrollen durch hunderte E-Mails. 10 Minuten pro Suche.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-red-400">
+            <div class="flex items-start gap-4">
+              <span class="text-3xl">🗄️</span>
+              <div>
+                <h3 class="font-bold text-navy mb-2">Papierordner durchblättern</h3>
+                <p class="text-sm text-gray-600">
+                  "Das Übergabeprotokoll von 2019? Muss im Keller sein..." – 
+                  Treppen steigen, Ordner wälzen. 15 Minuten minimum.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-red-400">
+            <div class="flex items-start gap-4">
+              <span class="text-3xl">👥</span>
+              <div>
+                <h3 class="font-bold text-navy mb-2">Kollegen fragen</h3>
+                <p class="text-sm text-gray-600">
+                  "Weißt du, wo die Garantieunterlagen sind?" – 
+                  Zwei Leute unterbrechen ihre Arbeit. 20 Minuten Produktivitätsverlust.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Final -->
+  <section class="py-16 bg-navy text-white">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">
+          Stoppen Sie den Zeitverlust – ab heute
+        </h2>
+        <p class="text-gray-300 mb-8">
+          In einem 30-minütigen Gespräch analysieren wir Ihre Dokumentenprozesse 
+          und zeigen Ihnen, wo Sie konkret Zeit und Geld sparen können.
+        </p>
+        <a 
+          href="https://outlook.office365.com/book/DigiDMSBeratung@intragen.de/" 
+          target="_blank"
+          rel="noopener"
+          class="btn-outline text-base px-8 py-4 inline-flex items-center gap-2"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          Termin mit Henning Scholand buchen
+        </a>
+        <p class="text-sm text-gray-400 mt-4">
+          30 Minuten · Kostenlos · Unverbindlich
+        </p>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  const employeesInput = document.getElementById('employees') as HTMLInputElement;
+  const searchtimeInput = document.getElementById('searchtime') as HTMLInputElement;
+  const hourlyrateInput = document.getElementById('hourlyrate') as HTMLInputElement;
+
+  const employeesValue = document.getElementById('employees-value');
+  const searchtimeValue = document.getElementById('searchtime-value');
+  const hourlyrateValue = document.getElementById('hourlyrate-value');
+
+  const costWeek = document.getElementById('cost-week');
+  const costMonth = document.getElementById('cost-month');
+  const costYear = document.getElementById('cost-year');
+  const hoursYear = document.getElementById('hours-year');
+  const daysYear = document.getElementById('days-year');
+  const savingYear = document.getElementById('saving-year');
+  const roiMonths = document.getElementById('roi-months');
+
+  function formatCurrency(value: number): string {
+    return new Intl.NumberFormat('de-DE', { 
+      style: 'currency', 
+      currency: 'EUR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(value);
+  }
+
+  function calculate() {
+    const employees = parseInt(employeesInput.value);
+    const searchtime = parseFloat(searchtimeInput.value);
+    const hourlyrate = parseInt(hourlyrateInput.value);
+
+    if (employeesValue) employeesValue.textContent = employees.toString();
+    if (searchtimeValue) searchtimeValue.textContent = searchtime.toString().replace('.', ',') + 'h';
+    if (hourlyrateValue) hourlyrateValue.textContent = hourlyrate + ' €';
+
+    const weeklyHours = employees * searchtime;
+    const weeklyCost = weeklyHours * hourlyrate;
+    const monthlyCost = weeklyCost * 4;
+    const yearlyCost = weeklyCost * 48;
+    const yearlyHours = weeklyHours * 48;
+    const yearlyDays = yearlyHours / 8;
+
+    const yearlySaving = yearlyCost * 0.8;
+    const digidmsCost = 150 * 12;
+    const netSaving = yearlySaving - digidmsCost;
+    const monthsToRoi = digidmsCost / (yearlySaving / 12);
+
+    if (costWeek) costWeek.textContent = formatCurrency(weeklyCost);
+    if (costMonth) costMonth.textContent = formatCurrency(monthlyCost);
+    if (costYear) costYear.textContent = formatCurrency(yearlyCost);
+    if (hoursYear) hoursYear.textContent = Math.round(yearlyHours).toString();
+    if (daysYear) daysYear.textContent = Math.round(yearlyDays).toString();
+    if (savingYear) savingYear.textContent = formatCurrency(netSaving > 0 ? netSaving : yearlySaving);
+    if (roiMonths) {
+      if (monthsToRoi < 1) {
+        roiMonths.textContent = '< 1 Monat';
+      } else if (monthsToRoi > 12) {
+        roiMonths.textContent = '> 12 Monate';
+      } else {
+        roiMonths.textContent = Math.round(monthsToRoi) + ' Monat' + (Math.round(monthsToRoi) > 1 ? 'e' : '');
+      }
+    }
+  }
+
+  employeesInput?.addEventListener('input', calculate);
+  searchtimeInput?.addEventListener('input', calculate);
+  hourlyrateInput?.addEventListener('input', calculate);
+
+  calculate();
+</script>

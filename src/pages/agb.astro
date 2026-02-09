@@ -1,0 +1,450 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CTASection from '../components/CTASection.astro';
+import { siteConfig } from '../config/site';
+---
+
+<Layout title="Vertragsbedingungen - DigiDMS" description="Faire und transparente Vertragsbedingungen für DigiDMS. Keine versteckten Kosten, flexible Laufzeiten, deutscher Support.">
+  
+  <PageHeader
+    title="Faire Vertragsbedingungen"
+    description="Transparenz und Vertrauen sind uns wichtig – hier finden Sie die wichtigsten Eckpunkte unserer Zusammenarbeit."
+    breadcrumb={{ label: "Vertragsbedingungen", href: "/agb" }}
+  />
+
+  <section class="section bg-white">
+    <div class="container-narrow">
+      
+      <!-- Einleitung -->
+      <div class="bg-gradient-to-br from-primary-50 to-secondary-50 rounded-2xl p-6 md:p-8 mb-12">
+        <div class="flex gap-4">
+          <div class="flex-shrink-0">
+            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <div>
+            <h2 class="text-xl font-bold text-navy mb-2">Unser Versprechen</h2>
+            <p class="text-gray-700 mb-0">
+              Wir setzen auf langfristige Partnerschaften statt kurzfristiger Geschäfte. Deshalb sind unsere 
+              Vertragsbedingungen fair, transparent und ohne versteckte Klauseln. Die vollständigen 
+              Vertragsunterlagen erhalten Sie selbstverständlich vor Vertragsabschluss.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Leistungsumfang -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-navy mb-6 flex items-center gap-3">
+          <span class="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center">
+            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+          </span>
+          Was Sie von uns erwarten können
+        </h2>
+        
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="bg-white border border-gray-200 rounded-xl p-5 hover:border-primary-200 hover:shadow-md transition-all">
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <div>
+                <h3 class="font-semibold text-navy">Vollständig verwaltetes Hosting</h3>
+                <p class="text-sm text-gray-600 mt-1">Wir kümmern uns um Server, Updates und Sicherheit – Sie konzentrieren sich auf Ihr Geschäft</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white border border-gray-200 rounded-xl p-5 hover:border-primary-200 hover:shadow-md transition-all">
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <div>
+                <h3 class="font-semibold text-navy">Tägliche Backups</h3>
+                <p class="text-sm text-gray-600 mt-1">Ihre Dokumente sind sicher – Wiederherstellung jederzeit möglich</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white border border-gray-200 rounded-xl p-5 hover:border-primary-200 hover:shadow-md transition-all">
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <div>
+                <h3 class="font-semibold text-navy">Automatische Updates</h3>
+                <p class="text-sm text-gray-600 mt-1">DigiDMS bleibt immer aktuell und sicher – ohne Ihr Zutun</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white border border-gray-200 rounded-xl p-5 hover:border-primary-200 hover:shadow-md transition-all">
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <div>
+                <h3 class="font-semibold text-navy">Deutsche Rechenzentren</h3>
+                <p class="text-sm text-gray-600 mt-1">DSGVO-konform, Server in Falkenstein & Nürnberg – Ihre Daten bleiben in Deutschland</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white border border-gray-200 rounded-xl p-5 hover:border-primary-200 hover:shadow-md transition-all">
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <div>
+                <h3 class="font-semibold text-navy">SSL-Verschlüsselung inklusive</h3>
+                <p class="text-sm text-gray-600 mt-1">Sichere, verschlüsselte Verbindung zu all Ihren Dokumenten</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white border border-gray-200 rounded-xl p-5 hover:border-primary-200 hover:shadow-md transition-all">
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <div>
+                <h3 class="font-semibold text-navy">Persönlicher Support</h3>
+                <p class="text-sm text-gray-600 mt-1">Schnelle Hilfe per E-Mail und Telefon – von Menschen, die Ihr System kennen</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white border border-gray-200 rounded-xl p-5 hover:border-primary-200 hover:shadow-md transition-all">
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <div>
+                <h3 class="font-semibold text-navy">Flexibel skalierbarer Speicher</h3>
+                <p class="text-sm text-gray-600 mt-1">Wächst mit Ihrem Dokumentenbestand – einfach erweiterbar</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white border border-gray-200 rounded-xl p-5 hover:border-primary-200 hover:shadow-md transition-all">
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <div>
+                <h3 class="font-semibold text-navy">Einrichtung & Onboarding</h3>
+                <p class="text-sm text-gray-600 mt-1">Wir richten alles für Sie ein und begleiten Sie beim Start</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Zusatzleistungen -->
+        <div class="mt-6 p-5 bg-gray-50 rounded-xl">
+          <p class="text-gray-600 text-sm mb-0">
+            <strong class="text-navy">Zusätzlich buchbar:</strong> Scanner-Anbindung, Dokumenten-Migration aus bestehenden Archiven, 
+            Schulungen und individuelle Workflow-Anpassungen – transparent nach Aufwand oder als Festpreis.
+          </p>
+        </div>
+      </div>
+
+      <!-- Vertragslaufzeit -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-navy mb-6 flex items-center gap-3">
+          <span class="w-10 h-10 rounded-xl bg-primary-100 flex items-center justify-center">
+            <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </span>
+          Faire Vertragslaufzeiten
+        </h2>
+
+        <div class="grid sm:grid-cols-3 gap-6">
+          <div class="text-center p-6 bg-gray-50 rounded-2xl">
+            <div class="text-3xl font-bold text-primary-600 mb-2">12</div>
+            <div class="text-sm text-gray-600">Monate Mindestlaufzeit</div>
+          </div>
+          <div class="text-center p-6 bg-gray-50 rounded-2xl">
+            <div class="text-3xl font-bold text-primary-600 mb-2">3</div>
+            <div class="text-sm text-gray-600">Monate Kündigungsfrist</div>
+          </div>
+          <div class="text-center p-6 bg-gray-50 rounded-2xl">
+            <div class="text-3xl font-bold text-primary-600 mb-2">0 €</div>
+            <div class="text-sm text-gray-600">Versteckte Ausstiegskosten</div>
+          </div>
+        </div>
+
+        <div class="mt-6 p-5 bg-green-50 border border-green-200 rounded-xl">
+          <div class="flex gap-3">
+            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <p class="text-green-800 text-sm mb-0">
+              <strong>Geordnete Übergabe garantiert:</strong> Bei Vertragsende unterstützen wir Sie aktiv bei der 
+              Übergabe an einen Nachfolger – inklusive Dokumentation und Zugangsdaten. Kein Vendor Lock-in.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service Level -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-navy mb-6 flex items-center gap-3">
+          <span class="w-10 h-10 rounded-xl bg-secondary-100 flex items-center justify-center">
+            <svg class="w-5 h-5 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </span>
+          Service Level Agreement (SLA)
+        </h2>
+
+        <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden">
+          <div class="p-6 border-b border-gray-100">
+            <h3 class="font-semibold text-navy mb-3">Servicezeiten</h3>
+            <div class="flex items-center gap-3">
+              <span class="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-medium">Mo – Fr</span>
+              <span class="text-gray-700">08:00 – 17:00 Uhr</span>
+              <span class="text-gray-400 text-sm">(außer Feiertage NRW)</span>
+            </div>
+          </div>
+          
+          <div class="p-6 border-b border-gray-100">
+            <h3 class="font-semibold text-navy mb-3">Reaktionszeiten</h3>
+            <p class="text-gray-600 text-sm mb-3">
+              Wir definieren die Reaktions- und Lösungszeiten individuell für Ihr Projekt – 
+              abgestimmt auf Ihre Anforderungen und Kritikalität der Systeme.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm">Kritisch: Priorisierte Bearbeitung</span>
+              <span class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm">Hoch: Zeitnahe Reaktion</span>
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Normal: Planmäßige Bearbeitung</span>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray-50">
+            <h3 class="font-semibold text-navy mb-3">Support-Kanäle</h3>
+            <div class="flex flex-wrap gap-4">
+              <div class="flex items-center gap-2 text-gray-700">
+                <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <span>E-Mail-Ticketsystem</span>
+              </div>
+              <div class="flex items-center gap-2 text-gray-700">
+                <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                <span>Telefon-Hotline</span>
+              </div>
+              <div class="flex items-center gap-2 text-gray-700">
+                <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <span>Remote-Support</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Preisgestaltung -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-navy mb-6 flex items-center gap-3">
+          <span class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center">
+            <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </span>
+          Transparente Preisgestaltung
+        </h2>
+
+        <div class="space-y-4">
+          <div class="p-5 bg-white border border-gray-200 rounded-xl">
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-navy">Monatliche Pauschale</h3>
+                <p class="text-gray-600 text-sm mt-1">
+                  Planbare Kosten durch transparente Monatspauschale – individuell nach Ihrem Bedarf kalkuliert.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-5 bg-white border border-gray-200 rounded-xl">
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-navy">12 Monate Preisgarantie</h3>
+                <p class="text-gray-600 text-sm mt-1">
+                  Der vereinbarte Preis ist für die ersten 12 Monate garantiert fest.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-5 bg-white border border-gray-200 rounded-xl">
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-navy">Faire Preisanpassung</h3>
+                <p class="text-gray-600 text-sm mt-1">
+                  Nach 12 Monaten: Anpassung nur entsprechend der allgemeinen Preisentwicklung (Verbraucherpreisindex), 
+                  maximal 15% pro Jahr. Bei Erhöhungen über 10% haben Sie ein Sonderkündigungsrecht.
+                </p>
+                <p class="text-primary-600 text-sm mt-2 font-medium flex items-center gap-2">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  Übrigens: Bisher haben wir bei keinem einzigen Kunden die Preise erhöht.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sicherheit & Datenschutz -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-navy mb-6 flex items-center gap-3">
+          <span class="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center">
+            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </span>
+          Sicherheit & Datenschutz
+        </h2>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="p-5 bg-blue-50 rounded-xl">
+            <div class="flex items-center gap-3 mb-2">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              <h3 class="font-semibold text-navy">AVV inklusive</h3>
+            </div>
+            <p class="text-sm text-gray-600">
+              Auftragsverarbeitungsvertrag gemäß Art. 28 DSGVO ist Bestandteil jedes Vertrags.
+            </p>
+          </div>
+
+          <div class="p-5 bg-blue-50 rounded-xl">
+            <div class="flex items-center gap-3 mb-2">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+              <h3 class="font-semibold text-navy">Geheimhaltung</h3>
+            </div>
+            <p class="text-sm text-gray-600">
+              Strikte Vertraulichkeit aller Unternehmensdaten – auch über das Vertragsende hinaus.
+            </p>
+          </div>
+
+          <div class="p-5 bg-blue-50 rounded-xl">
+            <div class="flex items-center gap-3 mb-2">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+              <h3 class="font-semibold text-navy">Versichert</h3>
+            </div>
+            <p class="text-sm text-gray-600">
+              Betriebshaftpflichtversicherung mit umfassenden Deckungssummen für Ihre Sicherheit.
+            </p>
+          </div>
+
+          <div class="p-5 bg-blue-50 rounded-xl">
+            <div class="flex items-center gap-3 mb-2">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <h3 class="font-semibold text-navy">Deutsches Recht</h3>
+            </div>
+            <p class="text-sm text-gray-600">
+              Alle Verträge unterliegen deutschem Recht. Gerichtsstand ist Wuppertal.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vertragsunterlagen -->
+      <div class="bg-gray-50 rounded-2xl p-6 md:p-8 mb-12">
+        <h2 class="text-xl font-bold text-navy mb-4">Vollständige Vertragsunterlagen</h2>
+        <p class="text-gray-600 mb-6">
+          Vor Vertragsabschluss erhalten Sie selbstverständlich alle Unterlagen zur Prüfung:
+        </p>
+        <ul class="space-y-3 text-gray-700">
+          <li class="flex items-center gap-3">
+            <svg class="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span>IT-Servicevertrag mit detaillierter Leistungsbeschreibung</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <svg class="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span>Service Level Agreement (SLA) – individuell auf Ihre Anforderungen zugeschnitten</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <svg class="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span>Auftragsverarbeitungsvertrag (AVV) gemäß DSGVO</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <svg class="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span>Liste der betreuten Systeme und Ansprechpartner</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Hinweis -->
+      <div class="bg-amber-50 border border-amber-200 rounded-xl p-5">
+        <div class="flex gap-3">
+          <svg class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <p class="text-amber-800 text-sm mb-0">
+            <strong>Hinweis:</strong> Diese Übersicht dient der Information und ersetzt nicht die vollständigen 
+            Vertragsunterlagen. Die verbindlichen Bedingungen ergeben sich aus dem jeweiligen Einzelvertrag.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <CTASection
+    title="Fragen zu unseren Vertragsbedingungen?"
+    description="Wir erläutern Ihnen gerne alle Details – unverbindlich und transparent."
+    primaryCta={{
+      text: "Gespräch vereinbaren",
+      href: "/kontakt"
+    }}
+    secondaryCta={{
+      text: "FAQ ansehen",
+      href: "/faq"
+    }}
+    variant="light"
+  />
+</Layout>

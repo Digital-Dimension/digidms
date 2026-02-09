@@ -1,0 +1,485 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTASection from '../../components/CTASection.astro';
+import { siteConfig } from '../../config/site';
+
+const painPoints = [
+  {
+    title: 'Der Rechnungsberg',
+    icon: '📄',
+    description: '„Die Rechnung von Lieferant Müller? Muss hier irgendwo sein..." – Jeden Monat stapeln sich Rechnungen, Lieferscheine und Auftragsbestätigungen. Am Jahresende wird es hektisch, wenn der Steuerberater alles braucht.',
+  },
+  {
+    title: 'Projektchaos',
+    icon: '📁',
+    description: 'Angebote, Aufmaße, Nachträge, Abnahmeprotokolle – für jedes Projekt ein anderer Ordner, ein anderer Ablageort. Wer hat nochmal das unterschriebene Aufmaß vom Kunden Schmidt?',
+  },
+  {
+    title: 'Prüfprotokolle verschollen',
+    icon: '📋',
+    description: 'E-Check, DGUV V3, Wartungsnachweise – alles irgendwo abgeheftet. Wenn der Kunde nach dem Prüfprotokoll von vor zwei Jahren fragt, beginnt das große Suchen.',
+  },
+  {
+    title: 'Unterwegs ohne Zugriff',
+    icon: '🚗',
+    description: 'Auf der Baustelle brauchen Sie den Schaltplan. Im Büro liegt er – irgendwo. Also fahren Sie zurück oder vertrösten den Kunden.',
+  },
+  {
+    title: 'Betriebsprüfung als Albtraum',
+    icon: '😰',
+    description: 'Wenn das Finanzamt Belege sehen will, beginnt die große Suche. Tage vor dem Termin herrscht Ausnahmezustand.',
+  },
+];
+
+const solutions = [
+  {
+    title: 'Automatischer Rechnungseingang',
+    icon: '🧾',
+    description: 'Rechnungen kommen per E-Mail? Werden automatisch erkannt, dem richtigen Lieferanten zugeordnet und abgelegt. Sie müssen nichts mehr einsortieren.',
+  },
+  {
+    title: 'Projektakten auf Knopfdruck',
+    icon: '📋',
+    description: 'Alle Dokumente zu einem Projekt – Angebot, Auftrag, Lieferscheine, Abnahme, Rechnung – an einem Ort. Ein Suchbegriff, alle Unterlagen.',
+  },
+  {
+    title: 'Prüfprotokolle griffbereit',
+    icon: '✅',
+    description: 'E-Check, DGUV V3, Wartungsnachweise – alles strukturiert nach Kunde und Gerät. Wenn jemand fragt, finden Sie das Protokoll in Sekunden.',
+  },
+  {
+    title: 'Baustellenfotos dokumentieren',
+    icon: '📸',
+    description: 'Vorher/Nachher-Fotos, Mängeldokumentation, Baufortschritt – direkt vom Handy ins System. Bei Reklamationen haben Sie den Beweis.',
+  },
+  {
+    title: 'Zugriff von überall',
+    icon: '📱',
+    description: 'Mit Tablet oder Smartphone greifen Sie von der Baustelle auf jedes Dokument zu. Kein Zurückfahren, kein Warten.',
+  },
+  {
+    title: 'Wir machen die IT',
+    icon: '🔧',
+    description: 'DigiDMS läuft komplett in der Cloud – auf deutschen Servern. Updates, Backups, Sicherheit: Darum kümmern wir uns. Sie konzentrieren sich auf Ihr Handwerk.',
+  },
+];
+
+const features = [
+  {
+    title: 'OCR-Texterkennung',
+    description: 'Auch eingescannte Rechnungen und Lieferscheine werden durchsuchbar – Sie finden jeden Betrag, jede Artikelnummer.',
+  },
+  {
+    title: 'Automatische Klassifizierung',
+    description: 'Das System erkennt, ob es eine Rechnung, ein Angebot oder ein Lieferschein ist – und sortiert automatisch ein.',
+  },
+  {
+    title: 'Projekt-Tags',
+    description: 'Ordnen Sie Dokumente Projekten, Kunden oder Baustellen zu. Ein Klick zeigt alle zugehörigen Unterlagen.',
+  },
+  {
+    title: 'Prüfprotokolle (E-Check, DGUV V3)',
+    description: 'Alle Prüfnachweise strukturiert nach Kunde und Gerät. Bei Rückfragen oder Gewährleistungsfällen sofort griffbereit.',
+  },
+  {
+    title: 'Baustellenfotos',
+    description: 'Fotos direkt vom Smartphone hochladen – Vorher/Nachher, Mängel, Baufortschritt. Bei Reklamationen der Beweis.',
+  },
+  {
+    title: 'Scanner & Mobile App',
+    description: 'Scanner im Büro, Smartphone auf der Baustelle – beides schickt Dokumente direkt ins System.',
+  },
+  {
+    title: 'Revisionssichere Archivierung',
+    description: 'Änderungen werden protokolliert, Originale bleiben erhalten. Ihre Archivierung erfüllt die GoBD-Anforderungen.',
+  },
+  {
+    title: 'Benutzerrechte',
+    description: 'Der Meister sieht alles, der Azubi nur seine Projekte. Sie bestimmen, wer was sehen darf.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'Kann ich meine alten Papierakten auch digitalisieren?',
+    answer: 'Ja. Sie können bestehende Ordner einscannen und in DigiDMS importieren. Wir unterstützen Sie bei der Migration und beraten zur sinnvollen Strukturierung.',
+  },
+  {
+    question: 'Funktioniert DigiDMS auch ohne Internet auf der Baustelle?',
+    answer: 'Die mobile App ermöglicht es, wichtige Dokumente vorab herunterzuladen. So haben Sie auch ohne Netzverbindung Zugriff auf Schaltpläne, Aufmaße oder Projektunterlagen.',
+  },
+  {
+    question: 'Wie hilft DigiDMS bei einer Betriebsprüfung?',
+    answer: 'Sie finden jeden Beleg in Sekunden über die Volltextsuche. Ein vollständiges Änderungsprotokoll dokumentiert, wann welches Dokument archiviert wurde. Die Archivierung ist revisionssicher und GoBD-orientiert.',
+  },
+  {
+    question: 'Kann ich Prüfprotokolle (E-Check, DGUV V3) verwalten?',
+    answer: 'Ja. Sie können Prüfprotokolle nach Kunde und Gerät strukturiert ablegen. Bei Gewährleistungsfällen oder Kundenanfragen finden Sie das Protokoll in Sekunden. Auch Wartungsnachweise und Garantiescheine lassen sich so organisieren.',
+  },
+  {
+    question: 'Wie funktioniert das mit Baustellenfotos?',
+    answer: 'Fotos können Sie direkt vom Smartphone hochladen und dem Projekt zuordnen. Vorher/Nachher-Dokumentation, Mängel, Baufortschritt – alles an einem Ort. Bei Reklamationen haben Sie den Beweis griffbereit.',
+  },
+  {
+    question: 'Wie läuft die Einführung im laufenden Betrieb ab?',
+    answer: 'Wir richten Ihre Instanz innerhalb eines Tages ein. Eine kurze Schulung (ca. 1–2 Stunden) macht Ihr Team fit. Sie können sofort starten und alte Dokumente nach und nach nachziehen.',
+  },
+  {
+    question: 'Was passiert mit meinen Daten, wenn ich kündige?',
+    answer: 'Ihre Daten gehören Ihnen. Sie können jederzeit einen vollständigen Export erhalten – alle Dokumente und Metadaten in Standardformaten. Kein Vendor Lock-in.',
+  },
+  {
+    question: 'Kann ich DigiDMS mit meiner Handwerkersoftware verbinden?',
+    answer: 'DigiDMS bietet eine offene REST-API. Damit lassen sich Anbindungen an viele Branchenlösungen realisieren. Sprechen Sie uns an – wir prüfen, was für Ihren Workflow sinnvoll ist.',
+  },
+  {
+    question: 'Was kostet DigiDMS für einen Handwerksbetrieb?',
+    answer: 'Die Kosten hängen von der Anzahl der Nutzer und dem Speicherbedarf ab. Kleine Betriebe starten ab 150 €/Monat – inklusive Hosting, Backups, Updates und Support. Wir erstellen Ihnen gerne ein individuelles Angebot.',
+  },
+];
+---
+
+<Layout 
+  title="DMS für Handwerk & Bau – Dokumente digital verwalten statt suchen" 
+  description="Rechnungen, Aufträge, Bauakten digital archivieren. DigiDMS: Managed DMS aus Deutschland für Handwerksbetriebe. DSGVO-konform, ohne IT-Aufwand."
+>
+  
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-amber-50 via-orange-50/50 to-yellow-50/30">
+    <div class="absolute inset-0 opacity-40">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-amber-200/40 to-transparent rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+      <div class="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-orange-200/40 to-transparent rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+    </div>
+
+    <div class="container-wide relative py-16 md:py-24">
+      <div class="max-w-4xl">
+        
+        <!-- Breadcrumb -->
+        <nav class="flex items-center gap-2 text-sm text-gray-500 mb-6">
+          <a href="/" class="hover:text-primary-600">Start</a>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+          <a href="/loesungen" class="hover:text-primary-600">Lösungen</a>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+          <span class="text-gray-700">Handwerk & Bau</span>
+        </nav>
+
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-sm border border-amber-200 mb-6">
+          <span class="text-2xl">🔧</span>
+          <span class="text-sm font-medium text-gray-700">Für Handwerksbetriebe</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-navy leading-tight mb-6">
+          Schluss mit Papierchaos<br class="hidden sm:block" />
+          <span class="text-amber-600">auf der Baustelle</span>
+        </h1>
+
+        <p class="text-lg md:text-xl text-gray-600 leading-relaxed mb-8 max-w-3xl">
+          DigiDMS ist Ihr digitales Dokumentenarchiv – speziell für Handwerksbetriebe. 
+          Rechnungen, Aufträge und Bauakten landen automatisch am richtigen Ort. 
+          Sie finden alles in Sekunden, von überall. Wir kümmern uns um die Technik.
+        </p>
+
+        <!-- Bullets -->
+        <div class="flex flex-wrap gap-3 mb-10">
+          <div class="inline-flex items-center gap-2 text-sm text-gray-700 bg-white px-4 py-2 rounded-full shadow-sm">
+            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Rechnungen automatisch erkennen & ablegen
+          </div>
+          <div class="inline-flex items-center gap-2 text-sm text-gray-700 bg-white px-4 py-2 rounded-full shadow-sm">
+            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Projektakten digital führen
+          </div>
+          <div class="inline-flex items-center gap-2 text-sm text-gray-700 bg-white px-4 py-2 rounded-full shadow-sm">
+            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Zugriff von Büro, Baustelle & unterwegs
+          </div>
+          <div class="inline-flex items-center gap-2 text-sm text-gray-700 bg-white px-4 py-2 rounded-full shadow-sm">
+            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Server in Deutschland, ohne eigene IT
+          </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/contact?branche=handwerk" class="btn-primary text-base px-8 py-4">
+            Beratungsgespräch vereinbaren
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href="/demo" class="btn-secondary text-base px-8 py-4">
+            Demo ansehen
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <section class="py-6 bg-white border-b border-gray-100">
+    <div class="container-wide">
+      <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10 text-sm">
+        <div class="flex items-center gap-2 text-gray-600">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          Server in Deutschland
+        </div>
+        <div class="flex items-center gap-2 text-gray-600">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          DSGVO-konform
+        </div>
+        <div class="flex items-center gap-2 text-gray-600">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          Revisionssichere Archivierung
+        </div>
+        <div class="flex items-center gap-2 text-gray-600">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          Basiert auf Open Source
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pain Points -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <span class="text-red-500 font-semibold text-sm uppercase tracking-wider">Das kennen Sie</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">Kommt Ihnen das bekannt vor?</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {painPoints.map((point) => (
+          <div class="flex items-start gap-4 p-6 bg-red-50 rounded-2xl border border-red-100">
+            <span class="text-3xl">{point.icon}</span>
+            <div>
+              <h3 class="font-bold text-navy mb-2">{point.title}</h3>
+              <p class="text-gray-600 text-sm">{point.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-8">
+        <p class="text-gray-500 italic">Kein IT-Team? Kein Problem. Sie sind Handwerker, kein Administrator.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solutions -->
+  <section class="section bg-gray-50">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <span class="text-green-600 font-semibold text-sm uppercase tracking-wider">Die Lösung</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">Digitale Ordnung ohne IT-Aufwand</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {solutions.map((solution) => (
+          <div class="flex items-start gap-4 p-6 bg-white rounded-2xl shadow-sm border border-green-100">
+            <span class="text-3xl">{solution.icon}</span>
+            <div>
+              <h3 class="font-bold text-navy mb-2">{solution.title}</h3>
+              <p class="text-gray-600 text-sm">{solution.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <span class="text-primary-600 font-semibold text-sm uppercase tracking-wider">Funktionen</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">Was DigiDMS für Sie leistet</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {features.map((feature) => (
+          <div class="p-5 bg-gray-50 rounded-xl">
+            <h3 class="font-bold text-navy mb-2">{feature.title}</h3>
+            <p class="text-gray-600 text-sm">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Study -->
+  <section class="py-16 bg-navy text-white">
+    <div class="container-wide">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-10">
+          <span class="text-amber-300 font-semibold text-sm uppercase tracking-wider">Praxisbeispiel</span>
+          <h2 class="text-3xl md:text-4xl font-bold mt-2">Elektro Schäfer GmbH</h2>
+          <p class="text-gray-300 mt-2">12 Mitarbeiter · Elektroinstallation · Wuppertal</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Vorher -->
+          <div class="bg-red-900/30 border border-red-500/30 rounded-2xl p-6">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-2xl">😩</span>
+              <h3 class="text-xl font-bold text-red-300">Vorher</h3>
+            </div>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              „Unsere Ablage war ein Albtraum. Rechnungen lagen im Eingangskorb, Projektordner quollen über. 
+              Wenn ein Kunde nach einem alten Schaltplan fragte, dauerte die Suche manchmal Stunden. 
+              Bei der letzten Betriebsprüfung haben wir drei Tage nur Belege gesucht."
+            </p>
+          </div>
+
+          <!-- Nachher -->
+          <div class="bg-green-900/30 border border-green-500/30 rounded-2xl p-6">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-2xl">😊</span>
+              <h3 class="text-xl font-bold text-green-300">Nachher</h3>
+            </div>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              „Heute finde ich jede Rechnung in Sekunden. Auf der Baustelle hole ich mir den Schaltplan 
+              aufs Tablet. Und beim letzten Besuch vom Finanzamt haben wir jeden Beleg sofort gefunden – 
+              das war fast schon entspannt."
+            </p>
+          </div>
+        </div>
+
+        <!-- Quote -->
+        <div class="mt-8 text-center">
+          <div class="inline-block bg-white/10 rounded-2xl p-6 border border-white/20">
+            <p class="text-lg italic text-gray-200">
+              „Früher haben wir locker 5 Stunden pro Woche mit Suchen verbracht. Das ist jetzt Geschichte."
+            </p>
+            <p class="mt-3 text-amber-300 font-medium">– Thomas Schäfer, Geschäftsführer</p>
+          </div>
+        </div>
+
+        <!-- Einführung -->
+        <div class="mt-8 text-center text-gray-300 text-sm">
+          <p><strong class="text-white">Die Umstellung:</strong> Ein halber Tag für Einrichtung und Schulung. Scanner angebunden, Team eingewiesen, fertig.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-gray-50">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12">
+          <span class="text-primary-600 font-semibold text-sm uppercase tracking-wider">FAQ</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">Häufige Fragen von Handwerksbetrieben</h2>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq, index) => (
+            <details class="group bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+              <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+                <span class="font-semibold text-navy pr-4">{faq.question}</span>
+                <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="px-5 pb-5 text-gray-600 text-sm">
+                {faq.answer}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4">Bereit für digitale Ordnung?</h2>
+        <p class="text-gray-600 mb-8">
+          Lassen Sie uns in einem kurzen Gespräch klären, wie DigiDMS in Ihrem Betrieb helfen kann.
+        </p>
+
+        <!-- Was passiert -->
+        <div class="bg-gray-50 rounded-2xl p-6 mb-8 text-left">
+          <h3 class="font-bold text-navy mb-4 text-center">Was passiert im Erstgespräch?</h3>
+          <div class="grid sm:grid-cols-2 gap-4 text-sm">
+            <div class="flex items-start gap-3">
+              <span class="text-green-500 font-bold">1.</span>
+              <span class="text-gray-600"><strong class="text-navy">Wir hören zu:</strong> Wie arbeiten Sie heute? Wo drückt der Schuh?</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-green-500 font-bold">2.</span>
+              <span class="text-gray-600"><strong class="text-navy">Wir zeigen:</strong> Live-Demo von DigiDMS, zugeschnitten auf Handwerksbetriebe</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-green-500 font-bold">3.</span>
+              <span class="text-gray-600"><strong class="text-navy">Wir beraten:</strong> Welche Struktur passt zu Ihrem Betrieb?</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-green-500 font-bold">4.</span>
+              <span class="text-gray-600"><strong class="text-navy">Kein Druck:</strong> Sie entscheiden in Ruhe</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="/contact?branche=handwerk" class="btn-primary text-base px-8 py-4">
+            Beratungsgespräch vereinbaren
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href="/demo" class="btn-secondary text-base px-8 py-4">
+            Oder erst die Demo testen
+          </a>
+        </div>
+
+        <!-- Telefon -->
+        <p class="mt-6 text-gray-500 text-sm">
+          Oder rufen Sie uns direkt an: 
+          <a href="tel:+4920237323160" class="text-primary-600 font-medium hover:underline">
+            {siteConfig.company.phoneDisplay}
+          </a> 
+          (Mo–Fr, 9–17 Uhr)
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back to Solutions -->
+  <section class="py-8 bg-gray-50 border-t border-gray-200">
+    <div class="container-wide">
+      <div class="flex items-center justify-center gap-2 text-sm">
+        <a href="/loesungen" class="text-primary-600 hover:text-primary-700 font-medium flex items-center gap-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Alle Branchen-Lösungen ansehen
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

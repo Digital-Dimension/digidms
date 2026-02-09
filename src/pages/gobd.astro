@@ -1,0 +1,340 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import CTASection from '../components/CTASection.astro';
+import { Image } from 'astro:assets';
+import auditImg from '../assets/images/audit.jpg';
+
+const gobdFAQ = [
+  {
+    question: 'Ist DigiDMS vollständig GoBD-konform?',
+    answer: 'Das DigiDMS-Konzept adressiert alle Kernanforderungen der GoBD. Die beschriebene Architektur (Berechtigungsmanagement, Audit Trail, Tag-basierter Workflow) erfüllt bei sorgfältiger Implementierung die fünf GoBD-Grundsätze. <strong>Für endgültige rechtliche Sicherheit empfehlen wir, dies mit Ihrem Steuerberater zu validieren.</strong>'
+  },
+  {
+    question: 'Können Mitarbeiter versehentlich Dokumente löschen?',
+    answer: 'Nein. Standard-Nutzer können Dokumente nur als "ZUM LÖSCHEN VORGESEHEN" markieren. Nur der Administrator kann nach Prüfung die endgültige Löschung freigeben – das 4-Augen-Prinzip schützt vor versehentlichen Löschungen.'
+  },
+  {
+    question: 'Was passiert bei einem Fehler?',
+    answer: 'Selbst wenn ein Mitarbeiter ein Dokument fälschlicherweise zum Löschen markiert, kann der Administrator dies leicht korrigieren. Gelöschte Dokumente landen zunächst im Papierkorb (30 Tage) und können jederzeit wiederhergestellt werden.'
+  },
+  {
+    question: 'Wo werden die Daten gespeichert?',
+    answer: 'In zertifizierten deutschen Rechenzentren mit DSGVO-Compliance, regelmäßigen Backups und redundanter Architektur. Es findet keine Datenweitergabe ins Ausland statt.'
+  },
+  {
+    question: 'Können bestehende Archive nachträglich GoBD-konform gemacht werden?',
+    answer: 'Ja. Wir unterstützen die Migration von Papier-Archiven, bestehenden DMS-Systemen und Netzwerk-Shares. OCR und automatisches Tagging machen den Prozess effizient. Alle migrierten Dokumente werden mit Zeitstempel versehen und im Audit-Log dokumentiert.'
+  },
+  {
+    question: 'Wie lange dauert die Implementierung?',
+    answer: '<strong>Neue Systeme:</strong> 6-10 Wochen | <strong>Bestandssysteme mit Migration:</strong> 10-16 Wochen (abhängig von Dokumentenvolumen). Ein einfaches Setup ohne Migration ist innerhalb eines Arbeitstages produktiv.'
+  },
+];
+---
+
+<Layout title="GoBD-konforme Archivierung - DigiDMS" description="Informationen zur GoBD-Konformität mit DigiDMS: Aufbewahrungsfristen, Sicherheitskonzept und rechtssichere Dokumentenverwaltung.">
+  
+  <PageHeader
+    title="GoBD-konforme Archivierung"
+    description="Informationen zur rechtssicheren Dokumentenverwaltung nach BMF-Standards – speziell für kleine und mittelständische Unternehmen."
+    breadcrumb={{ label: "GoBD", href: "/gobd" }}
+  />
+
+  <!-- Hinweis-Banner -->
+  <section class="bg-amber-50 border-b border-amber-100">
+    <div class="container-wide py-4">
+      <div class="flex items-start gap-3">
+        <svg class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        <p class="text-sm text-amber-800">
+          <strong>Wichtiger Hinweis:</strong> DigiDMS kann GoBD-konform betrieben werden. Die endgültige Konformität hängt von der korrekten Implementierung und Nutzung ab. Wir empfehlen, die Eignung für Ihre spezifischen Anforderungen mit Ihrem Steuerberater zu validieren.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Einleitung -->
+  <section class="section bg-white">
+    <div class="container-narrow">
+      <div class="prose prose-lg max-w-none">
+        <p class="text-xl text-gray-600 leading-relaxed">
+          DigiDMS verfolgt einen praxisorientierten Ansatz zur Umsetzung der GoBD-Anforderungen, ohne unnötige Komplexität zu schaffen. Auf dieser Seite erfahren Sie, wie DigiDMS die Anforderungen der GoBD adressiert.
+        </p>
+      </div>
+      
+      <!-- Checkliste Download Box -->
+      <div class="mt-8 bg-green-50 border border-green-200 rounded-xl p-6 flex flex-col sm:flex-row items-center gap-4">
+        <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center text-2xl shrink-0">
+          ✓
+        </div>
+        <div class="flex-grow text-center sm:text-left">
+          <h3 class="font-bold text-navy text-lg mb-1">Sind Sie GoBD-konform?</h3>
+          <p class="text-gray-600 text-sm">Prüfen Sie es mit unserer kostenlosen Checkliste in 5 Minuten.</p>
+        </div>
+        <a href="/downloads/DigiDMS-GoBD-Checkliste.pdf" download class="btn-primary whitespace-nowrap px-6 py-3">
+          Checkliste laden (PDF)
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Audit-Bild Banner -->
+  <section class="py-8 bg-white">
+    <div class="container-wide">
+      <div class="grid lg:grid-cols-2 gap-8 items-center">
+        <div class="rounded-2xl overflow-hidden shadow-lg">
+          <Image 
+            src={auditImg}
+            alt="Dokumentenprüfung und Audit"
+            class="w-full h-auto"
+            loading="lazy"
+            format="webp"
+            quality={85}
+          />
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold text-navy mb-4">Rechtssicher dokumentieren</h2>
+          <p class="text-gray-600 mb-4">
+            Die GoBD (Grundsätze zur ordnungsmäßigen Führung und Aufbewahrung von Büchern) stellen klare 
+            Anforderungen an die digitale Archivierung von Geschäftsdokumenten.
+          </p>
+          <p class="text-gray-600">
+            DigiDMS unterstützt Sie dabei, diese Anforderungen zu erfüllen – mit revisionssicherer 
+            Speicherung, vollständigem Audit-Trail und durchdachtem Berechtigungskonzept.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Aufbewahrungsfristen -->
+  <section class="section bg-gray-50">
+    <div class="container-wide">
+      <SectionHeader
+        title="Aktuelle Aufbewahrungsfristen"
+        subtitle="Stand: Januar 2026 – Wichtige Änderung: Buchungsbelege nur noch 8 statt 10 Jahre"
+      />
+
+      <div class="max-w-3xl mx-auto">
+        <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+          <table class="w-full">
+            <thead class="bg-navy text-white">
+              <tr>
+                <th class="text-left px-6 py-4 font-semibold">Dokumenttyp</th>
+                <th class="text-center px-6 py-4 font-semibold">Frist</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              <tr>
+                <td class="px-6 py-4 text-gray-700">Bücher, Inventare, Jahresabschlüsse</td>
+                <td class="px-6 py-4 text-center font-semibold text-navy">10 Jahre</td>
+              </tr>
+              <tr class="bg-green-50">
+                <td class="px-6 py-4 text-gray-700">
+                  Buchungsbelege (Rechnungen, Lieferscheine)
+                  <span class="ml-2 px-2 py-0.5 text-xs bg-green-200 text-green-800 rounded-full">Geändert</span>
+                </td>
+                <td class="px-6 py-4 text-center font-semibold text-green-700">8 Jahre</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 text-gray-700">Handels- und Geschäftsbriefe</td>
+                <td class="px-6 py-4 text-center font-semibold text-navy">6 Jahre</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 text-gray-700">Belege zu Einkaufsrechnungen</td>
+                <td class="px-6 py-4 text-center font-semibold text-navy">6 Jahre</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 Kernanforderungen -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <SectionHeader
+        title="Die fünf GoBD-Kernanforderungen"
+        subtitle="So adressiert DigiDMS die Grundsätze der ordnungsmäßigen Buchführung"
+      />
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="card">
+          <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy mb-2">Nachvollziehbarkeit</h3>
+          <p class="text-gray-600 text-sm">Vollständiges Audit-Log dokumentiert jeden Vorgang mit Zeitstempel, Nutzer und Aktion.</p>
+        </div>
+
+        <div class="card">
+          <div class="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy mb-2">Vollständigkeit</h3>
+          <p class="text-gray-600 text-sm">Kein Dokument kann unbemerkt gelöscht werden. 4-Augen-Prinzip und automatischer Papierkorb.</p>
+        </div>
+
+        <div class="card">
+          <div class="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy mb-2">Richtigkeit</h3>
+          <p class="text-gray-600 text-sm">OCR-Texterkennung mit manueller Prüfoption. Fehlerhafte Zuordnungen können korrigiert werden.</p>
+        </div>
+
+        <div class="card">
+          <div class="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy mb-2">Zeitgerechtigkeit</h3>
+          <p class="text-gray-600 text-sm">Automatische Zeitstempel bei jeder Aktion. Dokumente werden unmittelbar nach Eingang erfasst.</p>
+        </div>
+
+        <div class="card">
+          <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy mb-2">Unveränderbarkeit</h3>
+          <p class="text-gray-600 text-sm">Nur Administratoren können löschen, alles wird protokolliert. Speicherung im PDF/A-Format.</p>
+        </div>
+
+        <div class="card bg-gradient-to-br from-primary-50 to-secondary-50 border-primary-200">
+          <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy mb-2">Verfahrensdokumentation</h3>
+          <p class="text-gray-600 text-sm">Auf Wunsch erstellen wir eine individuelle Verfahrensdokumentation für Ihr Unternehmen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sicherheitskonzept -->
+  <section class="section bg-gray-50">
+    <div class="container-wide">
+      <SectionHeader
+        title="Das DigiDMS-Sicherheitskonzept"
+        subtitle="Fünf Säulen für sichere Dokumentenarchivierung"
+      />
+
+      <div class="max-w-4xl mx-auto space-y-6">
+        <div class="bg-white rounded-xl p-6 border border-gray-100">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0">
+              <span class="font-bold text-primary-600">1</span>
+            </div>
+            <div>
+              <h3 class="font-bold text-navy mb-1">Rollenbasiertes Berechtigungsmanagement</h3>
+              <p class="text-gray-600 text-sm">Nur autorisierte Administratoren dürfen Dokumente endgültig löschen. Standard-Nutzer können maximal Dokumente zur Prüfung markieren.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 border border-gray-100">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0">
+              <span class="font-bold text-primary-600">2</span>
+            </div>
+            <div>
+              <h3 class="font-bold text-navy mb-1">4-Augen-Prinzip durch Tag-Workflow</h3>
+              <p class="text-gray-600 text-sm">Mitarbeiter markieren Dokumente mit Tags wie "LÖSCHEN!" oder "PRÜFUNG". Der Administrator überprüft diese regelmäßig und gibt sie nach Prüfung frei.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 border border-gray-100">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0">
+              <span class="font-bold text-primary-600">3</span>
+            </div>
+            <div>
+              <h3 class="font-bold text-navy mb-1">Vollständiges Audit-Logging</h3>
+              <p class="text-gray-600 text-sm">Jede Änderung wird protokolliert: Erfassung, Änderung, Zugriff, Löschung – mit Zeitstempel, Nutzer-ID und Begründung.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 border border-gray-100">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0">
+              <span class="font-bold text-primary-600">4</span>
+            </div>
+            <div>
+              <h3 class="font-bold text-navy mb-1">Automatische Backup-Strategie</h3>
+              <p class="text-gray-600 text-sm">Gelöschte Dokumente landen zunächst im Papierkorb (30 Tage). Tägliche Backups an mehreren Standorten.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 border border-gray-100">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0">
+              <span class="font-bold text-primary-600">5</span>
+            </div>
+            <div>
+              <h3 class="font-bold text-navy mb-1">PDF/A-Archivierung</h3>
+              <p class="text-gray-600 text-sm">Alle Dokumente werden im standardisierten PDF/A-Format für Langzeitarchivierung gespeichert.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-white">
+    <div class="container-narrow">
+      <SectionHeader
+        title="Häufige Fragen zur GoBD"
+      />
+
+      <FAQAccordion items={gobdFAQ} id="gobd-faq" />
+    </div>
+  </section>
+
+  <!-- Rechtlicher Hinweis -->
+  <section class="py-8 bg-gray-100">
+    <div class="container-narrow">
+      <div class="text-center text-sm text-gray-500">
+        <p>
+          <strong>Rechtlicher Hinweis:</strong> Diese Seite beschreibt einen konzeptionellen Ansatz zur Umsetzung der GoBD-Anforderungen. 
+          Die beschriebene Architektur basiert auf den aktuellen Vorgaben des Bundesfinanzministeriums (Stand Januar 2026). 
+          Für spezifische rechtliche Fragen empfehlen wir die Konsultation mit Ihrem Steuerberater oder einer Wirtschaftsprüfungsgesellschaft.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CTASection
+    title="Fragen zur GoBD-Konformität?"
+    description="Wir beraten Sie gerne unverbindlich zu Ihren spezifischen Anforderungen."
+    primaryCta={{
+      text: "Beratung anfragen",
+      href: "/kontakt"
+    }}
+    secondaryCta={{
+      text: "FAQ ansehen",
+      href: "/faq"
+    }}
+    variant="light"
+  />
+</Layout>

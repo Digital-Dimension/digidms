@@ -1,0 +1,76 @@
+---
+/**
+ * WirKuemmernUns Component
+ * Zeigt den "Managed Service" USP prominent an
+ */
+interface Props {
+  branche?: string;
+}
+
+const { branche = 'Ihr Unternehmen' } = Astro.props;
+---
+
+<section class="py-12 bg-gradient-to-r from-primary-600 to-secondary-600 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-8 items-center">
+      
+      <!-- Text -->
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">
+          🛡️ Wir kümmern uns – Sie konzentrieren sich auf {branche}
+        </h2>
+        <p class="text-white/90 text-lg mb-6">
+          DigiDMS ist <strong>Managed DMS</strong>: Wir übernehmen den kompletten technischen Betrieb, 
+          damit Sie sich auf das konzentrieren können, was Sie am besten können – Ihr Kerngeschäft.
+        </p>
+        
+        <div class="flex flex-wrap gap-4">
+          <a href="/beratung" class="bg-white text-primary-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            Beratung buchen
+          </a>
+          <a href="/service" class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">
+            Mehr zum Service
+          </a>
+        </div>
+      </div>
+
+      <!-- Benefits Grid -->
+      <div class="grid grid-cols-2 gap-4">
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+          <div class="text-2xl mb-2">🔧</div>
+          <h3 class="font-semibold mb-1">Updates & Wartung</h3>
+          <p class="text-sm text-white/80">Wir halten Ihr System aktuell</p>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+          <div class="text-2xl mb-2">💾</div>
+          <h3 class="font-semibold mb-1">Tägliche Backups</h3>
+          <p class="text-sm text-white/80">Ihre Daten sind immer sicher</p>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+          <div class="text-2xl mb-2">🇩🇪</div>
+          <h3 class="font-semibold mb-1">Deutsche Server</h3>
+          <p class="text-sm text-white/80">DSGVO-konform, garantiert</p>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+          <div class="text-2xl mb-2">🎧</div>
+          <h3 class="font-semibold mb-1">Persönlicher Support</h3>
+          <p class="text-sm text-white/80">Echte Menschen, keine Hotline</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Trust Line -->
+    <div class="mt-8 pt-6 border-t border-white/20 text-center">
+      <p class="text-white/80 text-sm">
+        💬 <em>"Endlich muss ich mich nicht mehr um IT kümmern. DigiDMS läuft einfach – und wenn ich Fragen habe, erreiche ich sofort jemanden."</em>
+        <span class="block mt-1 text-white/60">– Steuerberater aus Düsseldorf</span>
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,133 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  kicker?: string;
+  kickerBadges?: string[];
+  primaryCta?: {
+    text: string;
+    href: string;
+  };
+  secondaryCta?: {
+    text: string;
+    href: string;
+  };
+  bullets?: string[];
+  image?: ImageMetadata | string;
+  imageAlt?: string;
+}
+
+const { 
+  title, 
+  subtitle, 
+  kicker,
+  kickerBadges,
+  primaryCta,
+  secondaryCta,
+  bullets = [],
+  image,
+  imageAlt = ''
+} = Astro.props;
+
+const isOptimizedImage = image && typeof image !== 'string';
+---
+
+<section class="relative overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50/50 to-purple-50/30">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 opacity-40">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-primary-200/40 to-transparent rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-secondary-200/40 to-transparent rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+  </div>
+
+  <div class="container-wide relative py-16 md:py-24 lg:py-32">
+    <div class="max-w-4xl mx-auto text-center">
+      
+      {/* Single kicker as pill */}
+      {kicker && !kickerBadges && (
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-sm border border-gray-100 mb-6">
+          <span class="flex h-2 w-2 rounded-full bg-green-500"></span>
+          <span class="text-sm font-medium text-gray-700">{kicker}</span>
+        </div>
+      )}
+
+      {/* Multiple kicker badges */}
+      {kickerBadges && kickerBadges.length > 0 && (
+        <div class="flex flex-wrap justify-center gap-2 mb-6">
+          {kickerBadges.map((badge) => (
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white shadow-sm border border-gray-100 text-sm font-medium text-gray-700">
+              <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              {badge}
+            </span>
+          ))}
+        </div>
+      )}
+
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-navy leading-tight mb-6">
+        <Fragment set:html={title} />
+      </h1>
+
+      <p class="text-lg md:text-xl text-gray-600 leading-relaxed mb-8 max-w-3xl mx-auto">
+        {subtitle}
+      </p>
+
+      {bullets.length > 0 && (
+        <div class="flex flex-wrap justify-center gap-4 mb-10">
+          {bullets.map((bullet) => (
+            <div class="inline-flex items-center gap-2 text-sm text-gray-600">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>{bullet}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        {primaryCta && (
+          <a href={primaryCta.href} class="btn-primary text-base px-8 py-4">
+            {primaryCta.text}
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        )}
+        {secondaryCta && (
+          <a href={secondaryCta.href} class="btn-secondary text-base px-8 py-4">
+            {secondaryCta.text}
+          </a>
+        )}
+      </div>
+    </div>
+
+    {image && (
+      <div class="mt-12 md:mt-16 max-w-5xl mx-auto px-4">
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
+          {isOptimizedImage ? (
+            <Image 
+              src={image as ImageMetadata} 
+              alt={imageAlt}
+              class="w-full h-auto"
+              loading="eager"
+              format="webp"
+              quality={85}
+            />
+          ) : (
+            <img 
+              src={image as string} 
+              alt={imageAlt}
+              class="w-full h-auto"
+              loading="eager"
+            />
+          )}
+          <div class="absolute inset-0 bg-gradient-to-t from-navy/10 to-transparent"></div>
+        </div>
+      </div>
+    )}
+  </div>
+</section>

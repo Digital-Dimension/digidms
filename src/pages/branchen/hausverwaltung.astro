@@ -1,0 +1,620 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTASection from '../../components/CTASection.astro';
+import WirKuemmernUns from '../../components/WirKuemmernUns.astro';
+import { Image } from 'astro:assets';
+import heroImg from '../../assets/images/hero-hausverwaltung.jpg';
+import { siteConfig } from '../../config/site';
+
+const painPoints = [
+  {
+    title: 'Betriebskostenabrechnung: 6 Wochen suchen',
+    icon: '📊',
+    description: '350 Belege für die Jahresabrechnung – verstreut in E-Mails, Papierordnern und verschiedenen Laufwerken. Jeden Frühling derselbe Marathon.',
+  },
+  {
+    title: 'Prüffristen vergessen',
+    icon: '⚠️',
+    description: 'Aufzug-TÜV übersehen, Brandschutzprüfung verpasst, E-Check abgelaufen. Bei 40 Objekten mit je 10 Prüfzyklen verliert man schnell den Überblick – und zahlt Bußgelder.',
+  },
+  {
+    title: 'Eigentümerversammlung naht',
+    icon: '📋',
+    description: 'Protokolle der letzten 3 Jahre, Wirtschaftsplan, Beschlussliste – alles muss zusammengestellt werden. 2 Tage Arbeit für eine einzige Versammlung.',
+  },
+  {
+    title: 'Übergabeprotokoll verschollen',
+    icon: '🔑',
+    description: 'Mieter zieht aus, will die Kaution. War der Kratzer im Parkett schon bei Einzug? Das Protokoll von 2019? Irgendwo. Vielleicht.',
+  },
+];
+
+const solutions = [
+  {
+    title: 'Alle Belege automatisch erfasst',
+    icon: '📥',
+    description: 'Rechnungen per E-Mail werden automatisch importiert und dem Objekt zugeordnet. Papierbelege scannen, fertig. Betriebskostenabrechnung in Tagen statt Wochen.',
+  },
+  {
+    title: 'Prüffristen im Griff',
+    icon: '⏰',
+    description: 'Prüfprotokolle hochladen, Ablaufdatum hinterlegen – fertig. DigiDMS erinnert Sie 4 Wochen vor Fälligkeit. Kein Termin rutscht mehr durch.',
+  },
+  {
+    title: 'Objektbezogene Ablage',
+    icon: '🏢',
+    description: 'Jedes Dokument einem Objekt zugeordnet. "Zeig mir alles für Musterstraße 12" – ein Klick, alle Unterlagen. Mietverträge, Protokolle, Prüfberichte.',
+  },
+  {
+    title: 'Eigentümer-Unterlagen sofort',
+    icon: '📁',
+    description: 'Eigentümerversammlung? Filter setzen, exportieren, fertig. 30 Minuten statt 2 Tage. Alle Protokolle, Abrechnungen und Beschlüsse an einem Ort.',
+  },
+  {
+    title: 'Revisionssicher archiviert',
+    icon: '🔒',
+    description: 'Betriebskostenabrechnungen müssen nachprüfbar sein. DigiDMS archiviert unveränderbar mit vollständigem Audit-Trail. DSGVO-konform, auf deutschen Servern.',
+  },
+  {
+    title: 'Kein IT-Aufwand',
+    icon: '☁️',
+    description: 'DigiDMS läuft in der Cloud. Updates, Backups, Sicherheit – darum kümmern wir uns. Sie konzentrieren sich auf Ihre Objekte.',
+  },
+];
+
+const features = [
+  {
+    title: 'Objektstruktur',
+    description: 'Dokumente nach Adressen/Objekt-Nr. filtern. Unterordner für Mieter, Eigentümer, Dienstleister automatisch organisiert.',
+  },
+  {
+    title: 'Fristen-Erinnerungen',
+    description: 'Prüfintervalle hinterlegen (Aufzug, Brandschutz, E-Check). Automatische E-Mail-Benachrichtigung vor Ablauf.',
+  },
+  {
+    title: 'E-Mail-Integration',
+    description: 'Rechnungen von Stadtwerken, Versicherungen & Dienstleistern automatisch importieren und dem Objekt zuordnen.',
+  },
+  {
+    title: 'Mobile App',
+    description: 'Hausmeister fotografiert Schaden vor Ort – sofort im System. Übergabeprotokolle per Tablet ausfüllen.',
+  },
+  {
+    title: 'OCR-Volltextsuche',
+    description: '"Heizkosten Parkstraße Januar 2025" – alle relevanten Belege in Sekunden. Auch in gescannten Dokumenten.',
+  },
+  {
+    title: 'Benutzerrechte',
+    description: 'Verwalter sieht alles, Buchhaltung nur Rechnungen, Hausmeister nur seine Objekte. Optional: Eigentümer-Portal.',
+  },
+  {
+    title: 'Audit-Trail',
+    description: 'Wer hat wann welche Abrechnung erstellt oder geändert? Lückenlose Dokumentation für Prüfungen.',
+  },
+  {
+    title: 'Export & Integration',
+    description: 'Export als PDF/ZIP für Eigentümer oder Wirtschaftsprüfer. API für Anbindung an Hausverwaltungssoftware.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'Wie hilft DigiDMS bei der Betriebskostenabrechnung?',
+    answer: 'Rechnungen werden automatisch per E-Mail importiert und dem Objekt zugeordnet. Über die Volltextsuche finden Sie jeden Beleg in Sekunden – "Heizkosten Parkstraße 2025" genügt. Statt 6 Wochen Belege-Suche brauchen Sie nur noch wenige Tage für die komplette Abrechnung.',
+  },
+  {
+    question: 'Werden Prüffristen automatisch überwacht?',
+    answer: 'Ja. Sie hinterlegen einmalig die Prüfintervalle (Aufzug alle 2 Jahre, Brandschutz jährlich, E-Check alle 4 Jahre). DigiDMS erinnert Sie automatisch 4 Wochen vorher per E-Mail. Kein Termin rutscht mehr durch.',
+  },
+  {
+    question: 'Können Eigentümer auf ihre Dokumente zugreifen?',
+    answer: 'Optional ja. Mit entsprechenden Benutzerrechten können Eigentümer Zugriff auf ihre spezifischen Objekt-Dokumente erhalten – Protokolle, Abrechnungen, Beschlüsse. Die Trennung zwischen Objekten ist strikt.',
+  },
+  {
+    question: 'Ist DigiDMS GoBD-konform für Betriebskostenabrechnungen?',
+    answer: 'DigiDMS bietet revisionssichere Archivierung mit Audit-Trail und unveränderlicher Speicherung. Die Software ist GoBD-orientiert. Die endgültige Konformität hängt auch von Ihrer organisatorischen Umsetzung ab – wir beraten Sie gerne.',
+  },
+  {
+    question: 'Kann ich DigiDMS mit meiner Hausverwaltungssoftware verbinden?',
+    answer: 'DigiDMS bietet eine offene REST-API. Anbindungen an gängige Systeme wie DOMUS, haufe axera oder Wodis Sigma sind möglich. Export in Standardformaten (PDF, ZIP) für Weiterverarbeitung jederzeit.',
+  },
+  {
+    question: 'Wie läuft die Einführung ab?',
+    answer: 'Wir richten Ihre Instanz und Objektstruktur innerhalb eines Tages ein. Eine kurze Schulung (ca. 2 Stunden) macht Ihr Team fit. Sie können sofort mit neuen Dokumenten starten und bestehende Akten nach und nach migrieren.',
+  },
+  {
+    question: 'Welche Aufbewahrungsfristen gelten?',
+    answer: 'Mietverträge: 10 Jahre nach Vertragsende. Betriebskostenabrechnungen: 10 Jahre. Prüfprotokolle: 5–10 Jahre je nach Art. DigiDMS archiviert revisionssicher für die gesamte gesetzliche Dauer.',
+  },
+  {
+    question: 'Was kostet DigiDMS für Hausverwaltungen?',
+    answer: 'Die Kosten hängen von der Anzahl der Objekte und Nutzer ab. Kleine Verwaltungen starten ab 150 €/Monat – inklusive Hosting, Backups, Updates und Support. Wir erstellen Ihnen gerne ein individuelles Angebot.',
+  },
+];
+
+// FAQ Schema für Rich Snippets
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<Layout 
+  title="DMS Hausverwaltung: Betriebskosten in Tagen | DigiDMS" 
+  description="Betriebskostenabrechnungen schneller erstellen, Prüffristen automatisch überwachen, Dokumente objektbezogen verwalten. DigiDMS: Managed DMS aus Deutschland für Hausverwaltungen."
+>
+  <!-- FAQ Schema für Google Rich Snippets -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-emerald-50 via-green-50/50 to-teal-50/30">
+    <div class="absolute inset-0 opacity-40">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-emerald-200/40 to-transparent rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+      <div class="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-green-200/40 to-transparent rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+    </div>
+
+    <div class="container-wide relative py-16 md:py-24">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+        
+        <!-- Breadcrumb -->
+        <nav class="flex items-center gap-2 text-sm text-gray-500 mb-6">
+          <a href="/" class="hover:text-primary-600">Start</a>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+          <a href="/branchen" class="hover:text-primary-600">Branchen</a>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+          <span class="text-gray-700">Hausverwaltung</span>
+        </nav>
+
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-sm border border-emerald-200 mb-6">
+          <span class="text-2xl">🏢</span>
+          <span class="text-sm font-medium text-gray-700">Für Hausverwaltungen & Immobilien</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-navy leading-tight mb-6">
+          Abrechnungen erstellen<br class="hidden sm:block" />
+          <span class="text-emerald-600">in Tagen statt Wochen</span>
+        </h1>
+
+        <p class="text-lg md:text-xl text-gray-600 leading-relaxed mb-8">
+          DigiDMS bringt Ordnung in Ihre Objektverwaltung: Belege automatisch erfassen, 
+          Prüffristen überwachen, Dokumente objektbezogen ablegen. Auf deutschen Servern, 
+          ohne IT-Aufwand.
+        </p>
+
+        <!-- Bullets -->
+        <div class="flex flex-wrap gap-3 mb-10">
+          <div class="inline-flex items-center gap-2 text-sm text-gray-700 bg-white px-4 py-2 rounded-full shadow-sm">
+            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Belege automatisch importieren
+          </div>
+          <div class="inline-flex items-center gap-2 text-sm text-gray-700 bg-white px-4 py-2 rounded-full shadow-sm">
+            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Prüffristen automatisch erinnern
+          </div>
+          <div class="inline-flex items-center gap-2 text-sm text-gray-700 bg-white px-4 py-2 rounded-full shadow-sm">
+            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Objektbezogene Ablage
+          </div>
+          <div class="inline-flex items-center gap-2 text-sm text-gray-700 bg-white px-4 py-2 rounded-full shadow-sm">
+            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            DSGVO-konform, Server in Deutschland
+          </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/kontakt?branche=hausverwaltung" class="btn-primary text-base px-8 py-4">
+            Beratungsgespräch vereinbaren
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href="/demo" class="btn-secondary text-base px-8 py-4">
+            Demo ansehen
+          </a>
+        </div>
+        </div>
+
+        <!-- Hero Image -->
+        <div class="hidden lg:block">
+          <div class="relative">
+            <div class="absolute -inset-4 bg-gradient-to-r from-emerald-200 to-green-200 rounded-2xl blur-2xl opacity-30"></div>
+            <Image 
+              src={heroImg}
+              alt="Modernes Bürogebäude für Hausverwaltung" 
+              class="relative rounded-2xl shadow-2xl border border-gray-200 object-cover w-full h-[420px]"
+              format="webp"
+              quality={85}
+            />
+            <div class="absolute -bottom-4 -right-4 bg-white rounded-xl shadow-lg p-4 border border-gray-100">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
+                  <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-navy">Aufzugsprüfung</p>
+                  <p class="text-xs text-gray-500">fällig in 28 Tagen</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <section class="py-6 bg-white border-b border-gray-100">
+    <div class="container-wide">
+      <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10 text-sm">
+        <div class="flex items-center gap-2 text-gray-600">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          Server in Deutschland
+        </div>
+        <div class="flex items-center gap-2 text-gray-600">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          DSGVO-konform
+        </div>
+        <div class="flex items-center gap-2 text-gray-600">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          Fristen-Erinnerungen
+        </div>
+        <div class="flex items-center gap-2 text-gray-600">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          Basiert auf Open Source
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pain Points -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <span class="text-red-500 font-semibold text-sm uppercase tracking-wider">Das kennen Sie</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">Der Alltag in der Hausverwaltung</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {painPoints.map((point) => (
+          <div class="flex items-start gap-4 p-6 bg-red-50 rounded-2xl border border-red-100">
+            <span class="text-3xl">{point.icon}</span>
+            <div>
+              <h3 class="font-bold text-navy mb-2">{point.title}</h3>
+              <p class="text-gray-600 text-sm">{point.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Solutions -->
+  <section class="section bg-gray-50">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <span class="text-green-600 font-semibold text-sm uppercase tracking-wider">Die Lösung</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">Objektverwaltung ohne Dokumentenchaos</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {solutions.map((solution) => (
+          <div class="flex items-start gap-4 p-6 bg-white rounded-2xl shadow-sm border border-green-100">
+            <span class="text-3xl">{solution.icon}</span>
+            <div>
+              <h3 class="font-bold text-navy mb-2">{solution.title}</h3>
+              <p class="text-gray-600 text-sm">{solution.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Typische Dokumente -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <span class="text-primary-600 font-semibold text-sm uppercase tracking-wider">Typische Dokumente</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">Was gehört ins DigiDMS?</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div class="bg-gray-50 rounded-xl p-5">
+          <h3 class="font-bold text-navy mb-3 flex items-center gap-2">
+            <span class="text-xl">📊</span> Betriebskosten
+          </h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>• Nebenkostenabrechnungen</li>
+            <li>• Heizkosten, Wasser, Strom, Müll</li>
+            <li>• Beleglisten für Eigentümerversammlungen</li>
+            <li>• Vorauszahlungen, Nachzahlungen</li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-5">
+          <h3 class="font-bold text-navy mb-3 flex items-center gap-2">
+            <span class="text-xl">📋</span> Verträge
+          </h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>• Mietverträge, Übergabeprotokolle</li>
+            <li>• Hausverwaltungsverträge</li>
+            <li>• Dienstleisterverträge (Hausmeister, Gärtner)</li>
+            <li>• Wartungsverträge</li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-5">
+          <h3 class="font-bold text-navy mb-3 flex items-center gap-2">
+            <span class="text-xl">🔧</span> Prüfungen & Wartung
+          </h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>• Aufzugsprüfung (TÜV)</li>
+            <li>• Brandschutz-Nachweise</li>
+            <li>• E-Check, Schornsteinfeger</li>
+            <li>• Wartungsprotokolle Heizung</li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-5">
+          <h3 class="font-bold text-navy mb-3 flex items-center gap-2">
+            <span class="text-xl">🏠</span> WEG-Dokumente
+          </h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>• Protokolle Eigentümerversammlung</li>
+            <li>• Beschlusssammlungen</li>
+            <li>• Teilungserklärungen</li>
+            <li>• Wirtschaftspläne</li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-5">
+          <h3 class="font-bold text-navy mb-3 flex items-center gap-2">
+            <span class="text-xl">🏗️</span> Objektunterlagen
+          </h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>• Grundrisse, Baupläne</li>
+            <li>• Energieausweise</li>
+            <li>• Versicherungsunterlagen</li>
+            <li>• Modernisierungsdokumentation</li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-5">
+          <h3 class="font-bold text-navy mb-3 flex items-center gap-2">
+            <span class="text-xl">✉️</span> Korrespondenz
+          </h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>• Mieter-Anschreiben, Mahnungen</li>
+            <li>• Eigentümer-Korrespondenz</li>
+            <li>• Behörden-Schriftverkehr</li>
+            <li>• Versicherer-Kommunikation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section bg-gray-50">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <span class="text-primary-600 font-semibold text-sm uppercase tracking-wider">Funktionen</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">Was DigiDMS für Hausverwaltungen leistet</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {features.map((feature) => (
+          <div class="p-5 bg-white rounded-xl shadow-sm">
+            <h3 class="font-bold text-navy mb-2">{feature.title}</h3>
+            <p class="text-gray-600 text-sm">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Study -->
+  <section class="py-16 bg-navy text-white">
+    <div class="container-wide">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-10">
+          <span class="text-emerald-300 font-semibold text-sm uppercase tracking-wider">Praxisbeispiel</span>
+          <h2 class="text-3xl md:text-4xl font-bold mt-2">Hausverwaltung Schneider & Partner</h2>
+          <p class="text-gray-300 mt-2">60 Objekte · 850 Wohneinheiten · 4 Mitarbeiter · Düsseldorf</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Vorher -->
+          <div class="bg-red-900/30 border border-red-500/30 rounded-2xl p-6">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-2xl">😩</span>
+              <h3 class="text-xl font-bold text-red-300">Vorher</h3>
+            </div>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              „Betriebskostenabrechnung war unser jährlicher Albtraum. 6 Wochen haben wir nur Belege gesucht – 
+              in E-Mails, Ordnern, auf dem Server. Letztes Jahr haben wir eine Aufzugsprüfung verpasst, 
+              das Bußgeld war teuer. Und wenn Eigentümer vor der Versammlung Unterlagen wollten, 
+              hat das Zusammenstellen Tage gedauert."
+            </p>
+          </div>
+
+          <!-- Nachher -->
+          <div class="bg-green-900/30 border border-green-500/30 rounded-2xl p-6">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-2xl">😊</span>
+              <h3 class="text-xl font-bold text-green-300">Nachher</h3>
+            </div>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              „Jetzt läuft alles über DigiDMS. Rechnungen kommen per E-Mail rein und landen automatisch 
+              beim richtigen Objekt. Die Betriebskostenabrechnung machen wir jetzt in 10 Tagen statt 6 Wochen. 
+              Prüffristen? Das System erinnert uns rechtzeitig. Und für die Eigentümerversammlung 
+              klicke ich auf Export – fertig."
+            </p>
+          </div>
+        </div>
+
+        <!-- Quote -->
+        <div class="mt-8 text-center">
+          <div class="inline-block bg-white/10 rounded-2xl p-6 border border-white/20">
+            <p class="text-lg italic text-gray-200">
+              „Früher haben wir 6 Wochen Belege gesucht. Heute mache ich die Betriebskostenabrechnung 
+              für 60 Objekte in 10 Tagen. Allein das spart uns im Jahr über 15.000 Euro Personalkosten."
+            </p>
+            <p class="mt-3 text-emerald-300 font-medium">– Thomas Schneider, Geschäftsführer</p>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="mt-8 grid grid-cols-3 gap-4 text-center">
+          <div>
+            <p class="text-3xl font-bold text-emerald-300">75%</p>
+            <p class="text-gray-400 text-sm">weniger Zeit für Abrechnung</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold text-emerald-300">0</p>
+            <p class="text-gray-400 text-sm">verpasste Prüffristen</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold text-emerald-300">1 Tag</p>
+            <p class="text-gray-400 text-sm">bis zum Produktivstart</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12">
+          <span class="text-primary-600 font-semibold text-sm uppercase tracking-wider">FAQ</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">Häufige Fragen von Hausverwaltungen</h2>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq, index) => (
+            <details class="group bg-gray-50 rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+              <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+                <span class="font-semibold text-navy pr-4">{faq.question}</span>
+                <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="px-5 pb-5 text-gray-600 text-sm">
+                {faq.answer}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section bg-gray-50">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4">Bereit für schnellere Betriebskostenabrechnungen?</h2>
+        <p class="text-gray-600 mb-8">
+          Lassen Sie uns in einem kurzen Gespräch klären, wie DigiDMS Ihre Objektverwaltung erleichtern kann.
+        </p>
+
+        <!-- Was passiert -->
+        <div class="bg-white rounded-2xl p-6 mb-8 text-left shadow-sm">
+          <h3 class="font-bold text-navy mb-4 text-center">Was passiert im Erstgespräch?</h3>
+          <div class="grid sm:grid-cols-2 gap-4 text-sm">
+            <div class="flex items-start gap-3">
+              <span class="text-green-500 font-bold">1.</span>
+              <span class="text-gray-600"><strong class="text-navy">Wir hören zu:</strong> Wie viele Objekte? Welche Dokumente bereiten Kopfzerbrechen?</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-green-500 font-bold">2.</span>
+              <span class="text-gray-600"><strong class="text-navy">Wir zeigen:</strong> Live-Demo mit Objektstruktur und Fristen-Management</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-green-500 font-bold">3.</span>
+              <span class="text-gray-600"><strong class="text-navy">Wir beraten:</strong> Struktur, Migration, Integration mit Ihrer Software</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-green-500 font-bold">4.</span>
+              <span class="text-gray-600"><strong class="text-navy">Kein Druck:</strong> Sie entscheiden in Ruhe</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="/kontakt?branche=hausverwaltung" class="btn-primary text-base px-8 py-4">
+            Beratungsgespräch vereinbaren
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href="/demo" class="btn-secondary text-base px-8 py-4">
+            Oder erst die Demo testen
+          </a>
+        </div>
+
+        <!-- Telefon -->
+        <p class="mt-6 text-gray-500 text-sm">
+          Oder rufen Sie uns direkt an: 
+          <a href="tel:+4920237323160" class="text-primary-600 font-medium hover:underline">
+            {siteConfig.company.phoneDisplay}
+          </a> 
+          (Mo–Fr, 9–17 Uhr)
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <WirKuemmernUns branche="Ihre Objekte" />
+
+  <!-- Back to Solutions -->
+  <section class="py-8 bg-white border-t border-gray-200">
+    <div class="container-wide">
+      <div class="flex items-center justify-center gap-2 text-sm">
+        <a href="/branchen" class="text-primary-600 hover:text-primary-700 font-medium flex items-center gap-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Alle Branchen-Lösungen ansehen
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

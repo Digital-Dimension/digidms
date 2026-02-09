@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="300" height="80" viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- Document Archive Icon -->
+  <g transform="translate(10, 10)">
+    <!-- File Cabinet Base -->
+    <rect x="0" y="20" width="50" height="40" rx="4" fill="#4DD0E1" stroke="#1E3A5F" stroke-width="2.5"/>
+    <rect x="2" y="35" width="46" height="20" rx="2" fill="#26C6DA" stroke="#1E3A5F" stroke-width="2"/>
+
+    <!-- Cabinet Handle -->
+    <rect x="18" y="43" width="14" height="4" rx="2" fill="#FFFFFF" stroke="#1E3A5F" stroke-width="1.5"/>
+
+    <!-- Document Stack in Cabinet -->
+    <path d="M 8 30 L 42 30 L 42 35 L 8 35 Z" fill="#FFFFFF" stroke="#1E3A5F" stroke-width="1.5"/>
+    <path d="M 12 25 L 38 25 L 38 30 L 12 30 Z" fill="#E3F2FD" stroke="#1E3A5F" stroke-width="1.5"/>
+
+    <!-- Document on Top -->
+    <rect x="15" y="5" width="30" height="18" rx="2" fill="#FFFFFF" stroke="#1E3A5F" stroke-width="2"/>
+    <line x1="20" y1="10" x2="38" y2="10" stroke="#64B5F6" stroke-width="2" stroke-linecap="round"/>
+    <line x1="20" y1="14" x2="35" y2="14" stroke="#64B5F6" stroke-width="2" stroke-linecap="round"/>
+    <line x1="20" y1="18" x2="32" y2="18" stroke="#64B5F6" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Text: DigiDMS -->
+  <text x="75" y="50" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#1E3A5F">Digi<tspan fill="#26C6DA">DMS</tspan></text>
+</svg>

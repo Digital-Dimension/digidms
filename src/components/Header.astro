@@ -1,0 +1,180 @@
+---
+import { siteConfig } from '../config/site';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+  <nav class="container-wide">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 group">
+        <img 
+          src="/images/logo_header.png" 
+          srcset="/images/logo_header.png 1x, /images/logo_header_2x.png 2x"
+          alt="DigiDMS Logo" 
+          class="h-8 md:h-10 w-auto"
+        />
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center gap-1">
+        {siteConfig.navigation.map((item) => (
+          item.children ? (
+            <!-- Dropdown Menu Item -->
+            <div class="relative group">
+              <a 
+                href={item.href}
+                class:list={[
+                  "px-4 py-2 text-sm font-medium rounded-lg transition-colors inline-flex items-center gap-1",
+                  currentPath.startsWith(item.href)
+                    ? "text-primary-600 bg-primary-50"
+                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                ]}
+              >
+                {item.label}
+                <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </a>
+              
+              <!-- Dropdown Panel -->
+              <div class="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                <div class="bg-white rounded-xl shadow-xl border border-gray-100 py-2 min-w-[240px]">
+                  {item.children.map((child) => (
+                    <a 
+                      href={child.href}
+                      class:list={[
+                        "flex items-center gap-3 px-4 py-3 text-sm transition-colors",
+                        currentPath === child.href
+                          ? "text-primary-600 bg-primary-50"
+                          : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                      ]}
+                    >
+                      <span class="text-lg">{child.icon}</span>
+                      <span class="font-medium">{child.label}</span>
+                    </a>
+                  ))}
+                  <div class="border-t border-gray-100 mt-2 pt-2">
+                    <a 
+                      href={item.href}
+                      class="flex items-center gap-3 px-4 py-3 text-sm text-primary-600 hover:bg-primary-50 transition-colors"
+                    >
+                      <span class="text-lg">📋</span>
+                      <span class="font-medium">Alle Branchen ansehen</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <!-- Regular Menu Item -->
+            <a 
+              href={item.href}
+              class:list={[
+                "px-4 py-2 text-sm font-medium rounded-lg transition-colors",
+                currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
+                  ? "text-primary-600 bg-primary-50"
+                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+              ]}
+            >
+              {item.label}
+            </a>
+          )
+        ))}
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="hidden md:flex items-center gap-3">
+        <a href="/demo" class="btn-secondary text-sm py-2">
+          Demo testen
+        </a>
+        <a href="/kontakt" class="btn-primary text-sm py-2">
+          Beratung anfragen
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button 
+        type="button" 
+        class="lg:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100"
+        id="mobile-menu-button"
+        aria-label="Menü öffnen"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="lg:hidden hidden" id="mobile-menu">
+    <div class="px-4 py-4 space-y-1 bg-white border-t border-gray-100">
+      {siteConfig.navigation.map((item) => (
+        item.children ? (
+          <>
+            <!-- Parent Item -->
+            <a 
+              href={item.href}
+              class:list={[
+                "block px-4 py-3 text-base font-medium rounded-lg",
+                currentPath.startsWith(item.href)
+                  ? "text-primary-600 bg-primary-50"
+                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+              ]}
+            >
+              {item.label}
+            </a>
+            <!-- Children -->
+            <div class="pl-4 space-y-1">
+              {item.children.map((child) => (
+                <a 
+                  href={child.href}
+                  class:list={[
+                    "flex items-center gap-2 px-4 py-2 text-sm rounded-lg",
+                    currentPath === child.href
+                      ? "text-primary-600 bg-primary-50"
+                      : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
+                  ]}
+                >
+                  <span>{child.icon}</span>
+                  <span>{child.label}</span>
+                </a>
+              ))}
+            </div>
+          </>
+        ) : (
+          <a 
+            href={item.href}
+            class:list={[
+              "block px-4 py-3 text-base font-medium rounded-lg",
+              currentPath === item.href
+                ? "text-primary-600 bg-primary-50"
+                : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            ]}
+          >
+            {item.label}
+          </a>
+        )
+      ))}
+      <div class="pt-4 space-y-2">
+        <a href="/demo" class="btn-secondary w-full text-center">
+          Demo testen
+        </a>
+        <a href="/kontakt" class="btn-primary w-full text-center">
+          Beratung anfragen
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const menuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  menuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+</script>

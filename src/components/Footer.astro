@@ -1,0 +1,101 @@
+---
+import { siteConfig } from '../config/site';
+---
+
+<footer class="bg-navy text-white">
+  <div class="container-wide py-12 md:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      
+      <!-- Company Info -->
+      <div class="lg:col-span-1">
+        <img 
+          src="/images/logo_footer.png" 
+          alt="DigiDMS" 
+          class="h-12 md:h-14 w-auto mb-4"
+        />
+        <p class="text-gray-300 text-sm leading-relaxed mb-4">
+          Professionelles Dokumentenmanagement für den deutschen Mittelstand. 
+          Sicher, GoBD-fähig und mit persönlichem Support.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <span class="inline-flex items-center gap-1.5 text-xs text-gray-400">
+            <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Server in DE
+          </span>
+          <span class="inline-flex items-center gap-1.5 text-xs text-gray-400">
+            <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            DSGVO
+          </span>
+          <span class="inline-flex items-center gap-1.5 text-xs text-gray-400">
+            <span class="text-green-400">💚</span>
+            Open Source
+          </span>
+        </div>
+      </div>
+
+      <!-- Produkt Links -->
+      <div>
+        <h4 class="font-semibold text-white mb-4">Produkt</h4>
+        <ul class="space-y-2">
+          {siteConfig.footerNavigation.produkt.map((item) => (
+            <li>
+              <a href={item.href} class="text-gray-300 hover:text-white text-sm transition-colors">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Rechtliches -->
+      <div>
+        <h4 class="font-semibold text-white mb-4">Rechtliches</h4>
+        <ul class="space-y-2">
+          {siteConfig.footerNavigation.rechtliches.map((item) => (
+            <li>
+              <a href={item.href} class="text-gray-300 hover:text-white text-sm transition-colors">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Kontakt -->
+      <div>
+        <h4 class="font-semibold text-white mb-4">Kontakt</h4>
+        <address class="not-italic text-sm text-gray-300 space-y-2">
+          <p class="font-medium text-white">{siteConfig.company.name}</p>
+          <p>{siteConfig.company.street}</p>
+          <p>{siteConfig.company.city}</p>
+          <p class="pt-2">
+            <a href={`mailto:${siteConfig.company.email}`} class="hover:text-white transition-colors">
+              {siteConfig.company.email}
+            </a>
+          </p>
+          <p>
+            <a href={`tel:${siteConfig.company.phone.replace(/\s/g, '')}`} class="hover:text-white transition-colors">
+              {siteConfig.company.phoneDisplay}
+            </a>
+          </p>
+        </address>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="mt-12 pt-8 border-t border-gray-700">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-sm text-gray-400">
+          © {new Date().getFullYear()} {siteConfig.company.name}. Alle Rechte vorbehalten.
+        </p>
+        <p class="text-sm text-gray-400">
+          Basierend auf <a href="https://docs.paperless-ngx.com" target="_blank" rel="noopener" class="hover:text-white transition-colors">Paperless-NGX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

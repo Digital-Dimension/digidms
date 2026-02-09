@@ -1,0 +1,227 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTASection from '../components/CTASection.astro';
+---
+
+<Layout title="GoBD-Whitepaper - DigiDMS" description="Kostenloses Whitepaper: GoBD-Konformität für digitale Archivierung. Erfahren Sie, wie Sie die neuen Anforderungen 2025/2026 erfüllen.">
+  
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-secondary-600 text-white py-16 md:py-24">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+      <div class="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+    </div>
+    
+    <div class="container-wide relative">
+      <div class="max-w-3xl mx-auto text-center">
+        <span class="inline-block px-4 py-1 bg-white/20 rounded-full text-sm font-medium mb-6">
+          Kostenloses Whitepaper • Januar 2026
+        </span>
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+          GoBD-Konformität für digitale Archivierung
+        </h1>
+        <p class="text-xl text-white/90 mb-8">
+          Rechtssichere Dokumentenverwaltung nach BMF-Standards – 
+          speziell für kleine und mittelständische Unternehmen.
+        </p>
+        <a 
+          href="/downloads/DigiDMS-Whitepaper-GoBD-2026.pdf" 
+          download
+          class="inline-flex items-center gap-2 bg-white text-navy font-semibold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors shadow-lg text-lg"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          Jetzt kostenlos herunterladen
+        </a>
+        <p class="text-white/60 text-sm mt-4">PDF • 6 Seiten • Keine Anmeldung erforderlich</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inhalt-Übersicht -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-navy text-center mb-12">
+          Das erwartet Sie im Whitepaper
+        </h2>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-gray-50 rounded-2xl p-6">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-primary-100 flex items-center justify-center flex-shrink-0">
+                <span class="text-primary-600 font-bold">1</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-navy mb-2">GoBD-Anforderungen 2025/2026</h3>
+                <p class="text-gray-600 text-sm">
+                  Neue Aufbewahrungsfristen und die fünf Kernanforderungen der GoBD im Überblick.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 rounded-2xl p-6">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-primary-100 flex items-center justify-center flex-shrink-0">
+                <span class="text-primary-600 font-bold">2</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-navy mb-2">Der Lösungsansatz von DigiDMS</h3>
+                <p class="text-gray-600 text-sm">
+                  Das 5-Säulen-Konzept: Separate Instanz, 4-Augen-Prinzip, Tag-Workflow, Audit Trail, Archive.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 rounded-2xl p-6">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-primary-100 flex items-center justify-center flex-shrink-0">
+                <span class="text-primary-600 font-bold">3</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-navy mb-2">Praktischer Workflow</h3>
+                <p class="text-gray-600 text-sm">
+                  Schritt-für-Schritt-Anleitung am Beispiel einer fehlerhaften Rechnung.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 rounded-2xl p-6">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-primary-100 flex items-center justify-center flex-shrink-0">
+                <span class="text-primary-600 font-bold">4</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-navy mb-2">Technische Konfiguration</h3>
+                <p class="text-gray-600 text-sm">
+                  Audit-Log-Einstellungen, Berechtigungsmodell und maschinenlesbarer Export.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 rounded-2xl p-6">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-primary-100 flex items-center justify-center flex-shrink-0">
+                <span class="text-primary-600 font-bold">5</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-navy mb-2">Compliance & Implementierung</h3>
+                <p class="text-gray-600 text-sm">
+                  GoBD-Checkliste, Implementierungsphasen und wirtschaftlicher Nutzen.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 rounded-2xl p-6">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-primary-100 flex items-center justify-center flex-shrink-0">
+                <span class="text-primary-600 font-bold">6</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-navy mb-2">FAQ & Kontakt</h3>
+                <p class="text-gray-600 text-sm">
+                  Antworten auf häufige Fragen und nächste Schritte für Ihr Unternehmen.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlights -->
+  <section class="section bg-gray-50">
+    <div class="container-wide">
+      <h2 class="text-2xl md:text-3xl font-bold text-navy text-center mb-12">
+        Wichtige Erkenntnisse aus dem Whitepaper
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl p-6 shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-amber-100 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-navy mb-2">Neue Fristen ab 2025</h3>
+          <p class="text-gray-600 text-sm">
+            Buchungsbelege nur noch <strong>8 Jahre</strong> statt 10 Jahre aufbewahren – 
+            aber Vorsicht bei der Umsetzung.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-navy mb-2">Bis zu 1 Mio. € Bußgeld</h3>
+          <p class="text-gray-600 text-sm">
+            Direktes Löschen von Dokumenten durch Mitarbeiter verstößt gegen GoBD 
+            und kann teuer werden.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-navy mb-2">Pragmatische Lösung</h3>
+          <p class="text-gray-600 text-sm">
+            Das DigiDMS 5-Säulen-Konzept: Compliance ohne Verhaltensänderungen 
+            für Ihre Mitarbeiter.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download CTA -->
+  <section class="py-16 bg-navy">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">
+          Jetzt Whitepaper herunterladen
+        </h2>
+        <p class="text-gray-300 mb-8">
+          Keine Anmeldung erforderlich. Sofortiger Download als PDF.
+        </p>
+        <a 
+          href="/downloads/DigiDMS-Whitepaper-GoBD-2026.pdf" 
+          download
+          class="inline-flex items-center gap-2 bg-white text-navy font-semibold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors shadow-lg"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          Whitepaper herunterladen (PDF)
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Beratung CTA -->
+  <CTASection
+    title="Fragen zum Whitepaper?"
+    description="Wir erläutern Ihnen gerne die Details und zeigen, wie DigiDMS in Ihrem Unternehmen funktionieren kann."
+    primaryCta={{
+      text: "Beratungsgespräch vereinbaren",
+      href: "/kontakt"
+    }}
+    secondaryCta={{
+      text: "GoBD-Seite ansehen",
+      href: "/gobd"
+    }}
+    variant="light"
+  />
+</Layout>

@@ -1,0 +1,67 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  primaryCta?: {
+    text: string;
+    href: string;
+  };
+  secondaryCta?: {
+    text: string;
+    href: string;
+  };
+  variant?: 'gradient' | 'light' | 'dark';
+}
+
+const { 
+  title, 
+  description, 
+  primaryCta,
+  secondaryCta,
+  variant = 'gradient'
+} = Astro.props;
+
+const variantStyles = {
+  gradient: 'bg-gradient-to-r from-secondary-600 to-primary-500 text-white',
+  light: 'bg-gray-50 text-navy',
+  dark: 'bg-navy text-white',
+};
+---
+
+<section class={`py-16 md:py-20 ${variantStyles[variant]}`}>
+  <div class="container-wide">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
+        {title}
+      </h2>
+      
+      {description && (
+        <p class={`text-lg mb-8 ${variant === 'light' ? 'text-gray-600' : 'text-white/90'}`}>
+          {description}
+        </p>
+      )}
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        {primaryCta && (
+          <a 
+            href={primaryCta.href} 
+            class={variant === 'gradient' || variant === 'dark' ? 'btn bg-white text-navy hover:bg-gray-100 shadow-lg' : 'btn-primary'}
+          >
+            {primaryCta.text}
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        )}
+        {secondaryCta && (
+          <a 
+            href={secondaryCta.href} 
+            class={variant === 'gradient' || variant === 'dark' ? 'btn border-2 border-white/30 text-white hover:bg-white/10' : 'btn-secondary'}
+          >
+            {secondaryCta.text}
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

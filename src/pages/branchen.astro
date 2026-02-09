@@ -1,0 +1,286 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import CTASection from '../components/CTASection.astro';
+
+const branchen = [
+  {
+    title: 'Handwerk & Bau',
+    icon: '🔧',
+    description: 'Rechnungen, Aufträge, Lieferscheine, Bauakten – alles digital und sofort griffbereit.',
+    features: ['Rechnungseingang automatisieren', 'Projektakten organisieren', 'Auftragsbestätigungen archivieren'],
+    href: '/branchen/handwerk',
+    available: true,
+  },
+  {
+    title: 'Steuerberater & Kanzleien',
+    icon: '⚖️',
+    description: 'Mandantenakten GoBD-konform verwalten, Belege digital empfangen und revisionssicher archivieren.',
+    features: ['Mandantenstruktur mit Tags', 'GoBD-konforme Archivierung', 'Belegübergabe digitalisieren'],
+    href: '/branchen/kanzleien',
+    available: true,
+  },
+  {
+    title: 'Arztpraxen & Medizin',
+    icon: '🩺',
+    description: 'Leasingverträge, Wartungsprotokolle, QM-Nachweise und Abrechnungen – Ihre Praxisverwaltung digital.',
+    features: ['Geräte-Dokumentation & MPBetreibV', 'Verträge mit Fristen-Erinnerung', 'QM-Nachweise strukturiert'],
+    href: '/branchen/arztpraxen',
+    available: true,
+  },
+  {
+    title: 'Rechtsanwälte & Notare',
+    icon: '📜',
+    description: 'Aktenführung digitalisieren, Fristen im Blick behalten und Mandanten effizient betreuen.',
+    features: ['Digitale Aktenführung', 'Volltextsuche in Schriftsätzen', 'Revisionssichere Ablage'],
+    href: '/branchen/rechtsanwaelte',
+    available: true,
+  },
+  {
+    title: 'Hausverwaltung & Immobilien',
+    icon: '🏢',
+    description: 'Betriebskostenabrechnungen schneller erstellen, Prüffristen automatisch überwachen, Dokumente objektbezogen verwalten.',
+    features: ['Objektbezogene Ablage', 'Fristen-Erinnerungen', 'Revisionssichere Archivierung'],
+    href: '/branchen/hausverwaltung',
+    available: true,
+  },
+  {
+    title: 'Ihre Branche',
+    icon: '💼',
+    description: 'Ihre Branche ist nicht dabei? DigiDMS ist flexibel anpassbar – sprechen Sie uns an.',
+    features: ['Individuelle Strukturen', 'Angepasste Workflows', 'Persönliche Beratung'],
+    href: '/kontakt',
+    available: true,
+    isGeneric: true,
+  },
+];
+
+const anwendungsfaelle = [
+  {
+    title: 'Rechnungseingang',
+    icon: '🧾',
+    description: 'Rechnungen per E-Mail oder Scanner empfangen, automatisch erkennen und ablegen.',
+  },
+  {
+    title: 'Vertragsmanagement',
+    icon: '📋',
+    description: 'Verträge zentral speichern, Fristen überwachen und schnell wiederfinden.',
+  },
+  {
+    title: 'Personalakten',
+    icon: '👥',
+    description: 'Arbeitsverträge, Zeugnisse und Schulungsnachweise DSGVO-konform verwalten.',
+  },
+  {
+    title: 'Projektdokumentation',
+    icon: '📁',
+    description: 'Alle Dokumente zu einem Projekt gebündelt – von der Anfrage bis zur Abrechnung.',
+  },
+  {
+    title: 'Posteingang',
+    icon: '📬',
+    description: 'Eingehende Post scannen, automatisch verteilen und digital weiterverarbeiten.',
+  },
+  {
+    title: 'Steuerprüfung',
+    icon: '📊',
+    description: 'Alle Belege sofort griffbereit, vollständiger Audit-Trail für stressfreie Prüfungen.',
+  },
+];
+---
+
+<Layout title="DMS für Ihre Branche: Handwerk, Kanzlei, Arztpraxis | DigiDMS" description="DigiDMS für Ihre Branche: Handwerk, Kanzleien, Arztpraxen und mehr. Branchenspezifische Dokumentenmanagement-Lösungen aus Deutschland.">
+  
+  <PageHeader
+    title="DigiDMS für Ihre Branche"
+    description="Ob Handwerksbetrieb, Kanzlei oder Arztpraxis – DigiDMS passt sich Ihren Anforderungen an. Entdecken Sie, wie andere Unternehmen ihre Dokumentenverwaltung optimiert haben."
+    breadcrumb={{ label: "Branchen", href: "/branchen" }}
+  />
+
+  <!-- Branchen-Grid -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <SectionHeader
+        kicker="Branchen"
+        title="Dokumentenmanagement für Ihren Bereich"
+        subtitle="Jede Branche hat eigene Anforderungen – wir kennen sie."
+      />
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {branchen.map((branche) => (
+          <a 
+            href={branche.href}
+            class={`group block bg-white rounded-2xl p-6 border-2 transition-all hover:shadow-lg ${
+              branche.isGeneric 
+                ? 'border-dashed border-gray-300 hover:border-primary-400' 
+                : 'border-gray-100 hover:border-primary-500'
+            }`}
+          >
+            <div class="flex items-start gap-4">
+              <div class="text-4xl">{branche.icon}</div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2 mb-2">
+                  <h3 class="text-xl font-bold text-navy group-hover:text-primary-600 transition-colors">
+                    {branche.title}
+                  </h3>
+                  {!branche.available && !branche.isGeneric && (
+                    <span class="text-xs bg-primary-100 text-primary-700 px-2 py-0.5 rounded-full font-medium">
+                      Bald
+                    </span>
+                  )}
+                </div>
+                <p class="text-gray-600 text-sm mb-4">{branche.description}</p>
+                
+                {!branche.isGeneric && (
+                  <ul class="space-y-1">
+                    {branche.features.map((feature) => (
+                      <li class="flex items-center gap-2 text-sm text-gray-500">
+                        <svg class="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                
+                <div class="mt-4 flex items-center gap-1 text-primary-600 font-medium text-sm group-hover:gap-2 transition-all">
+                  {branche.isGeneric ? 'Kontakt aufnehmen' : 'Mehr erfahren'}
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Anwendungsfälle -->
+  <section class="section bg-gray-50">
+    <div class="container-wide">
+      <SectionHeader
+        kicker="Anwendungsfälle"
+        title="Typische Einsatzgebiete"
+        subtitle="Unabhängig von der Branche – diese Aufgaben löst DigiDMS für Sie."
+      />
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {anwendungsfaelle.map((fall) => (
+          <div class="bg-white rounded-xl p-6 shadow-sm">
+            <div class="text-3xl mb-3">{fall.icon}</div>
+            <h3 class="text-lg font-bold text-navy mb-2">{fall.title}</h3>
+            <p class="text-gray-600 text-sm">{fall.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- So funktioniert's (kurz) -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <SectionHeader
+        kicker="Einfacher Einstieg"
+        title="In 4 Schritten zum digitalen Archiv"
+        subtitle="Von der ersten Anfrage bis zum produktiven Einsatz – wir begleiten Sie."
+      />
+
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-primary-100 flex items-center justify-center">
+            <span class="text-2xl font-bold text-primary-600">1</span>
+          </div>
+          <h3 class="font-bold text-navy mb-2">Beratung</h3>
+          <p class="text-sm text-gray-600">Wir analysieren Ihre Anforderungen und zeigen Ihnen DigiDMS live.</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-primary-100 flex items-center justify-center">
+            <span class="text-2xl font-bold text-primary-600">2</span>
+          </div>
+          <h3 class="font-bold text-navy mb-2">Einrichtung</h3>
+          <p class="text-sm text-gray-600">Ihre Instanz wird konfiguriert – Benutzer, Struktur, Scanner-Anbindung.</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-primary-100 flex items-center justify-center">
+            <span class="text-2xl font-bold text-primary-600">3</span>
+          </div>
+          <h3 class="font-bold text-navy mb-2">Schulung</h3>
+          <p class="text-sm text-gray-600">Ihr Team lernt DigiDMS kennen – per Video oder persönlich.</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-primary-100 flex items-center justify-center">
+            <span class="text-2xl font-bold text-primary-600">4</span>
+          </div>
+          <h3 class="font-bold text-navy mb-2">Produktivbetrieb</h3>
+          <p class="text-sm text-gray-600">Sie arbeiten digital – wir kümmern uns um Technik und Backups.</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-10">
+        <p class="text-gray-500 mb-4">Typische Zeit bis zum Produktivstart: <strong class="text-navy">1-5 Arbeitstage</strong></p>
+        <a href="/demo" class="btn-secondary">
+          Demo ansehen
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Warum DigiDMS -->
+  <section class="py-16 bg-navy text-white">
+    <div class="container-wide">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Warum Unternehmen DigiDMS wählen</h2>
+        
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6 mt-10">
+          <div class="text-center">
+            <div class="text-4xl mb-2">🇩🇪</div>
+            <h3 class="font-semibold mb-1">Made in Germany</h3>
+            <p class="text-gray-300 text-sm">Server in Deutschland, deutsches Recht</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="text-4xl mb-2">🔓</div>
+            <h3 class="font-semibold mb-1">Open Source</h3>
+            <p class="text-gray-300 text-sm">Kein Vendor Lock-in, volle Datenhoheit</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="text-4xl mb-2">🤝</div>
+            <h3 class="font-semibold mb-1">Persönlicher Support</h3>
+            <p class="text-gray-300 text-sm">Echte Menschen, keine Hotline</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="text-4xl mb-2">💰</div>
+            <h3 class="font-semibold mb-1">Faire Preise</h3>
+            <p class="text-gray-300 text-sm">Ab 150 €/Monat, alles inklusive</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CTASection
+    title="Welche Lösung passt zu Ihnen?"
+    description="Lassen Sie uns gemeinsam herausfinden, wie DigiDMS Ihre Dokumentenverwaltung optimieren kann."
+    primaryCta={{
+      text: "Beratung anfragen",
+      href: "/kontakt"
+    }}
+    secondaryCta={{
+      text: "Demo testen",
+      href: "/demo"
+    }}
+  />
+</Layout>

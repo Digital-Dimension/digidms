@@ -1,0 +1,487 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTASection from '../../components/CTASection.astro';
+import { siteConfig } from '../../config/site';
+
+const painPoints = [
+  {
+    title: 'Akten ohne Ende',
+    icon: '📚',
+    description: 'Jedes Mandat eine neue Akte – Schriftsätze, Verträge, Korrespondenz, Vollmachten. Der Aktenschrank platzt, das Archiv quillt über. Und wenn ein Mandant nach Jahren wiederkommt?',
+  },
+  {
+    title: 'Fristen = Haftungsrisiko',
+    icon: '⚠️',
+    description: 'Eine verpasste Berufungsfrist kann Ihre Existenz kosten. Klageerwiderung, Rechtsmittel, Verjährung – wenn Fristen untergehen, drohen Regress und Reputationsverlust.',
+  },
+  {
+    title: 'Suchen statt arbeiten',
+    icon: '🔍',
+    description: '„Wo ist die Vollmacht von Mandant Schulze?" – Die Suche beginnt im Postfach, geht weiter im Aktenschrank und endet beim Kollegen, der die Akte zuletzt hatte.',
+  },
+  {
+    title: 'Aufbewahrungspflichten',
+    icon: '📅',
+    description: 'Handakten 6 Jahre, Notarakten teils 100 Jahre. Welche Akten können weg, welche müssen bleiben? Und wo sind die Unterlagen von 2018?',
+  },
+];
+
+const solutions = [
+  {
+    title: 'Digitale Mandantenakte',
+    icon: '📁',
+    description: 'Alle Dokumente zu einem Mandat an einem Ort: Schriftsätze, Verträge, Korrespondenz, Vollmachten. Strukturiert nach Rubriken, durchsuchbar bis ins Detail.',
+  },
+  {
+    title: 'Volltextsuche in Sekunden',
+    icon: '🔍',
+    description: 'Finden Sie jeden Schriftsatz, jeden Vertrag, jede Klausel – auch in eingescannten Dokumenten. OCR macht alles durchsuchbar.',
+  },
+  {
+    title: 'Nachvollziehbarkeit für Haftungsfälle',
+    icon: '🛡️',
+    description: 'Wer hat wann was bearbeitet? Lückenlose Protokollierung schützt Sie bei Regressforderungen. Sie können jederzeit nachweisen, wann Dokumente eingegangen oder bearbeitet wurden.',
+  },
+  {
+    title: 'Revisionssichere Archivierung',
+    icon: '🔒',
+    description: 'Dokumente werden unveränderbar gespeichert, alle Zugriffe protokolliert. Erfüllen Sie Ihre berufsrechtlichen Aufbewahrungspflichten ohne Papierchaos.',
+  },
+  {
+    title: 'Zugriff von überall',
+    icon: '💼',
+    description: 'Im Gerichtstermin, beim Mandanten, im Homeoffice: Greifen Sie sicher auf alle Akten zu – per Laptop, Tablet oder Smartphone.',
+  },
+  {
+    title: 'Kein IT-Aufwand',
+    icon: '☁️',
+    description: 'DigiDMS läuft in der Cloud – auf deutschen Servern. Updates, Backups, Sicherheit: Das übernehmen wir. Sie konzentrieren sich auf Ihre Mandate.',
+  },
+];
+
+const features = [
+  {
+    title: 'Mandatsstruktur',
+    description: 'Legen Sie für jedes Mandat eine digitale Akte an. Ordnen Sie Dokumente nach Rubriken: Schriftsätze, Korrespondenz, Verträge, Vollmachten.',
+  },
+  {
+    title: 'OCR-Volltextsuche',
+    description: 'Durchsuchen Sie alle Dokumente nach Begriffen, Namen, Aktenzeichen oder Vertragsklauseln – auch in Scans und PDFs.',
+  },
+  {
+    title: 'Dokumentenklassifizierung',
+    description: 'Das System erkennt automatisch, ob es ein Schriftsatz, Vertrag oder Brief ist – und sortiert entsprechend ein.',
+  },
+  {
+    title: 'E-Mail-Integration',
+    description: 'Mandatskorrespondenz per E-Mail wird automatisch der richtigen Akte zugeordnet. Kein manuelles Einsortieren mehr.',
+  },
+  {
+    title: 'Benutzerrechte',
+    description: 'Partner, Anwälte, Referendare, Sekretariat – jeder sieht nur das, was er sehen darf. Feingranulare Rechtevergabe pro Mandat.',
+  },
+  {
+    title: 'Änderungsprotokoll',
+    description: 'Wer hat wann auf welches Dokument zugegriffen? Lückenlose Dokumentation für berufsrechtliche Anforderungen.',
+  },
+  {
+    title: 'Sichere Freigabe',
+    description: 'Teilen Sie Dokumente sicher mit Mandanten oder Kollegen – per verschlüsseltem Link, ohne E-Mail-Anhänge.',
+  },
+  {
+    title: 'Export & Übergabe',
+    description: 'Bei Mandatsende oder Anwaltswechsel: Komplette Akte als strukturiertes PDF oder ZIP exportieren. Ihre Daten gehören Ihnen.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'Wie schützt DigiDMS bei Haftungsfragen?',
+    answer: 'DigiDMS protokolliert lückenlos, wann welches Dokument eingegangen, bearbeitet oder aufgerufen wurde. Bei Regressforderungen können Sie jederzeit nachweisen, dass Sie fristgerecht gehandelt haben. Dokumente werden unveränderbar gespeichert – das Original bleibt erhalten.',
+  },
+  {
+    question: 'Erfüllt DigiDMS die berufsrechtlichen Aufbewahrungspflichten?',
+    answer: 'DigiDMS unterstützt eine revisionssichere Archivierung: Dokumente werden unveränderbar gespeichert, alle Änderungen und Zugriffe protokolliert. Die konkreten Aufbewahrungsfristen (6 Jahre für Handakten, bei Notaren teils länger) können Sie im System hinterlegen. Die Umsetzung der berufsrechtlichen Anforderungen hängt auch von Ihren internen Prozessen ab – wir beraten Sie gerne.',
+  },
+  {
+    question: 'Kann ich DigiDMS mit meiner Kanzleisoftware verbinden?',
+    answer: 'DigiDMS bietet eine offene REST-API, über die Anbindungen an gängige Kanzleisoftware realisiert werden können. Wir beraten Sie, welche Integration für Ihren Workflow sinnvoll ist.',
+  },
+  {
+    question: 'Wie sicher sind die Mandantendaten?',
+    answer: 'Alle Daten werden ausschließlich auf Servern in deutschen Rechenzentren gespeichert. Die Übertragung erfolgt verschlüsselt, der Zugriff wird protokolliert. Sie bestimmen über Benutzerrechte, wer auf welche Mandate zugreifen darf. Wir sind DSGVO-konform.',
+  },
+  {
+    question: 'Können mehrere Anwälte gleichzeitig an einer Akte arbeiten?',
+    answer: 'Ja, DigiDMS ist mehrbenutzerfähig. Alle berechtigten Mitarbeiter können gleichzeitig auf Akten zugreifen. Das System protokolliert, wer wann welches Dokument aufgerufen oder hinzugefügt hat.',
+  },
+  {
+    question: 'Wie läuft die Einführung in einer laufenden Kanzlei ab?',
+    answer: 'Wir richten Ihre Instanz innerhalb eines Tages ein. Eine kurze Schulung (ca. 1–2 Stunden) macht Ihr Team fit. Sie können sofort mit neuen Mandaten starten und bestehende Akten nach und nach digitalisieren.',
+  },
+  {
+    question: 'Können wir Altakten digitalisieren?',
+    answer: 'Ja. Sie können bestehende Papierakten einscannen und in DigiDMS importieren. Bei größeren Archiven unterstützen wir Sie bei der Organisation der Migration.',
+  },
+  {
+    question: 'Was kostet DigiDMS für eine Kanzlei?',
+    answer: 'Die Kosten hängen von der Anzahl der Nutzer und dem Speicherbedarf ab. Kleine Kanzleien starten ab 150 €/Monat – inklusive Hosting, Backups, Updates und Support. Wir erstellen Ihnen gerne ein individuelles Angebot.',
+  },
+];
+---
+
+<Layout 
+  title="DMS für Rechtsanwälte & Notare – Mandatsakten digital verwalten" 
+  description="Mandatsakten digital führen, Schriftsätze in Sekunden finden, revisionssicher archivieren. DigiDMS: Managed DMS aus Deutschland für Kanzleien."
+>
+  
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-purple-50 via-violet-50/50 to-indigo-50/30">
+    <div class="absolute inset-0 opacity-40">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-purple-200/40 to-transparent rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+      <div class="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-violet-200/40 to-transparent rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+    </div>
+
+    <div class="container-wide relative py-16 md:py-24">
+      <div class="max-w-4xl">
+        
+        <!-- Breadcrumb -->
+        <nav class="flex items-center gap-2 text-sm text-gray-500 mb-6">
+          <a href="/" class="hover:text-primary-600">Start</a>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+          <a href="/loesungen" class="hover:text-primary-600">Lösungen</a>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+          <span class="text-gray-700">Rechtsanwälte & Notare</span>
+        </nav>
+
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-sm border border-purple-200 mb-6">
+          <span class="text-2xl">📜</span>
+          <span class="text-sm font-medium text-gray-700">Für Rechtsanwälte & Notare</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-navy leading-tight mb-6">
+          Mandatsakten digital,<br class="hidden sm:block" />
+          <span class="text-purple-600">Schriftsätze in Sekunden</span>
+        </h1>
+
+        <p class="text-lg md:text-xl text-gray-600 leading-relaxed mb-8 max-w-3xl">
+          DigiDMS bringt Ordnung in Ihre Kanzlei: Mandatsakten zentral verwalten, 
+          Dokumente sofort finden, revisionssicher archivieren. Lückenlose Nachvollziehbarkeit 
+          schützt Sie bei Haftungsfragen. Auf deutschen Servern, ohne IT-Aufwand.
+        </p>
+
+        <!-- Bullets -->
+        <div class="flex flex-wrap gap-3 mb-10">
+          <div class="inline-flex items-center gap-2 text-sm text-gray-700 bg-white px-4 py-2 rounded-full shadow-sm">
+            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Mandatsakten strukturiert führen
+          </div>
+          <div class="inline-flex items-center gap-2 text-sm text-gray-700 bg-white px-4 py-2 rounded-full shadow-sm">
+            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Lückenloser Audit-Trail
+          </div>
+          <div class="inline-flex items-center gap-2 text-sm text-gray-700 bg-white px-4 py-2 rounded-full shadow-sm">
+            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Revisionssichere Archivierung
+          </div>
+          <div class="inline-flex items-center gap-2 text-sm text-gray-700 bg-white px-4 py-2 rounded-full shadow-sm">
+            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            DSGVO-konform, Server in Deutschland
+          </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/contact?branche=rechtsanwalt" class="btn-primary text-base px-8 py-4">
+            Beratungsgespräch vereinbaren
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href="/demo" class="btn-secondary text-base px-8 py-4">
+            Demo ansehen
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <section class="py-6 bg-white border-b border-gray-100">
+    <div class="container-wide">
+      <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10 text-sm">
+        <div class="flex items-center gap-2 text-gray-600">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          Server in Deutschland
+        </div>
+        <div class="flex items-center gap-2 text-gray-600">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          DSGVO-konform
+        </div>
+        <div class="flex items-center gap-2 text-gray-600">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          Revisionssicher
+        </div>
+        <div class="flex items-center gap-2 text-gray-600">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          Basiert auf Open Source
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pain Points -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <span class="text-red-500 font-semibold text-sm uppercase tracking-wider">Das kennen Sie</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">Der Kanzleialltag zwischen Aktenschrank und Postfach</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {painPoints.map((point) => (
+          <div class="flex items-start gap-4 p-6 bg-red-50 rounded-2xl border border-red-100">
+            <span class="text-3xl">{point.icon}</span>
+            <div>
+              <h3 class="font-bold text-navy mb-2">{point.title}</h3>
+              <p class="text-gray-600 text-sm">{point.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Solutions -->
+  <section class="section bg-gray-50">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <span class="text-green-600 font-semibold text-sm uppercase tracking-wider">Die Lösung</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">Digitale Mandatsakten – ohne IT-Projekt</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {solutions.map((solution) => (
+          <div class="flex items-start gap-4 p-6 bg-white rounded-2xl shadow-sm border border-green-100">
+            <span class="text-3xl">{solution.icon}</span>
+            <div>
+              <h3 class="font-bold text-navy mb-2">{solution.title}</h3>
+              <p class="text-gray-600 text-sm">{solution.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <span class="text-primary-600 font-semibold text-sm uppercase tracking-wider">Funktionen</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">Was DigiDMS für Ihre Kanzlei leistet</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {features.map((feature) => (
+          <div class="p-5 bg-gray-50 rounded-xl">
+            <h3 class="font-bold text-navy mb-2">{feature.title}</h3>
+            <p class="text-gray-600 text-sm">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Study -->
+  <section class="py-16 bg-navy text-white">
+    <div class="container-wide">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-10">
+          <span class="text-purple-300 font-semibold text-sm uppercase tracking-wider">Praxisbeispiel</span>
+          <h2 class="text-3xl md:text-4xl font-bold mt-2">Kanzlei Richter & Kollegen</h2>
+          <p class="text-gray-300 mt-2">4 Anwälte · 2 Referendare · 3 Mitarbeiter · Bonn</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Vorher -->
+          <div class="bg-red-900/30 border border-red-500/30 rounded-2xl p-6">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-2xl">😩</span>
+              <h3 class="text-xl font-bold text-red-300">Vorher</h3>
+            </div>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              „Unsere Akten waren über drei Räume verteilt. Wenn ein Kollege die Akte hatte, 
+              musste ich warten oder mir Kopien machen. Vor Gerichtsterminen habe ich oft eine 
+              Stunde gesucht, bis ich alle Schriftsätze zusammen hatte. Das Archiv im Keller 
+              war ein Albtraum – wir haben Akten von vor 20 Jahren, aber wer findet da noch etwas?"
+            </p>
+          </div>
+
+          <!-- Nachher -->
+          <div class="bg-green-900/30 border border-green-500/30 rounded-2xl p-6">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-2xl">😊</span>
+              <h3 class="text-xl font-bold text-green-300">Nachher</h3>
+            </div>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              „Heute hat jeder Anwalt Zugriff auf jede Akte – sofort, von überall. 
+              Vor dem Gerichtstermin suche ich das Aktenzeichen, und alle Schriftsätze 
+              sind da. Selbst die Altakten haben wir nach und nach eingescannt. 
+              Letzte Woche brauchte ein Mandant Unterlagen von 2016 – zwei Minuten später 
+              hatte er die PDF per Mail."
+            </p>
+          </div>
+        </div>
+
+        <!-- Quote -->
+        <div class="mt-8 text-center">
+          <div class="inline-block bg-white/10 rounded-2xl p-6 border border-white/20">
+            <p class="text-lg italic text-gray-200">
+              „Die Einführung lief neben dem Tagesgeschäft. Nach drei Tagen waren wir produktiv. 
+              Seitdem haben wir keinen einzigen Schriftsatz mehr gesucht – wir finden ihn."
+            </p>
+            <p class="mt-3 text-purple-300 font-medium">– RA Dr. Thomas Richter, Partner</p>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="mt-8 grid grid-cols-3 gap-4 text-center">
+          <div>
+            <p class="text-3xl font-bold text-purple-300">8h</p>
+            <p class="text-gray-400 text-sm">Zeitersparnis/Woche</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold text-purple-300">500+</p>
+            <p class="text-gray-400 text-sm">Mandatsakten digital</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold text-purple-300">3 Tage</p>
+            <p class="text-gray-400 text-sm">bis zum Produktivstart</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-gray-50">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12">
+          <span class="text-primary-600 font-semibold text-sm uppercase tracking-wider">FAQ</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">Häufige Fragen von Kanzleien</h2>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq, index) => (
+            <details class="group bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+              <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+                <span class="font-semibold text-navy pr-4">{faq.question}</span>
+                <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="px-5 pb-5 text-gray-600 text-sm">
+                {faq.answer}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4">Bereit für digitale Mandatsakten?</h2>
+        <p class="text-gray-600 mb-8">
+          Lassen Sie uns in einem kurzen Gespräch klären, wie DigiDMS Ihre Kanzlei unterstützen kann.
+        </p>
+
+        <!-- Was passiert -->
+        <div class="bg-gray-50 rounded-2xl p-6 mb-8 text-left">
+          <h3 class="font-bold text-navy mb-4 text-center">Was passiert im Erstgespräch?</h3>
+          <div class="grid sm:grid-cols-2 gap-4 text-sm">
+            <div class="flex items-start gap-3">
+              <span class="text-green-500 font-bold">1.</span>
+              <span class="text-gray-600"><strong class="text-navy">Wir hören zu:</strong> Wie arbeiten Sie heute mit Ihren Mandatsakten?</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-green-500 font-bold">2.</span>
+              <span class="text-gray-600"><strong class="text-navy">Wir zeigen:</strong> Live-Demo von DigiDMS für Anwaltskanzleien</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-green-500 font-bold">3.</span>
+              <span class="text-gray-600"><strong class="text-navy">Wir beraten:</strong> Aktenstruktur, Berechtigungen, Migration</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-green-500 font-bold">4.</span>
+              <span class="text-gray-600"><strong class="text-navy">Kein Druck:</strong> Sie entscheiden in Ruhe</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="/contact?branche=rechtsanwalt" class="btn-primary text-base px-8 py-4">
+            Beratungsgespräch vereinbaren
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href="/demo" class="btn-secondary text-base px-8 py-4">
+            Oder erst die Demo testen
+          </a>
+        </div>
+
+        <!-- Telefon -->
+        <p class="mt-6 text-gray-500 text-sm">
+          Oder rufen Sie uns direkt an: 
+          <a href="tel:+4920237323160" class="text-primary-600 font-medium hover:underline">
+            {siteConfig.company.phoneDisplay}
+          </a> 
+          (Mo–Fr, 9–17 Uhr)
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back to Solutions -->
+  <section class="py-8 bg-gray-50 border-t border-gray-200">
+    <div class="container-wide">
+      <div class="flex items-center justify-center gap-2 text-sm">
+        <a href="/loesungen" class="text-primary-600 hover:text-primary-700 font-medium flex items-center gap-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Alle Branchen-Lösungen ansehen
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

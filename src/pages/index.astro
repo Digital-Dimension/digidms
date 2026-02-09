@@ -1,0 +1,483 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import TrustBadges from '../components/TrustBadges.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import CTASection from '../components/CTASection.astro';
+import { siteConfig } from '../config/site';
+
+// Optimierte Bilder
+import heroBanner from '../assets/images/hero-banner-wide.png';
+---
+
+<Layout title="Dokumentenmanagement aus Deutschland | DigiDMS - Managed DMS" description="Dokumente in Sekunden finden statt stundenlang suchen. DigiDMS: Managed DMS-Hosting auf deutschen Servern. DSGVO-konform, GoBD-fähig. Ab 150€/Monat.">
+  <!-- Hero Section - Fokus auf Zeitersparnis -->
+  <Hero
+    title="Dokumente <span class='gradient-text'>finden</span>, nicht suchen"
+    subtitle="Schluss mit stundenlangem Wühlen in Ordnern. Mit DigiDMS finden Sie jedes Dokument in Sekunden – per Volltextsuche, von überall, auf jedem Gerät."
+    kickerBadges={["Zeitersparnis", "Automatisierung", "Stressfreie Prüfungen"]}
+    primaryCta={{
+      text: "Kostenlos testen",
+      href: "/demo"
+    }}
+    secondaryCta={{
+      text: "Beratungsgespräch",
+      href: "/kontakt"
+    }}
+    bullets={[
+      "Dokumentensuche in Sekunden statt Minuten",
+      "Automatische Texterkennung & Sortierung",
+      "Zugriff von überall – Browser, Tablet, Smartphone"
+    ]}
+    image={heroBanner}
+    imageAlt="DigiDMS - Dokumente schnell finden"
+  />
+
+  <!-- Trust Badges -->
+  <section class="py-8 bg-white border-b border-gray-100">
+    <div class="container-wide">
+      <div class="flex flex-col items-center gap-4">
+        <TrustBadges />
+        
+        <!-- Open Source Badge -->
+        <div class="flex items-center gap-2 text-sm text-gray-500">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>Basiert auf <a href="https://docs.paperless-ngx.com" target="_blank" rel="noopener" class="text-primary-600 hover:underline font-medium">Paperless-NGX</a> – bewährte Open-Source-Technologie</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zeit-Stats - Der Wow-Moment -->
+  <section class="py-16 bg-gradient-to-br from-primary-600 to-secondary-600 text-white">
+    <div class="container-wide">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">So viel Zeit sparen unsere Kunden</h2>
+        <p class="text-white/80 max-w-2xl mx-auto">Messbare Ergebnisse statt leerer Versprechen</p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center border border-white/20">
+          <div class="text-5xl md:text-6xl font-bold mb-2">45→1</div>
+          <div class="text-lg font-medium mb-2">Minuten pro Suche</div>
+          <p class="text-white/70 text-sm">Durchschnittliche Zeit für das Finden eines Dokuments</p>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center border border-white/20">
+          <div class="text-5xl md:text-6xl font-bold mb-2">10+</div>
+          <div class="text-lg font-medium mb-2">Stunden / Monat</div>
+          <p class="text-white/70 text-sm">Gesparte Arbeitszeit durch automatische Verarbeitung</p>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center border border-white/20">
+          <div class="text-5xl md:text-6xl font-bold mb-2">5→2</div>
+          <div class="text-lg font-medium mb-2">Tage → Stunden</div>
+          <p class="text-white/70 text-sm">Vorbereitung für Steuerprüfungen</p>
+        </div>
+      </div>
+      
+      <!-- Quellenangabe + Pricing -->
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-sm">
+        <span class="text-white/60">* Durchschnittswerte basierend auf Kundenfeedback</span>
+        <span class="hidden sm:block text-white/40">|</span>
+        <span class="text-white font-medium">Ab 150 €/Monat · Alles inklusive</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem vs Lösung - Emotional -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="text-red-500 font-semibold text-sm uppercase tracking-wider">Das kennen Sie</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2 mb-6">Der tägliche Dokumenten-Wahnsinn</h2>
+          
+          <div class="space-y-4">
+            <div class="flex items-start gap-4 p-4 bg-red-50 rounded-xl border border-red-100">
+              <span class="text-2xl">😩</span>
+              <div>
+                <h3 class="font-semibold text-navy">"Wo ist die Rechnung von letztem März?"</h3>
+                <p class="text-gray-600 text-sm">30 Minuten später: immer noch am Suchen</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4 p-4 bg-red-50 rounded-xl border border-red-100">
+              <span class="text-2xl">📚</span>
+              <div>
+                <h3 class="font-semibold text-navy">Aktenschränke quellen über</h3>
+                <p class="text-gray-600 text-sm">Kein Platz mehr, aber alles aufbewahren müssen</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4 p-4 bg-red-50 rounded-xl border border-red-100">
+              <span class="text-2xl">😰</span>
+              <div>
+                <h3 class="font-semibold text-navy">Panik vor der Betriebsprüfung</h3>
+                <p class="text-gray-600 text-sm">Tagelange Vorbereitung, schlaflose Nächte</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <span class="text-green-500 font-semibold text-sm uppercase tracking-wider">Mit DigiDMS</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2 mb-6">Endlich Ruhe im Büro</h2>
+          
+          <div class="space-y-4">
+            <div class="flex items-start gap-4 p-4 bg-green-50 rounded-xl border border-green-100">
+              <span class="text-2xl">⚡</span>
+              <div>
+                <h3 class="font-semibold text-navy">Jedes Dokument in Sekunden</h3>
+                <p class="text-gray-600 text-sm">Volltextsuche über alle Inhalte – auch in gescannten PDFs</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4 p-4 bg-green-50 rounded-xl border border-green-100">
+              <span class="text-2xl">☁️</span>
+              <div>
+                <h3 class="font-semibold text-navy">Kein Papier, kein Chaos</h3>
+                <p class="text-gray-600 text-sm">Alles digital, automatisch sortiert und sicher gespeichert</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4 p-4 bg-green-50 rounded-xl border border-green-100">
+              <span class="text-2xl">😌</span>
+              <div>
+                <h3 class="font-semibold text-navy">Prüfung? Kein Problem.</h3>
+                <p class="text-gray-600 text-sm">Alle Belege sofort griffbereit, lückenlos dokumentiert</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- So funktioniert's -->
+  <section class="section bg-gray-50">
+    <div class="container-wide">
+      <SectionHeader
+        kicker="Einfach & automatisch"
+        title="Wie DigiDMS Ihnen Zeit spart"
+        subtitle="Dokumente rein, Arbeit gespart. So einfach ist das."
+      />
+
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="relative">
+          <div class="text-center">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-white shadow-lg flex items-center justify-center text-3xl">
+              📧
+            </div>
+            <div class="absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-primary-300 to-transparent hidden md:block" style="width: calc(100% - 4rem); left: calc(50% + 2rem);"></div>
+            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary-100 text-primary-700 text-sm font-bold mb-2">1</span>
+            <h3 class="font-bold text-navy mb-2">Scannen oder mailen</h3>
+            <p class="text-sm text-gray-600">Dokument scannen, fotografieren oder per E-Mail weiterleiten – fertig.</p>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="text-center">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-white shadow-lg flex items-center justify-center text-3xl">
+              🤖
+            </div>
+            <div class="absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-primary-300 to-transparent hidden md:block" style="width: calc(100% - 4rem); left: calc(50% + 2rem);"></div>
+            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary-100 text-primary-700 text-sm font-bold mb-2">2</span>
+            <h3 class="font-bold text-navy mb-2">Automatisch erkannt</h3>
+            <p class="text-sm text-gray-600">OCR liest den Text, KI erkennt den Dokumenttyp und sortiert ein.</p>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="text-center">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-white shadow-lg flex items-center justify-center text-3xl">
+              🔍
+            </div>
+            <div class="absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-primary-300 to-transparent hidden md:block" style="width: calc(100% - 4rem); left: calc(50% + 2rem);"></div>
+            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary-100 text-primary-700 text-sm font-bold mb-2">3</span>
+            <h3 class="font-bold text-navy mb-2">Sofort durchsuchbar</h3>
+            <p class="text-sm text-gray-600">Volltextsuche findet jeden Begriff – in jedem Dokument.</p>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-white shadow-lg flex items-center justify-center text-3xl">
+            📱
+          </div>
+          <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary-100 text-primary-700 text-sm font-bold mb-2">4</span>
+          <h3 class="font-bold text-navy mb-2">Von überall zugreifen</h3>
+          <p class="text-sm text-gray-600">Im Büro, unterwegs, im Homeoffice – Ihre Dokumente sind immer dabei.</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="/demo" class="btn-primary">
+          Jetzt selbst ausprobieren
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Anwendungsfälle - Konkret -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <SectionHeader
+        kicker="Praxisbeispiele"
+        title="So nutzen andere DigiDMS"
+        subtitle="Echte Szenarien, echte Zeitersparnis"
+      />
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-gray-50 rounded-2xl p-6 hover:shadow-lg transition-shadow">
+          <div class="text-3xl mb-4">🧾</div>
+          <h3 class="font-bold text-navy mb-2">Rechnungseingang</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Rechnung per E-Mail → automatisch erkannt → Betrag, Datum, Lieferant extrahiert → abgelegt.
+          </p>
+          <div class="flex items-center gap-2 text-green-600 text-sm font-medium">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            5 Minuten gespart pro Rechnung
+          </div>
+        </div>
+
+        <div class="bg-gray-50 rounded-2xl p-6 hover:shadow-lg transition-shadow">
+          <div class="text-3xl mb-4">📋</div>
+          <h3 class="font-bold text-navy mb-2">Vertragsmanagement</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Alle Verträge an einem Ort. Suche nach Kündigungsfristen, Laufzeiten oder Vertragspartnern.
+          </p>
+          <div class="flex items-center gap-2 text-green-600 text-sm font-medium">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Keine vergessenen Fristen mehr
+          </div>
+        </div>
+
+        <div class="bg-gray-50 rounded-2xl p-6 hover:shadow-lg transition-shadow">
+          <div class="text-3xl mb-4">📊</div>
+          <h3 class="font-bold text-navy mb-2">Steuerprüfung</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Prüfer fragt nach Beleg? In Sekunden gefunden. Vollständiges Audit-Trail inklusive.
+          </p>
+          <div class="flex items-center gap-2 text-green-600 text-sm font-medium">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Stressfrei durch jede Prüfung
+          </div>
+        </div>
+
+        <div class="bg-gray-50 rounded-2xl p-6 hover:shadow-lg transition-shadow">
+          <div class="text-3xl mb-4">🏗️</div>
+          <h3 class="font-bold text-navy mb-2">Projektdokumentation</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Baupläne, Genehmigungen, Protokolle – alles zum Projekt sofort verfügbar.
+          </p>
+          <div class="flex items-center gap-2 text-green-600 text-sm font-medium">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Immer den Überblick behalten
+          </div>
+        </div>
+
+        <div class="bg-gray-50 rounded-2xl p-6 hover:shadow-lg transition-shadow">
+          <div class="text-3xl mb-4">👥</div>
+          <h3 class="font-bold text-navy mb-2">Personalakten</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Arbeitsverträge, Zeugnisse, Schulungen – DSGVO-konform und übersichtlich verwaltet.
+          </p>
+          <div class="flex items-center gap-2 text-green-600 text-sm font-medium">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Rollenbasierte Zugriffsrechte
+          </div>
+        </div>
+
+        <div class="bg-gray-50 rounded-2xl p-6 hover:shadow-lg transition-shadow">
+          <div class="text-3xl mb-4">📬</div>
+          <h3 class="font-bold text-navy mb-2">Posteingang</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Tägliche Post scannen, automatisch verteilen und archivieren. Kein Papierstapel mehr.
+          </p>
+          <div class="flex items-center gap-2 text-green-600 text-sm font-medium">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Digitaler Posteingang in Minuten
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sicherheit - Kompakt -->
+  <section class="py-12 bg-gray-50 border-y border-gray-200">
+    <div class="container-wide">
+      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <span class="font-medium text-navy">Server in Deutschland</span>
+        </div>
+        
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <span class="font-medium text-navy">DSGVO-konform</span>
+        </div>
+        
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <span class="font-medium text-navy">GoBD-fähig</span>
+        </div>
+        
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <span class="font-medium text-navy">Tägliche Backups</span>
+        </div>
+        
+        <a href="/sicherheit" class="text-primary-600 hover:text-primary-700 font-medium flex items-center gap-1">
+          Mehr erfahren
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Persönliche Beratung -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <div class="bg-gradient-to-br from-primary-600 to-secondary-600 rounded-3xl overflow-hidden">
+        <div class="grid lg:grid-cols-2 gap-8 items-center">
+          <div class="p-8 md:p-12 text-white">
+            <span class="inline-block px-3 py-1 bg-white/20 rounded-full text-sm font-medium mb-4">
+              Kostenlos & unverbindlich
+            </span>
+            <h2 class="text-2xl md:text-3xl font-bold mb-4">
+              30-Minuten-Analyse Ihrer Dokumentenprozesse
+            </h2>
+            <p class="text-white/90 mb-6">
+              Keine Verkaufsveranstaltung – echte Beratung. Wir schauen gemeinsam auf Ihre aktuelle Situation und zeigen konkrete Verbesserungsmöglichkeiten.
+            </p>
+            <ul class="space-y-2 mb-8 text-white/90">
+              <li class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-green-300 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                Analyse Ihrer aktuellen Abläufe
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-green-300 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                Identifikation der größten Zeitfresser
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-green-300 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                Konkrete Empfehlungen – auch ohne DigiDMS
+              </li>
+            </ul>
+            <a 
+              href="https://outlook.office365.com/book/DigiDMSBeratung@intragen.de/" 
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center gap-2 bg-white text-navy font-semibold px-6 py-3 rounded-xl hover:bg-gray-100 transition-colors shadow-lg"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              Termin mit Henning Scholand buchen
+            </a>
+          </div>
+          <div class="hidden lg:block p-8">
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center text-3xl">
+                  👨‍💼
+                </div>
+                <div>
+                  <p class="text-white font-bold text-lg">Henning Scholand</p>
+                  <p class="text-white/70">Geschäftsführer & DMS-Experte</p>
+                </div>
+              </div>
+              <blockquote class="text-white/80 italic border-l-2 border-white/30 pl-4">
+                "In 30 Minuten finden wir heraus, ob DigiDMS zu Ihnen passt – und Sie bekommen Tipps, die Sie sofort umsetzen können."
+              </blockquote>
+              <div class="mt-6 flex items-center gap-4 text-sm text-white/60">
+                <span>📍 Video-Call</span>
+                <span>⏱ 30 Min</span>
+                <span>💰 Kostenlos</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zielgruppen -->
+  <section class="section bg-gray-50">
+    <div class="container-wide">
+      <SectionHeader
+        kicker="Für wen ist DigiDMS"
+        title="Die Lösung für Ihren Bedarf"
+        subtitle="DigiDMS eignet sich für Unternehmen jeder Größe – vom Einzelunternehmer bis zum Mittelstand."
+      />
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {siteConfig.targetGroups.map((group) => (
+          <div class="card">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-secondary-500/10 to-primary-500/10 flex items-center justify-center text-2xl mb-4">
+              {group.icon === 'Scale' ? '⚖️' : group.icon === 'Wrench' ? '🔧' : '📝'}
+            </div>
+            <h3 class="text-xl font-bold text-navy mb-2">{group.title}</h3>
+            <p class="text-gray-600">{group.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <CTASection
+    title="Bereit, Zeit zu sparen?"
+    description="Testen Sie DigiDMS kostenlos und unverbindlich. In 5 Minuten startklar."
+    primaryCta={{
+      text: "Kostenlos testen",
+      href: "/demo"
+    }}
+    secondaryCta={{
+      text: "Beratungsgespräch",
+      href: "/kontakt"
+    }}
+  />
+</Layout>

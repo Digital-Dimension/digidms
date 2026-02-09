@@ -1,0 +1,321 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import CTASection from '../components/CTASection.astro';
+---
+
+<Layout title="So funktioniert DigiDMS" description="Modernes Dokumentenmanagement für Ihr Unternehmen: Erfassung, Verarbeitung, Archivierung und Zugriff – automatisiert und sicher.">
+  
+  <PageHeader
+    title="So funktioniert DigiDMS"
+    description="DigiDMS ist Ihre professionelle Lösung für digitale Dokumentenarchivierung. Das System übernimmt automatisch die Verarbeitung, Klassifizierung und sichere Speicherung all Ihrer Geschäftsdokumente."
+    breadcrumb={{ label: "So funktioniert's", href: "/about" }}
+  />
+
+  <!-- Workflow-Diagramm -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <SectionHeader
+        title="Der Workflow im Überblick"
+        subtitle="Von der Erfassung bis zum Zugriff – vollautomatisch"
+      />
+
+      <!-- Bild-Highlight -->
+      <div class="mb-12 max-w-4xl mx-auto">
+        <div class="rounded-2xl overflow-hidden shadow-xl">
+          <img 
+            src="/images/document-scan.png" 
+            alt="Scanner verarbeitet Dokumente für DigiDMS"
+            class="w-full h-auto"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-6 lg:gap-8">
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center">
+            <span class="text-4xl">📧</span>
+          </div>
+          <h3 class="text-lg font-bold text-navy mb-2">Erfassung</h3>
+          <p class="text-gray-600 text-sm">Scanner, E-Mail, Upload</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-purple-100 to-purple-50 flex items-center justify-center">
+            <span class="text-4xl">🤖</span>
+          </div>
+          <h3 class="text-lg font-bold text-navy mb-2">Verarbeitung</h3>
+          <p class="text-gray-600 text-sm">OCR, Tags, Erkennung</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center">
+            <span class="text-4xl">💾</span>
+          </div>
+          <h3 class="text-lg font-bold text-navy mb-2">Archivierung</h3>
+          <p class="text-gray-600 text-sm">Sicher & verschlüsselt</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-orange-100 to-orange-50 flex items-center justify-center">
+            <span class="text-4xl">🔍</span>
+          </div>
+          <h3 class="text-lg font-bold text-navy mb-2">Zugriff</h3>
+          <p class="text-gray-600 text-sm">Suche & Download</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detaillierte Beschreibungen -->
+  <section class="section bg-gray-50">
+    <div class="container-wide">
+      <div class="grid lg:grid-cols-2 gap-8">
+        
+        <!-- Intelligente Dokumentenverarbeitung -->
+        <div class="card">
+          <h3 class="text-xl font-bold text-navy mb-4 flex items-center gap-3">
+            <span class="w-10 h-10 rounded-lg bg-primary-100 flex items-center justify-center text-xl">🔍</span>
+            Intelligente Dokumentenverarbeitung
+          </h3>
+          
+          <div class="space-y-4">
+            <div>
+              <h4 class="font-semibold text-navy mb-2">Automatische Texterkennung und Suche</h4>
+              <ul class="space-y-2 text-gray-600 text-sm">
+                <li class="flex items-start gap-2">
+                  <svg class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span>OCR-Technologie erkennt Text in gescannten Dokumenten automatisch</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <svg class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span>Blitzschnelle Volltextsuche über alle archivierten Inhalte</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <svg class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span>Automatische PDF/A-Konvertierung für rechtssichere Langzeitarchivierung</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <svg class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span>Barcode- und QR-Code-Erkennung für automatisierte Workflows</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flexible Organisation -->
+        <div class="card">
+          <h3 class="text-xl font-bold text-navy mb-4 flex items-center gap-3">
+            <span class="w-10 h-10 rounded-lg bg-secondary-100 flex items-center justify-center text-xl">🏷️</span>
+            Flexible Organisation Ihrer Dokumente
+          </h3>
+          
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Unbegrenzte Verschlagwortung mit Tags für schnelles Wiederfinden</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Automatische Zuordnung zu Geschäftspartnern und Kategorien</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Dokumenttypen wie Rechnungen, Verträge, Lieferscheine individuell definierbar</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Benutzerdefinierte Metadaten nach Ihren Anforderungen</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Einfacher Import -->
+        <div class="card">
+          <h3 class="text-xl font-bold text-navy mb-4 flex items-center gap-3">
+            <span class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-xl">📥</span>
+            Einfacher Dokumentenimport
+          </h3>
+          
+          <p class="text-gray-600 mb-4">Dokumente gelangen auf verschiedenen Wegen ins System:</p>
+          
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Direkte Anbindung von Netzwerk-Scannern über WebDAV, SFTP oder SMB</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Automatischer Import aus E-Mail-Postfächern inklusive Anhänge</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Überwachte Ordner für automatische Verarbeitung</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Komfortable Uploads direkt über die Weboberfläche</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Zugriff überall -->
+        <div class="card">
+          <h3 class="text-xl font-bold text-navy mb-4 flex items-center gap-3">
+            <span class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center text-xl">🌐</span>
+            Zugriff überall und jederzeit
+          </h3>
+          
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Browserbasierte Oberfläche ohne lokale Softwareinstallation</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Responsive Design für Desktop, Tablet und Smartphone</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Native Apps für iOS und Android verfügbar</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Sichere Verbindung über verschlüsselte HTTPS-Verbindung</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Revisionssichere Archivierung -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-10">
+          <span class="inline-block text-sm font-semibold text-primary-600 uppercase tracking-wider mb-2">Compliance</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4">Revisionssichere Archivierung</h2>
+          <p class="text-lg text-gray-600">DigiDMS erfüllt die Anforderungen für rechtskonforme digitale Archivierung.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="p-4 bg-green-50 rounded-xl border border-green-100">
+            <div class="flex items-center gap-3">
+              <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="font-medium text-navy">Unveränderbare Speicherung im PDF/A-Format</span>
+            </div>
+          </div>
+          <div class="p-4 bg-green-50 rounded-xl border border-green-100">
+            <div class="flex items-center gap-3">
+              <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="font-medium text-navy">Vollständiges Protokoll aller Zugriffe</span>
+            </div>
+          </div>
+          <div class="p-4 bg-green-50 rounded-xl border border-green-100">
+            <div class="flex items-center gap-3">
+              <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="font-medium text-navy">Zeitstempel bei Dokumentenerfassung</span>
+            </div>
+          </div>
+          <div class="p-4 bg-green-50 rounded-xl border border-green-100">
+            <div class="flex items-center gap-3">
+              <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="font-medium text-navy">Nachvollziehbare Versionsverwaltung</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-8">
+          <a href="/gobd" class="btn-secondary">
+            Mehr zur GoBD-Konformität
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technologie -->
+  <section class="section bg-navy text-white">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Die Technologie dahinter</h2>
+        <p class="text-lg text-gray-300 mb-6">
+          DigiDMS basiert auf <strong class="text-white">Paperless-NGX</strong>, einem etablierten Open-Source-Dokumentenmanagementsystem.
+        </p>
+        <p class="text-gray-300">
+          Wir haben diese bewährte Lösung für den professionellen Einsatz optimiert, in deutschen Rechenzentren gehostet und um umfassenden Service erweitert. So erhalten Sie ein ausgereiftes System ohne Entwicklungsrisiken.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a href="https://docs.paperless-ngx.com" target="_blank" rel="noopener" class="btn border-2 border-white/30 text-white hover:bg-white/10">
+            Paperless-NGX Dokumentation
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CTASection
+    title="Bereit für die Digitalisierung?"
+    description="Testen Sie DigiDMS kostenlos oder lassen Sie sich persönlich beraten."
+    primaryCta={{
+      text: "Beratung anfragen",
+      href: "/contact"
+    }}
+    secondaryCta={{
+      text: "Demo testen",
+      href: "/demo"
+    }}
+    variant="light"
+  />
+</Layout>

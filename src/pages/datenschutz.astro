@@ -1,0 +1,310 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { siteConfig } from '../config/site';
+---
+
+<Layout title="Datenschutzerklärung - DigiDMS" description="Datenschutzerklärung der Digital Dimension IT GmbH für die Website digidms.de">
+  
+  <PageHeader
+    title="Datenschutzerklärung"
+    description="Informationen zum Umgang mit Ihren personenbezogenen Daten"
+    breadcrumb={{ label: "Datenschutz", href: "/datenschutz" }}
+  />
+
+  <section class="section bg-white">
+    <div class="container-narrow">
+      <div class="prose prose-lg max-w-none">
+        
+        <!-- Einleitung -->
+        <div class="bg-gray-50 rounded-2xl p-6 md:p-8 mb-10">
+          <p class="text-gray-600 mb-0">
+            Mit dieser Datenschutzerklärung informieren wir Sie über die Verarbeitung personenbezogener Daten 
+            bei der Nutzung dieser Website. Verantwortlich für die Datenverarbeitung ist die 
+            <strong>{siteConfig.company.name}</strong>.
+          </p>
+        </div>
+
+        <!-- Verantwortlicher -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-bold text-navy mb-4 flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center text-primary-600 text-sm font-bold">1</span>
+            Verantwortlicher
+          </h2>
+          <div class="bg-gray-50 rounded-xl p-6">
+            <address class="not-italic text-gray-700">
+              <strong class="text-navy">{siteConfig.company.name}</strong><br />
+              {siteConfig.company.street}<br />
+              {siteConfig.company.city}<br /><br />
+              E-Mail: <a href={`mailto:${siteConfig.company.email}`} class="text-primary-600 hover:underline">{siteConfig.company.email}</a><br />
+              Telefon: <a href={`tel:${siteConfig.company.phone.replace(/\s/g, '')}`} class="text-primary-600 hover:underline">{siteConfig.company.phoneDisplay}</a>
+            </address>
+          </div>
+        </div>
+
+        <!-- Hosting -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-bold text-navy mb-4 flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center text-primary-600 text-sm font-bold">2</span>
+            Hosting und Content Delivery
+          </h2>
+          
+          <h3 class="text-lg font-semibold text-navy mt-6 mb-3">Webhosting</h3>
+          <p class="text-gray-700 mb-4">
+            Diese Website wird bei der <strong>Hetzner Online GmbH</strong> (Industriestr. 25, 91710 Gunzenhausen, Deutschland) 
+            gehostet. Hetzner verarbeitet dabei technisch notwendige Verbindungsdaten (IP-Adresse, Zeitpunkt des Zugriffs) 
+            zur Bereitstellung der Website.
+          </p>
+          <p class="text-gray-700 mb-4">
+            <strong>Wir speichern keine Server-Accesslogs</strong>, sodass Ihre IP-Adresse nicht dauerhaft protokolliert wird.
+          </p>
+          <p class="text-gray-700 mb-4">
+            <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Bereitstellung der Website).
+          </p>
+
+          <h3 class="text-lg font-semibold text-navy mt-6 mb-3">Content Delivery Network (CDN) und DNS</h3>
+          <p class="text-gray-700 mb-4">
+            Wir nutzen <strong>Cloudflare</strong> (Cloudflare Inc., 101 Townsend St, San Francisco, CA 94107, USA) 
+            für DNS-Dienste und zur Absicherung unserer Website. Cloudflare kann dabei technische Daten 
+            (IP-Adresse, Browsertyp) verarbeiten, um Angriffe abzuwehren und die Auslieferung zu optimieren.
+          </p>
+          <p class="text-gray-700 mb-4">
+            Cloudflare ist unter dem EU-US Data Privacy Framework zertifiziert. Weitere Informationen: 
+            <a href="https://www.cloudflare.com/de-de/privacypolicy/" target="_blank" rel="noopener" class="text-primary-600 hover:underline">
+              Cloudflare Datenschutzerklärung
+            </a>
+          </p>
+
+          <h3 class="text-lg font-semibold text-navy mt-6 mb-3">SSL-Verschlüsselung</h3>
+          <p class="text-gray-700">
+            Diese Website nutzt aus Sicherheitsgründen eine SSL/TLS-Verschlüsselung. Das Zertifikat wird von 
+            <strong>Let's Encrypt</strong> bereitgestellt. Verschlüsselte Verbindungen erkennen Sie an dem 
+            Schloss-Symbol in der Adresszeile Ihres Browsers.
+          </p>
+        </div>
+
+        <!-- Cookies -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-bold text-navy mb-4 flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center text-primary-600 text-sm font-bold">3</span>
+            Cookies
+          </h2>
+          <div class="bg-green-50 border border-green-200 rounded-xl p-6 mb-4">
+            <div class="flex gap-3">
+              <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <p class="text-green-800 mb-0">
+                <strong>Diese Website ist cookiefrei.</strong> Wir setzen keine Cookies ein – weder für Tracking 
+                noch für Analysezwecke. Es ist daher kein Cookie-Banner erforderlich.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Webanalyse mit Matomo -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-bold text-navy mb-4 flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center text-primary-600 text-sm font-bold">4</span>
+            Webanalyse
+          </h2>
+
+          <h3 class="text-lg font-semibold text-navy mt-6 mb-3">Matomo (selbst gehostet)</h3>
+          <p class="text-gray-700 mb-4">
+            Zur Verbesserung unseres Webangebots nutzen wir die Open-Source-Software <strong>Matomo</strong>.
+            Die Software wird ausschließlich auf unseren eigenen Servern in Deutschland betrieben – Ihre Daten
+            verlassen zu keinem Zeitpunkt unsere Infrastruktur und werden <strong>nicht an Dritte weitergegeben</strong>.
+          </p>
+
+          <div class="bg-green-50 border border-green-200 rounded-xl p-6 mb-4">
+            <div class="flex gap-3">
+              <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <p class="text-green-800 mb-0">
+                <strong>Vollständig cookiefrei:</strong> Matomo ist so konfiguriert, dass keine Cookies auf
+                Ihrem Gerät gesetzt werden. Ein Cookie-Banner ist daher nicht erforderlich.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl p-6 mb-4">
+            <h4 class="font-semibold text-navy mb-3">Datenschutzmaßnahmen:</h4>
+            <ul class="text-gray-700 space-y-2 mb-0">
+              <li class="flex items-start gap-2">
+                <span class="text-primary-600">•</span>
+                <span><strong>Keine Cookies:</strong> Die Analyse erfolgt vollständig ohne Cookies</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-primary-600">•</span>
+                <span><strong>IP-Anonymisierung:</strong> Ihre IP-Adresse wird gekürzt, sodass kein Personenbezug hergestellt werden kann</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-primary-600">•</span>
+                <span><strong>Selbst gehostet:</strong> Alle Daten verbleiben auf unseren eigenen Servern in Deutschland</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-primary-600">•</span>
+                <span><strong>Keine Weitergabe:</strong> Es erfolgt keinerlei Übermittlung an Dritte</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-primary-600">•</span>
+                <span><strong>Kein Profiling:</strong> Es werden keine individuellen Nutzerprofile erstellt</span>
+              </li>
+            </ul>
+          </div>
+
+          <p class="text-gray-700 mb-2">
+            <strong>Zweck:</strong> Statistische Auswertung der Websitenutzung zur Verbesserung unseres Angebots
+            (z.&nbsp;B. meistbesuchte Seiten, Herkunftsland der Besucher).
+          </p>
+          <p class="text-gray-700">
+            <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der
+            bedarfsgerechten Gestaltung unserer Website).
+          </p>
+        </div>
+
+        <!-- Kontaktaufnahme -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-bold text-navy mb-4 flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center text-primary-600 text-sm font-bold">5</span>
+            Kontaktaufnahme
+          </h2>
+          <p class="text-gray-700 mb-4">
+            Wenn Sie uns per E-Mail oder Telefon kontaktieren, werden Ihre Angaben (Name, E-Mail-Adresse, 
+            Inhalt der Anfrage) zur Bearbeitung Ihrer Anfrage verarbeitet und gespeichert.
+          </p>
+          
+          <div class="bg-gray-50 rounded-xl p-6 mb-4">
+            <h4 class="font-semibold text-navy mb-2">Verarbeitung Ihrer Kontaktdaten:</h4>
+            <ul class="text-gray-700 space-y-2 mb-0">
+              <li class="flex items-start gap-2">
+                <span class="text-primary-600">•</span>
+                <span><strong>Speicherort:</strong> Microsoft 365 (E-Mail-Server in der EU)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-primary-600">•</span>
+                <span><strong>Speicherdauer:</strong> Nur so lange wie für die Bearbeitung erforderlich, anschließend Löschung gemäß gesetzlicher Aufbewahrungsfristen</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-primary-600">•</span>
+                <span><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) oder Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Externe Dienste -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-bold text-navy mb-4 flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center text-primary-600 text-sm font-bold">6</span>
+            Externe Dienste und Inhalte
+          </h2>
+          <p class="text-gray-700 mb-4">
+            Diese Website ist als statische Seite konzipiert und lädt <strong>keine externen Ressourcen</strong> 
+            von Drittanbietern nach:
+          </p>
+          <ul class="text-gray-700 space-y-2 mb-4">
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span><strong>Schriftarten:</strong> Lokal eingebunden (keine Google Fonts)</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span><strong>Keine eingebetteten Videos</strong> (YouTube, Vimeo)</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span><strong>Keine Kartendienste</strong> (Google Maps)</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span><strong>Keine Social-Media-Plugins</strong> mit Tracking-Funktion</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Ihre Rechte -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-bold text-navy mb-4 flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center text-primary-600 text-sm font-bold">7</span>
+            Ihre Rechte
+          </h2>
+          <p class="text-gray-700 mb-4">
+            Nach der DSGVO stehen Ihnen folgende Rechte zu:
+          </p>
+          
+          <div class="grid sm:grid-cols-2 gap-4 mb-6">
+            <div class="bg-gray-50 rounded-xl p-4">
+              <h4 class="font-semibold text-navy mb-1">Auskunftsrecht</h4>
+              <p class="text-sm text-gray-600 mb-0">Art. 15 DSGVO – Auskunft über Ihre gespeicherten Daten</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4">
+              <h4 class="font-semibold text-navy mb-1">Berichtigungsrecht</h4>
+              <p class="text-sm text-gray-600 mb-0">Art. 16 DSGVO – Korrektur unrichtiger Daten</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4">
+              <h4 class="font-semibold text-navy mb-1">Löschungsrecht</h4>
+              <p class="text-sm text-gray-600 mb-0">Art. 17 DSGVO – Löschung Ihrer Daten</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4">
+              <h4 class="font-semibold text-navy mb-1">Einschränkungsrecht</h4>
+              <p class="text-sm text-gray-600 mb-0">Art. 18 DSGVO – Einschränkung der Verarbeitung</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4">
+              <h4 class="font-semibold text-navy mb-1">Widerspruchsrecht</h4>
+              <p class="text-sm text-gray-600 mb-0">Art. 21 DSGVO – Widerspruch gegen Verarbeitung</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4">
+              <h4 class="font-semibold text-navy mb-1">Datenübertragbarkeit</h4>
+              <p class="text-sm text-gray-600 mb-0">Art. 20 DSGVO – Übertragung Ihrer Daten</p>
+            </div>
+          </div>
+
+          <p class="text-gray-700">
+            Zur Ausübung Ihrer Rechte wenden Sie sich bitte an: 
+            <a href={`mailto:${siteConfig.company.email}`} class="text-primary-600 hover:underline">{siteConfig.company.email}</a>
+          </p>
+        </div>
+
+        <!-- Beschwerderecht -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-bold text-navy mb-4 flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center text-primary-600 text-sm font-bold">8</span>
+            Beschwerderecht
+          </h2>
+          <p class="text-gray-700 mb-4">
+            Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren, 
+            wenn Sie der Ansicht sind, dass die Verarbeitung Ihrer Daten gegen die DSGVO verstößt.
+          </p>
+          <div class="bg-gray-50 rounded-xl p-6">
+            <p class="text-gray-700 mb-0">
+              <strong>Zuständige Aufsichtsbehörde:</strong><br />
+              Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen<br />
+              Kavalleriestraße 2-4, 40213 Düsseldorf<br />
+              <a href="https://www.ldi.nrw.de" target="_blank" rel="noopener" class="text-primary-600 hover:underline">www.ldi.nrw.de</a>
+            </p>
+          </div>
+        </div>
+
+        <!-- Aktualität -->
+        <div class="bg-gray-50 rounded-2xl p-6 md:p-8">
+          <h2 class="text-lg font-bold text-navy mb-2">Aktualität dieser Datenschutzerklärung</h2>
+          <p class="text-gray-600 mb-0">
+            Stand: Februar 2026. Wir behalten uns vor, diese Datenschutzerklärung bei Bedarf anzupassen, 
+            um sie an geänderte rechtliche Anforderungen oder Änderungen unserer Website anzupassen.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</Layout>

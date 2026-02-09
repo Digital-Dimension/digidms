@@ -1,0 +1,240 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../config/site';
+---
+
+<Layout 
+  title="Kostenlose 30-Minuten-Analyse Ihrer Dokumentenprozesse | DigiDMS" 
+  description="Persönliche Analyse mit Henning Scholand: Wir identifizieren Zeitfresser in Ihrer Dokumentenverwaltung und zeigen konkrete Lösungen. Kostenlos & unverbindlich."
+>
+  
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-primary-50 via-secondary-50/50 to-white py-16 md:py-24">
+    <div class="container-wide">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        
+        <!-- Text -->
+        <div>
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-sm border border-primary-200 mb-6">
+            <span class="text-2xl">🎯</span>
+            <span class="text-sm font-medium text-gray-700">Premium-Service</span>
+          </span>
+          
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-navy leading-tight mb-6">
+            Persönliche <span class="gradient-text">30‑Minuten‑Analyse</span><br />
+            Ihrer Dokumentenprozesse
+          </h1>
+          
+          <p class="text-lg text-gray-600 leading-relaxed mb-8">
+            Keine Verkaufsveranstaltung, sondern echte Beratung: 
+            Wir schauen gemeinsam auf Ihre aktuelle Situation und identifizieren 
+            konkrete Ansatzpunkte für mehr Effizienz.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a 
+              href="https://outlook.office365.com/book/DigiDMSBeratung@intragen.de/" 
+              target="_blank"
+              rel="noopener"
+              class="btn-primary text-base px-8 py-4 inline-flex items-center justify-center gap-2"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              Jetzt Termin buchen
+            </a>
+            <a href="/kostenrechner" class="btn-secondary text-base px-8 py-4 inline-flex items-center justify-center gap-2">
+              🧮 Erst Kosten berechnen
+            </a>
+          </div>
+
+          <p class="text-sm text-gray-500 mt-4">
+            ✓ Kostenlos  ✓ Unverbindlich  ✓ Per Video-Call
+          </p>
+        </div>
+
+        <!-- Berater-Karte -->
+        <div class="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+          <div class="flex items-center gap-6 mb-6">
+            <div class="w-24 h-24 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-full flex items-center justify-center text-4xl">
+              👨‍💼
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-navy">Henning Scholand</h2>
+              <p class="text-gray-600">Geschäftsführer & DMS-Experte</p>
+              <p class="text-sm text-gray-500 mt-1">Digital Dimension IT GmbH</p>
+            </div>
+          </div>
+
+          <blockquote class="text-gray-600 italic border-l-4 border-primary-300 pl-4 mb-6">
+            "In 30 Minuten finden wir heraus, ob DigiDMS zu Ihnen passt – 
+            und Sie bekommen konkrete Tipps, die Sie sofort umsetzen können. 
+            Auch wenn Sie sich am Ende gegen uns entscheiden."
+          </blockquote>
+
+          <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="font-semibold text-navy mb-3">Das erwartet Sie:</h3>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Analyse Ihrer aktuellen Abläufe</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Identifikation der größten Zeitfresser</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Konkrete Empfehlungen (auch ohne DigiDMS)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Live-Demo passend zu Ihrer Branche</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Ehrliche Einschätzung, ob DigiDMS passt</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ablauf -->
+  <section class="section bg-gray-50">
+    <div class="container-wide">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-navy text-center mb-12">
+          So läuft die Beratung ab
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl font-bold text-primary-600">1</span>
+            </div>
+            <h3 class="font-bold text-navy mb-2">Termin buchen</h3>
+            <p class="text-sm text-gray-600">
+              Wählen Sie einen passenden Termin im Online-Kalender. 
+              Dauert 30 Sekunden.
+            </p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl font-bold text-primary-600">2</span>
+            </div>
+            <h3 class="font-bold text-navy mb-2">Video-Call</h3>
+            <p class="text-sm text-gray-600">
+              30 Minuten via Microsoft Teams. Sie bekommen einen Link per E-Mail.
+            </p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl font-bold text-primary-600">3</span>
+            </div>
+            <h3 class="font-bold text-navy mb-2">Klarheit</h3>
+            <p class="text-sm text-gray-600">
+              Sie wissen, was möglich ist – und entscheiden in Ruhe, ob Sie weitermachen möchten.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-2xl font-bold text-navy text-center mb-8">
+          Häufige Fragen zur Beratung
+        </h2>
+
+        <div class="space-y-4">
+          <details class="bg-gray-50 rounded-lg">
+            <summary class="p-4 cursor-pointer font-semibold text-navy hover:text-primary-600">
+              Ist das wirklich kostenlos?
+            </summary>
+            <p class="px-4 pb-4 text-gray-600">
+              Ja, zu 100%. Das Gespräch ist für uns die Chance, Sie kennenzulernen – 
+              und für Sie die Möglichkeit, unsere Expertise zu testen. Selbst wenn Sie sich 
+              gegen DigiDMS entscheiden, nehmen Sie wertvolle Tipps mit.
+            </p>
+          </details>
+
+          <details class="bg-gray-50 rounded-lg">
+            <summary class="p-4 cursor-pointer font-semibold text-navy hover:text-primary-600">
+              Muss ich mich vorbereiten?
+            </summary>
+            <p class="px-4 pb-4 text-gray-600">
+              Nicht unbedingt. Es hilft aber, wenn Sie grob wissen: Wie viele Mitarbeiter 
+              haben Sie? Welche Dokumente verwalten Sie hauptsächlich? Was nervt Sie am meisten?
+            </p>
+          </details>
+
+          <details class="bg-gray-50 rounded-lg">
+            <summary class="p-4 cursor-pointer font-semibold text-navy hover:text-primary-600">
+              Werde ich danach mit Anrufen bombardiert?
+            </summary>
+            <p class="px-4 pb-4 text-gray-600">
+              Nein. Wir melden uns einmal nach dem Gespräch mit einer Zusammenfassung. 
+              Danach hören Sie nur von uns, wenn Sie es wünschen. Kein Druck, keine Tricks.
+            </p>
+          </details>
+
+          <details class="bg-gray-50 rounded-lg">
+            <summary class="p-4 cursor-pointer font-semibold text-navy hover:text-primary-600">
+              Was, wenn ich nur eine kurze Frage habe?
+            </summary>
+            <p class="px-4 pb-4 text-gray-600">
+              Dann schreiben Sie uns einfach eine E-Mail an 
+              <a href="mailto:info@digidim.de" class="text-primary-600 hover:underline">info@digidim.de</a> 
+              oder rufen Sie an unter {siteConfig.company.phoneDisplay}. 
+              Die Beratung ist für komplexere Fragen gedacht.
+            </p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-16 bg-navy text-white">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">
+          Bereit für weniger Dokumenten-Chaos?
+        </h2>
+        <p class="text-gray-300 mb-8">
+          Buchen Sie jetzt Ihren Termin – die nächsten freien Slots sehen Sie direkt im Kalender.
+        </p>
+        <a 
+          href="https://outlook.office365.com/book/DigiDMSBeratung@intragen.de/" 
+          target="_blank"
+          rel="noopener"
+          class="btn-outline text-lg px-10 py-5 inline-flex items-center gap-3"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          Termin mit Henning Scholand buchen
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

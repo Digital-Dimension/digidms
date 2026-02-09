@@ -1,0 +1,626 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTASection from '../../components/CTASection.astro';
+import WirKuemmernUns from '../../components/WirKuemmernUns.astro';
+import { Image } from 'astro:assets';
+import heroImg from '../../assets/images/hero-arztpraxen.jpg';
+import { siteConfig } from '../../config/site';
+
+const painPoints = [
+  {
+    title: 'Vertrags-Dschungel',
+    icon: '📋',
+    description: 'Leasingverträge für Röntgen, Ultraschall, Behandlungsstühle – jeder mit anderen Laufzeiten und Kündigungsfristen. Wann läuft was aus? Wo liegt der Vertrag überhaupt?',
+  },
+  {
+    title: 'Wartungstermine im Chaos',
+    icon: '🔧',
+    description: 'MPBetreibV, Prüfprotokolle, Geräte-Wartung – alles verstreut in E-Mails, Ordnern und Kalendern. Wenn das Gesundheitsamt prüft, wird es stressig.',
+  },
+  {
+    title: 'Ablage überall und nirgends',
+    icon: '📁',
+    description: 'Lieferantenverträge im Ordner, Abrechnungsunterlagen in der Schublade, Fortbildungsnachweise per E-Mail. Wer soll da noch den Überblick behalten?',
+  },
+  {
+    title: 'Prüfungen als Stressfaktor',
+    icon: '😰',
+    description: 'Gesundheitsamt, Berufsgenossenschaft, QM-Audit – wenn Prüfer kommen, beginnt die große Suche nach Zertifikaten, Protokollen und Nachweisen.',
+  },
+];
+
+const solutions = [
+  {
+    title: 'Alle Verträge an einem Ort',
+    icon: '📄',
+    description: 'Leasingverträge, Wartungsverträge, Mietvertrag, Versicherungen – alles zentral gespeichert, durchsuchbar und mit Erinnerungen für Fristen.',
+  },
+  {
+    title: 'Wartung & Prüfungen im Griff',
+    icon: '✅',
+    description: 'Prüfprotokolle, MPBetreibV-Nachweise und Wartungsberichte strukturiert ablegen. Bei der nächsten Prüfung ist alles griffbereit.',
+  },
+  {
+    title: 'Fristen nie mehr verpassen',
+    icon: '⏰',
+    description: 'Kündigungsfristen, Wartungstermine, Zertifikats-Erneuerungen – Sie werden rechtzeitig erinnert, bevor es teuer wird.',
+  },
+  {
+    title: 'Abrechnungen dokumentiert',
+    icon: '💶',
+    description: 'KV-Abrechnungen, GOÄ/GOZ-Unterlagen, Korrespondenz mit Abrechnungsstellen – revisionssicher archiviert und schnell wiedergefunden.',
+  },
+  {
+    title: 'Kein IT-Aufwand',
+    icon: '☁️',
+    description: 'DigiDMS läuft in der Cloud – auf deutschen Servern. Updates, Backups, Sicherheit: Das übernehmen wir. Ihr Team konzentriert sich auf die Patienten.',
+  },
+];
+
+const features = [
+  {
+    title: 'Vertragsmanagement',
+    description: 'Alle Verträge mit Laufzeiten, Kündigungsfristen und automatischen Erinnerungen. Nie wieder eine teure Vertragsverlängerung übersehen.',
+  },
+  {
+    title: 'Geräte-Dokumentation',
+    description: 'Leasingverträge, Wartungsprotokolle und Prüfnachweise pro Gerät. Alles, was Sie für MPBetreibV und Prüfungen brauchen.',
+  },
+  {
+    title: 'QM-Nachweise',
+    description: 'Fortbildungszertifikate, Hygiene-Schulungen, QM-Dokumente strukturiert ablegen. Bei Audits sofort auskunftsfähig.',
+  },
+  {
+    title: 'Abrechnungsarchiv',
+    description: 'KV-Abrechnungen, GOÄ/GOZ-Unterlagen und Korrespondenz mit Abrechnungsstellen – revisionssicher und durchsuchbar.',
+  },
+  {
+    title: 'OCR-Volltextsuche',
+    description: 'Auch eingescannte Verträge und Protokolle werden durchsuchbar. Finden Sie jede Klausel, jeden Betrag, jedes Datum.',
+  },
+  {
+    title: 'Scanner-Integration',
+    description: 'Ihr Praxisscanner schickt Dokumente direkt ins System. Papier scannen, ablegen, fertig.',
+  },
+  {
+    title: 'Benutzerrechte',
+    description: 'Ärzt:in, MFA, Praxismanager – jeder sieht nur das, was relevant ist. Feingranulare Rechtevergabe.',
+  },
+  {
+    title: 'DSGVO-konform',
+    description: 'Server in Deutschland, verschlüsselte Übertragung, Zugriffsprotokoll. Auch sensible Verwaltungsdaten sind sicher.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'Ist DigiDMS für Patientendaten geeignet?',
+    answer: 'DigiDMS ist primär für die Praxisverwaltung konzipiert: Verträge, Geräte-Dokumentation, Abrechnungen, QM-Nachweise. Für medizinische Patientendaten (Befunde, Behandlungsdokumentation) nutzen Sie weiterhin Ihr Praxisverwaltungssystem (PVS). DigiDMS ergänzt Ihr PVS um ein strukturiertes Archiv für alle anderen Dokumente.',
+  },
+  {
+    question: 'Wie hilft DigiDMS bei Prüfungen (Gesundheitsamt, BG)?',
+    answer: 'Alle prüfungsrelevanten Dokumente – Prüfprotokolle, MPBetreibV-Nachweise, Hygiene-Zertifikate, QM-Dokumentation – sind zentral abgelegt und in Sekunden auffindbar. Bei der nächsten Prüfung haben Sie alles griffbereit.',
+  },
+  {
+    question: 'Können wir Kündigungsfristen und Wartungstermine verwalten?',
+    answer: 'Ja. Sie können Dokumente mit Fristen versehen und sich rechtzeitig erinnern lassen. So verpassen Sie keine Kündigungsfrist bei Leasingverträgen und keinen Wartungstermin für Ihre Geräte.',
+  },
+  {
+    question: 'Wie läuft die Einführung in einer laufenden Praxis ab?',
+    answer: 'Wir richten Ihre Instanz innerhalb eines Tages ein. Eine kurze Schulung (ca. 1–2 Stunden) macht Ihr Team fit. Sie können sofort starten – bestehende Verträge und Dokumente ziehen Sie nach und nach nach.',
+  },
+  {
+    question: 'Ist DigiDMS DSGVO-konform?',
+    answer: 'Ja. Alle Daten werden ausschließlich auf Servern in deutschen Rechenzentren gespeichert. Die Übertragung erfolgt verschlüsselt, der Zugriff wird protokolliert. Auch wenn Sie keine Patientendaten speichern – Ihre Verwaltungsdaten sind sensibel und bei uns sicher.',
+  },
+  {
+    question: 'Können wir alte Verträge und Dokumente digitalisieren?',
+    answer: 'Ja. Sie können bestehende Ordner einscannen und in DigiDMS importieren. Bei größeren Mengen unterstützen wir Sie bei der Organisation der Migration.',
+  },
+  {
+    question: 'Was kostet DigiDMS für eine Arztpraxis?',
+    answer: 'Die Kosten hängen von der Anzahl der Nutzer und dem Speicherbedarf ab. Kleine Praxen starten ab 150 €/Monat – inklusive Hosting, Backups, Updates und Support. Wir erstellen Ihnen gerne ein individuelles Angebot.',
+  },
+];
+
+// FAQ Schema für Rich Snippets
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<Layout 
+  title="DMS Arztpraxis: Verträge & QM digital verwalten | DigiDMS" 
+  description="Leasingverträge, Wartungsprotokolle, QM-Nachweise digital verwalten. DigiDMS: Managed DMS aus Deutschland für Arztpraxen. DSGVO-konform, ohne IT-Aufwand."
+>
+  <!-- FAQ Schema für Google Rich Snippets -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-teal-50 via-cyan-50/50 to-emerald-50/30">
+    <div class="absolute inset-0 opacity-40">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-teal-200/40 to-transparent rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+      <div class="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-cyan-200/40 to-transparent rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+    </div>
+
+    <div class="container-wide relative py-16 md:py-24">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+        
+        <!-- Breadcrumb -->
+        <nav class="flex items-center gap-2 text-sm text-gray-500 mb-6">
+          <a href="/" class="hover:text-primary-600">Start</a>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+          <a href="/branchen" class="hover:text-primary-600">Branchen</a>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+          <span class="text-gray-700">Arztpraxen</span>
+        </nav>
+
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-sm border border-teal-200 mb-6">
+          <span class="text-2xl">🩺</span>
+          <span class="text-sm font-medium text-gray-700">Für Arztpraxen – Praxisverwaltung</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-navy leading-tight mb-6">
+          Praxisverwaltung digital,<br class="hidden sm:block" />
+          <span class="text-teal-600">Verträge & Geräte im Griff</span>
+        </h1>
+
+        <p class="text-lg md:text-xl text-gray-600 leading-relaxed mb-6">
+          DigiDMS bringt Ordnung in Ihre Praxisverwaltung: Leasingverträge, Wartungsprotokolle, 
+          QM-Nachweise und Abrechnungsunterlagen – alles an einem Ort, sofort auffindbar. 
+          Auf deutschen Servern, ohne IT-Aufwand.
+        </p>
+
+        <!-- Hinweis -->
+        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 mb-6">
+          <p class="text-sm text-teal-800">
+            <strong>Perfekte Ergänzung zu Ihrem PVS:</strong> DigiDMS verwaltet alles rund um die Praxis – 
+            Leasingverträge, Wartungsprotokolle, QM-Nachweise, Abrechnungen. 
+            Ihr Praxisverwaltungssystem bleibt für die Behandlungsdokumentation zuständig.
+          </p>
+        </div>
+
+        <!-- Bullets -->
+        <div class="flex flex-wrap gap-3 mb-10">
+          <div class="inline-flex items-center gap-2 text-sm text-gray-700 bg-white px-4 py-2 rounded-full shadow-sm">
+            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Leasingverträge & Kündigungsfristen
+          </div>
+          <div class="inline-flex items-center gap-2 text-sm text-gray-700 bg-white px-4 py-2 rounded-full shadow-sm">
+            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Wartungsprotokolle & MPBetreibV
+          </div>
+          <div class="inline-flex items-center gap-2 text-sm text-gray-700 bg-white px-4 py-2 rounded-full shadow-sm">
+            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            QM-Nachweise & Zertifikate
+          </div>
+          <div class="inline-flex items-center gap-2 text-sm text-gray-700 bg-white px-4 py-2 rounded-full shadow-sm">
+            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            DSGVO-konform, Server in Deutschland
+          </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/kontakt?branche=arztpraxis" class="btn-primary text-base px-8 py-4">
+            Beratungsgespräch vereinbaren
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href="/demo" class="btn-secondary text-base px-8 py-4">
+            Demo ansehen
+          </a>
+        </div>
+        </div>
+
+        <!-- Hero Image -->
+        <div class="hidden lg:block">
+          <div class="relative">
+            <div class="absolute -inset-4 bg-gradient-to-r from-teal-200 to-cyan-200 rounded-2xl blur-2xl opacity-30"></div>
+            <Image 
+              src={heroImg}
+              alt="Arztpraxis Verwaltung mit Laptop und Stethoskop" 
+              class="relative rounded-2xl shadow-2xl border border-gray-200 object-cover w-full h-[420px]"
+              format="webp"
+              quality={85}
+            />
+            <div class="absolute -bottom-4 -right-4 bg-white rounded-xl shadow-lg p-4 border border-gray-100">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center">
+                  <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-navy">Wartungsfrist</p>
+                  <p class="text-xs text-gray-500">in 30 Tagen – erinnert</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <section class="py-6 bg-white border-b border-gray-100">
+    <div class="container-wide">
+      <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10 text-sm">
+        <div class="flex items-center gap-2 text-gray-600">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          Server in Deutschland
+        </div>
+        <div class="flex items-center gap-2 text-gray-600">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          DSGVO-konform
+        </div>
+        <div class="flex items-center gap-2 text-gray-600">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          Fristen-Erinnerungen
+        </div>
+        <div class="flex items-center gap-2 text-gray-600">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          Basiert auf Open Source
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pain Points -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <span class="text-red-500 font-semibold text-sm uppercase tracking-wider">Das kennen Sie</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">Der Praxisalltag abseits der Patientenversorgung</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {painPoints.map((point) => (
+          <div class="flex items-start gap-4 p-6 bg-red-50 rounded-2xl border border-red-100">
+            <span class="text-3xl">{point.icon}</span>
+            <div>
+              <h3 class="font-bold text-navy mb-2">{point.title}</h3>
+              <p class="text-gray-600 text-sm">{point.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Solutions -->
+  <section class="section bg-gray-50">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <span class="text-green-600 font-semibold text-sm uppercase tracking-wider">Die Lösung</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">Praxisverwaltung ohne Papierchaos</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {solutions.map((solution) => (
+          <div class="flex items-start gap-4 p-6 bg-white rounded-2xl shadow-sm border border-green-100">
+            <span class="text-3xl">{solution.icon}</span>
+            <div>
+              <h3 class="font-bold text-navy mb-2">{solution.title}</h3>
+              <p class="text-gray-600 text-sm">{solution.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Dokumente-Übersicht -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <span class="text-primary-600 font-semibold text-sm uppercase tracking-wider">Typische Dokumente</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">Was gehört ins DigiDMS?</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div class="bg-gray-50 rounded-xl p-5">
+          <h3 class="font-bold text-navy mb-3 flex items-center gap-2">
+            <span class="text-xl">📋</span> Verträge
+          </h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>• Leasingverträge (Röntgen, Ultraschall, Stühle)</li>
+            <li>• Mietvertrag Praxisräume</li>
+            <li>• Lieferantenverträge (Labor, Praxisbedarf)</li>
+            <li>• Versicherungsunterlagen</li>
+            <li>• Wartungsverträge</li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-5">
+          <h3 class="font-bold text-navy mb-3 flex items-center gap-2">
+            <span class="text-xl">🔧</span> Geräte & Prüfungen
+          </h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>• Prüfprotokolle (MPBetreibV)</li>
+            <li>• Wartungsberichte</li>
+            <li>• Geräte-Dokumentation</li>
+            <li>• Sicherheitstechnische Kontrollen</li>
+            <li>• Herstellerinformationen</li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-5">
+          <h3 class="font-bold text-navy mb-3 flex items-center gap-2">
+            <span class="text-xl">📊</span> Abrechnungen
+          </h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>• KV-Abrechnungen</li>
+            <li>• GOÄ/GOZ-Unterlagen</li>
+            <li>• Korrespondenz mit Abrechnungsstellen</li>
+            <li>• Honorarbescheide</li>
+            <li>• Rechnungen (Ein-/Ausgang)</li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-5">
+          <h3 class="font-bold text-navy mb-3 flex items-center gap-2">
+            <span class="text-xl">🎓</span> QM & Nachweise
+          </h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>• Fortbildungszertifikate</li>
+            <li>• Hygiene-Schulungen</li>
+            <li>• QM-Dokumentation</li>
+            <li>• Arbeitsschutz-Unterweisungen</li>
+            <li>• Datenschutz-Nachweise</li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-5">
+          <h3 class="font-bold text-navy mb-3 flex items-center gap-2">
+            <span class="text-xl">👥</span> Personal
+          </h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>• Arbeitsverträge</li>
+            <li>• Zeugnisse, Qualifikationen</li>
+            <li>• Schulungsnachweise</li>
+            <li>• Impfnachweise (Mitarbeiter)</li>
+            <li>• Berufsgenossenschaft-Unterlagen</li>
+          </ul>
+        </div>
+
+        <div class="bg-teal-50 rounded-xl p-5 border-2 border-teal-200">
+          <h3 class="font-bold text-teal-700 mb-3 flex items-center gap-2">
+            <span class="text-xl">🚫</span> Nicht im DigiDMS
+          </h3>
+          <ul class="text-sm text-teal-600 space-y-1">
+            <li>• Patientenakten</li>
+            <li>• Befunde, Diagnosen</li>
+            <li>• Behandlungsdokumentation</li>
+            <li>• Arztbriefe</li>
+            <li class="pt-2 text-teal-700 font-medium">→ Hierfür nutzen Sie Ihr PVS</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section bg-gray-50">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <span class="text-primary-600 font-semibold text-sm uppercase tracking-wider">Funktionen</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">Was DigiDMS für Ihre Praxis leistet</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {features.map((feature) => (
+          <div class="p-5 bg-white rounded-xl shadow-sm">
+            <h3 class="font-bold text-navy mb-2">{feature.title}</h3>
+            <p class="text-gray-600 text-sm">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Study -->
+  <section class="py-16 bg-navy text-white">
+    <div class="container-wide">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-10">
+          <span class="text-teal-300 font-semibold text-sm uppercase tracking-wider">Praxisbeispiel</span>
+          <h2 class="text-3xl md:text-4xl font-bold mt-2">Zahnarztpraxis Dr. Müller & Kollegen</h2>
+          <p class="text-gray-300 mt-2">3 Behandlungsräume · 5 Leasingverträge · 2 Zahnärzte · 4 MFA · Köln</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Vorher -->
+          <div class="bg-red-900/30 border border-red-500/30 rounded-2xl p-6">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-2xl">😩</span>
+              <h3 class="text-xl font-bold text-red-300">Vorher</h3>
+            </div>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              „Wir hatten fünf Leasingverträge für unsere Geräte – Röntgen, Behandlungsstühle, Sterilisator. 
+              Die Kündigungsfristen? Irgendwo notiert. Letztes Jahr haben wir eine Frist verpasst und 
+              mussten den Stuhl zwei weitere Jahre behalten – 8.000 Euro, die wir nicht eingeplant hatten. 
+              Die Wartungsprotokolle lagen verstreut, beim Besuch vom Gesundheitsamt haben wir zwei Stunden gesucht."
+            </p>
+          </div>
+
+          <!-- Nachher -->
+          <div class="bg-green-900/30 border border-green-500/30 rounded-2xl p-6">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-2xl">😊</span>
+              <h3 class="text-xl font-bold text-green-300">Nachher</h3>
+            </div>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              „Jetzt haben wir alle Verträge digital mit Erinnerungen. Drei Monate vor Kündigungsfrist 
+              bekommen wir eine Meldung. Die Wartungsprotokolle sind pro Gerät abgelegt – bei der letzten 
+              Prüfung hatten wir alles in fünf Minuten zusammen. Unsere Praxismanagerin sagt, sie spart 
+              mindestens zwei Stunden pro Woche mit der Verwaltung."
+            </p>
+          </div>
+        </div>
+
+        <!-- Quote -->
+        <div class="mt-8 text-center">
+          <div class="inline-block bg-white/10 rounded-2xl p-6 border border-white/20">
+            <p class="text-lg italic text-gray-200">
+              „Eine verpasste Kündigungsfrist hat uns 8.000 Euro gekostet. 
+              Das war der Moment, wo wir wussten: Wir brauchen ein System."
+            </p>
+            <p class="mt-3 text-teal-300 font-medium">– Dr. Sabine Müller, Zahnärztin</p>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="mt-8 grid grid-cols-3 gap-4 text-center">
+          <div>
+            <p class="text-3xl font-bold text-teal-300">2h</p>
+            <p class="text-gray-400 text-sm">Zeitersparnis/Woche</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold text-teal-300">5 Min</p>
+            <p class="text-gray-400 text-sm">statt Stunden bei Prüfungen</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold text-teal-300">0 €</p>
+            <p class="text-gray-400 text-sm">verpasste Fristen seitdem</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12">
+          <span class="text-primary-600 font-semibold text-sm uppercase tracking-wider">FAQ</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">Häufige Fragen von Arztpraxen</h2>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq, index) => (
+            <details class="group bg-gray-50 rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+              <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+                <span class="font-semibold text-navy pr-4">{faq.question}</span>
+                <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="px-5 pb-5 text-gray-600 text-sm">
+                {faq.answer}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section bg-gray-50">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4">Bereit für eine geordnete Praxisverwaltung?</h2>
+        <p class="text-gray-600 mb-8">
+          Lassen Sie uns in einem kurzen Gespräch klären, wie DigiDMS Ihren Praxisalltag erleichtern kann.
+        </p>
+
+        <!-- Was passiert -->
+        <div class="bg-white rounded-2xl p-6 mb-8 text-left shadow-sm">
+          <h3 class="font-bold text-navy mb-4 text-center">Was passiert im Erstgespräch?</h3>
+          <div class="grid sm:grid-cols-2 gap-4 text-sm">
+            <div class="flex items-start gap-3">
+              <span class="text-green-500 font-bold">1.</span>
+              <span class="text-gray-600"><strong class="text-navy">Wir hören zu:</strong> Welche Verträge und Dokumente bereiten Ihnen Kopfzerbrechen?</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-green-500 font-bold">2.</span>
+              <span class="text-gray-600"><strong class="text-navy">Wir zeigen:</strong> Live-Demo von DigiDMS für Praxisverwaltung</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-green-500 font-bold">3.</span>
+              <span class="text-gray-600"><strong class="text-navy">Wir beraten:</strong> Struktur, Fristen-Management, Migration</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-green-500 font-bold">4.</span>
+              <span class="text-gray-600"><strong class="text-navy">Kein Druck:</strong> Sie entscheiden in Ruhe</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="/kontakt?branche=arztpraxis" class="btn-primary text-base px-8 py-4">
+            Beratungsgespräch vereinbaren
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href="/demo" class="btn-secondary text-base px-8 py-4">
+            Oder erst die Demo testen
+          </a>
+        </div>
+
+        <!-- Telefon -->
+        <p class="mt-6 text-gray-500 text-sm">
+          Oder rufen Sie uns direkt an: 
+          <a href="tel:+4920237323160" class="text-primary-600 font-medium hover:underline">
+            {siteConfig.company.phoneDisplay}
+          </a> 
+          (Mo–Fr, 9–17 Uhr)
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <WirKuemmernUns branche="Ihre Patienten" />
+
+  <!-- Back to Solutions -->
+  <section class="py-8 bg-white border-t border-gray-200">
+    <div class="container-wide">
+      <div class="flex items-center justify-center gap-2 text-sm">
+        <a href="/branchen" class="text-primary-600 hover:text-primary-700 font-medium flex items-center gap-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Alle Branchen-Lösungen ansehen
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

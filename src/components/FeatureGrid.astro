@@ -1,0 +1,86 @@
+---
+interface Feature {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  features: Feature[];
+  columns?: 2 | 3 | 4;
+}
+
+const { 
+  title, 
+  subtitle, 
+  features,
+  columns = 4
+} = Astro.props;
+
+const gridCols = {
+  2: 'md:grid-cols-2',
+  3: 'md:grid-cols-3',
+  4: 'md:grid-cols-2 lg:grid-cols-4',
+};
+
+// Simple icon mapping - using emoji as fallback
+const iconMap: Record<string, string> = {
+  FileSearch: '📄',
+  Search: '🔍',
+  Tags: '🏷️',
+  Link: '🔗',
+  Mail: '📧',
+  Smartphone: '📱',
+  Lock: '🔒',
+  Zap: '⚡',
+  Shield: '🛡️',
+  Award: '🏆',
+  CheckCircle: '✓',
+  FileCheck: '📋',
+  Scale: '⚖️',
+  Wrench: '🔧',
+  ClipboardCheck: '📝',
+  Server: '🖥️',
+  Clock: '⏱️',
+  Users: '👥',
+  Database: '💾',
+  Globe: '🌐',
+};
+---
+
+<section class="section bg-white">
+  <div class="container-wide">
+    {(title || subtitle) && (
+      <div class="text-center mb-12 md:mb-16">
+        {title && (
+          <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4">
+            {title}
+          </h2>
+        )}
+        {subtitle && (
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            {subtitle}
+          </p>
+        )}
+      </div>
+    )}
+
+    <div class={`grid grid-cols-1 ${gridCols[columns]} gap-6`}>
+      {features.map((feature) => (
+        <div class="group p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:border-primary-200 hover:shadow-lg transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-secondary-500/10 to-primary-500/10 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+            {iconMap[feature.icon] || '📄'}
+          </div>
+          <h3 class="font-semibold text-navy mb-2">
+            {feature.title}
+          </h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            {feature.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
